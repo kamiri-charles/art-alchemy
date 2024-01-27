@@ -1,0 +1,54 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner&family=Honk&family=Ubuntu&display=swap');
+
+
+/* Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+
+/* Colors */
+:root {
+  --ui-primary: #303633;
+  --ui-secondary: #8BE8CB;
+  --ui-cadet-gray: #7EA2AA;
+  --ui-cool-gray: #888DA7;
+  --ui-pink: #9C7A97;
+}
+
+
+.App {
+  background: var(--ui-cool-gray);
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Ubuntu', sans-serif;
+}

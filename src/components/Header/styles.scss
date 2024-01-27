@@ -1,0 +1,40 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 80px;
+    background: var(--ui-primary);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+    .left {
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+
+        .menu-icon {
+            margin-inline: 20px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Honk', sans-serif;
+            font-size: 30px;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            
+        }
+    }
+
+    .right {
+        width: 60%;
+    }
+}
