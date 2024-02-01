@@ -35,7 +35,6 @@ p, h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 
-
 /* Colors */
 :root {
   --ui-primary: #303633;
@@ -45,9 +44,26 @@ p, h1, h2, h3, h4, h5, h6 {
   --ui-pink: #9C7A97;
 
   --header-height: 80px;
+  --navbar-width: 80px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-track {
+    width: 2px;
+    background: black;
+}
+
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px;
 }
 
 
+/* App */
 .App {
   background: var(--ui-cool-gray);
   width: 100vw;
