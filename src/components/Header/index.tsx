@@ -1,5 +1,5 @@
-import React from 'react';
-import './styles.scss';
+import React from 'react'
+import './styles.scss'
 
 const Header:React.FC = () => {
   return (
@@ -22,4 +22,4 @@ const Header:React.FC = () => {
   )
 }
 
-export default Header;
+export default Header
