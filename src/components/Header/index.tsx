@@ -17,7 +17,21 @@ const Header:React.FC = () => {
         
       </div>
 
-      <div className="right"></div>
+      <div className="right">
+
+        <div className="searchbar">
+          <input type="text" placeholder="Art, tags, creators etc..." />
+          <i className="bx bx-search"></i>
+        </div>
+
+        <div className="cart-icon">
+          <i className="bx bx-cart"></i>
+        </div>
+
+        <div className="user-icon">
+          <i className="bx bx-user"></i>
+        </div>
+      </div>
     </div>
   )
 }

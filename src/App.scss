@@ -27,6 +27,12 @@ input, button, textarea, select {
   font: inherit;
 }
 
+input {
+  border: none;
+  outline: none;
+
+}
+
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
@@ -41,7 +47,7 @@ p, h1, h2, h3, h4, h5, h6 {
   --ui-secondary: #DF2935;
   --ui-tertiary: #FDCA40;
   --ui-black: #080708;
-  --ui-white: #E6E8E6;
+  --ui-white: #FFF;
 
   --header-height: 80px;
   --navbar-width: 80px;
@@ -65,7 +71,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 /* App */
 .App {
-  background: var(--ui-cool-gray);
+  background: var(--ui-primary);
   width: 100vw;
   height: 100vh;
   font-family: 'Ubuntu', sans-serif;

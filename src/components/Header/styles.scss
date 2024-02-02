@@ -4,7 +4,7 @@
     left: 0;
     width: 100vw;
     height: 80px;
-    background: var(--ui-primary);
+    background: var(--ui-black);
     color: white;
 
     display: flex;
@@ -36,5 +36,52 @@
 
     .right {
         width: 60%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        .searchbar {
+            position: relative;
+            width: 400px;
+            background: var(--ui-white);
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px 10px;
+            border-radius: 3px;
+
+            input {
+                width: 100%;
+                background: transparent;
+            }
+
+            i {
+                position: absolute;
+                top: 50%;
+                right: 20px;
+                transform: translateY(-50%);
+                font-size: 20px;
+                cursor: pointer;
+            }
+        }
+
+
+        .cart-icon, .user-icon {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            font-size: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+
+            &:hover {
+                color: var(--ui-black);
+                background: var(--ui-white);
+            }
+        }
     }
 }
