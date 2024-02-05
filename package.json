@@ -1,13 +1,15 @@
 {
   "name": "art-alchemy",
-  "private": true,
+  "homepage": "https://kamiri-charles.github.io/art-alchemy",
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "boxicons": "^2.1.4",
