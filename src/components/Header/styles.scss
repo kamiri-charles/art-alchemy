@@ -43,7 +43,7 @@
 
         .searchbar {
             position: relative;
-            width: 400px;
+            width: 300px;
             background: var(--ui-white);
             color: black;
             display: flex;
@@ -67,20 +67,45 @@
             }
         }
 
+        .user-logged-in-icons {
+            display: flex;
 
-        .cart-icon, .user-icon {
-            width: 40px;
-            height: 40px;
-            display: grid;
-            place-items: center;
-            border-radius: 50%;
-            font-size: 30px;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            .cart-icon, .user-icon {
+                width: 40px;
+                height: 40px;
+                margin-inline: 20px;
+                display: grid;
+                place-items: center;
+                border-radius: 50%;
+                font-size: 30px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+    
+                &:hover {
+                    color: var(--ui-black);
+                    background: var(--ui-white);
+                }
+            }
+        }
 
-            &:hover {
-                color: var(--ui-black);
-                background: var(--ui-white);
+        .user-not-signed-in-buttons {
+            display: flex;
+
+            button {
+                padding: 10px 20px;
+                margin-inline: 20px;
+                border: none;
+                border-radius: 5px;
+                background: transparent;
+                color: var(--ui-white);
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    color: var(--ui-primary);
+                }
             }
         }
     }
