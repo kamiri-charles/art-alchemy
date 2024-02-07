@@ -30,6 +30,11 @@ jobs:
         run: |
           ls -l dist
 
+      - name: Configure Git
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email'
+
       - name: Deploy to GitHub Pages
         run: |
           npm run deploy
