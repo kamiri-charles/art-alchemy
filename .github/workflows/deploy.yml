@@ -1,5 +1,4 @@
-name: Deploy to GitHub Pages
-
+name: Build and Deploy
 on:
   push:
     branches:
@@ -8,33 +7,21 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 14
-
       - name: Install dependencies
-        run: |
-          npm install
+        run: npm install
 
       - name: Build
-        run: |
-          npm run build
+        run: npm run build
 
       - name: Display the contents of the dist directory
-        run: |
-          ls -l dist
-
-      - name: Configure Git
-        run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email'
+        run: ls -l dist
 
       - name: Deploy to GitHub Pages
-        run: |
-          npm run deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages
+          folder: dist
