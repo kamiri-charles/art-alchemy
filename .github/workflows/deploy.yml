@@ -26,6 +26,10 @@ jobs:
         run: |
           npm run build
 
+      - name: Display the contents of the dist directory
+        run: |
+          ls -l dist
+
       - name: Deploy to GitHub Pages
         run: |
           npm run deploy

@@ -1,16 +1,16 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import RandomBackground from '../assets/utils/RandomBackground';
 
 const SignIn: React.FC = () => {
 
   const nav = useNavigate();
 
-
   return (
     <div className='sign-in'>
+      <RandomBackground />
       <div className="form-wrapper">
 
-        {/* Placeholder image goes here */}
         <div className="left">
           <div className="brand">ART ALCHEMY</div>
 
@@ -42,9 +42,10 @@ const SignIn: React.FC = () => {
               <input type="password" />
             </div>
 
-            {/* <div className="checkbox">
-              <input type="checkbox" name="Keep me logged in" id="" aria-checked />
-            </div> */}
+            <div className="field checkbox">
+              <input type="checkbox" aria-checked />
+              <label>Keep me logged in</label>
+            </div>
           </div>
 
             <button className='submit'>Submit</button>
