@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './styles.scss'
 
 const Header:React.FC = () => {
   const [userData, setUserData] = useState();
+  const nav = useNavigate();
 
   useEffect(() => {
     // fetch user data from local storage
@@ -45,8 +47,8 @@ const Header:React.FC = () => {
               </div>
             </div> ) : (
               <div className="user-not-signed-in-buttons">
-                <button>Join</button>
-                <button>Log In</button>
+                <button onClick={() => nav('/sign-up')}>Join</button>
+                <button onClick={() => nav('/sign-in')}>Log In</button>
               </div>
             )
           }
