@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import RandomBackground from "../assets/utils/RandomBackground";
 import { MetroSpinner } from "react-spinners-kit";
+import '../styles/signIn&signUp.scss';
 
 const SignIn: React.FC = () => {
 	type UserData = {
@@ -105,6 +106,7 @@ const SignIn: React.FC = () => {
 							<input
 								name="username"
 								type="text"
+								placeholder="Enter your username"
 								value={userData?.username}
 								onChange={handle_change}
 							/>
@@ -119,6 +121,7 @@ const SignIn: React.FC = () => {
 							<input
 								name="password"
 								type="password"
+								placeholder="Enter your password"
 								value={userData?.password}
 								onChange={handle_change}
 							/>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { MetroSpinner } from "react-spinners-kit";
 import RandomBackground from "../assets/utils/RandomBackground";
+import '../styles/signIn&signUp.scss';
 
 const SignUp: React.FC = () => {
 	
@@ -111,6 +112,7 @@ const SignUp: React.FC = () => {
 							<input
 								name="username"
 								type="text"
+								placeholder="No special characters @, #, $, %" 
 								value={userData?.username}
 								onChange={handle_change}
 							/>
@@ -125,6 +127,7 @@ const SignUp: React.FC = () => {
 							<input
 								name="email"
 								type="text"
+								placeholder="Email address"
 								value={userData?.email}
 								onChange={handle_change}
 							/>
@@ -139,6 +142,7 @@ const SignUp: React.FC = () => {
 							<input
 								name="password"
 								type="password"
+								placeholder="At least 8 characters"
 								value={userData?.password}
 								onChange={handle_change}
 							/>
