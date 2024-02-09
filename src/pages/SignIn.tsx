@@ -1,66 +1,81 @@
-import React, { useState, useEffect} from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import RandomBackground from '../assets/utils/RandomBackground';
-import { MetroSpinner } from 'react-spinners-kit';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import RandomBackground from "../assets/utils/RandomBackground";
+import { MetroSpinner } from "react-spinners-kit";
 
 const SignIn: React.FC = () => {
+	type UserData = {
+		username: string;
+		password: string;
+	};
 
-  type UserData = {
-    username: string;
-    password: string;
-  }
+	const [userData, setUserData] = useState<UserData>({
+		username: "",
+		password: "",
+	});
+	const [loading, setLoading] = useState(false);
+	const [usernameValid, setUsernameValid] = useState(false);
+	const [passwordValid, setPasswordValid] = useState(false);
+	const [error, setError] = useState('');
+	const nav = useNavigate();
 
+	useEffect(() => {
+		// fetch user data from local storage
+		const data = localStorage.getItem("artAlchemyUserData");
+		if (data) nav("/");
 
-  const [userData, setUserData] = useState<UserData>({ username: '', password: ''});
-  const [loading, setLoading] = useState(false);
-  const nav = useNavigate();
+		// Validate username
+		if (userData.username.length > 8) setUsernameValid(true);
+		else setUsernameValid(false);
 
-  useEffect(() => {
-    // fetch user data from local storage
-    const data = localStorage.getItem('artAlchemyUserData');
-    if (data) nav('/');
-  }, [nav]);
+		// Validate password
+		if (userData.password.length > 8) setPasswordValid(true);
+		else setPasswordValid(false);
+	}, [nav, userData.password.length, userData.username.length]);
 
-  /* Handle input value change */
-  const handle_change = (e: React.ChangeEvent<HTMLInputElement>) => {    
-    setUserData({
-      ...userData,
-      [e.target.name]: e.target.value
-    });
-  }
+	/* Handle input value change */
+	const handle_change = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setUserData({
+			...userData,
+			[e.target.name]: e.target.value,
+		});
+		setError('');
+	};
 
-  /* Sign in function */
-  const sign_in = () => {
-    setLoading(true);
+	/* Sign in function */
+	const sign_in = () => {
+		setLoading(true);
 
-    // Fetch user data from backend
-    fetch('http://localhost:8080/api/users/sign-in', {
-      method: 'POST',
-      body: JSON.stringify(userData),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(data => {
-      if (data.error) {
-        console.log(data.error);
-        setLoading(false);
-      } else {
-        // Save user data to local storage
-        localStorage.setItem('artAlchemyUserData', JSON.stringify(data));
-        setLoading(false);
-        console.log('User data:', data);
-        //nav('/');
-      }
-    })
-  }
+		if (usernameValid && passwordValid) {
+			// Fetch user data from backend
+			fetch("http://localhost:8080/api/users/sign-in", {
+				method: "POST",
+				body: JSON.stringify(userData),
+				headers: {
+					"Content-Type": "application/json",
+				},
+			})
+				.then((res) => res.json())
+				.then((data) => {
+					if (data.error) {
+						console.log(data.error);
+						setError(data.error);
+						setLoading(false);
+					} else {
+						// Save user data to local storage
+						localStorage.setItem("artAlchemyUserData", JSON.stringify(data));
+						setLoading(false);
+						console.log("User data:", data);
+						//nav('/');
+					}
+				});
+		} else {
+			setError('Please enter a valid username and password.');
+			setLoading(false);
+		}
+	};
 
-
-
-
-
-  return (
+	return (
 		<div className="sign-in">
 			<RandomBackground />
 			<div className="form-wrapper">
@@ -94,9 +109,9 @@ const SignIn: React.FC = () => {
 								onChange={handle_change}
 							/>
 
-              <div className="input-valid-icon invalid">
-                <i className="bx bx-check"></i>
-              </div>
+							<div className="input-valid-icon">
+								<i className={usernameValid ? 'bx bx-check' : 'bx bx-x invalid' }></i>
+							</div>
 						</div>
 
 						<div className="field">
@@ -108,10 +123,9 @@ const SignIn: React.FC = () => {
 								onChange={handle_change}
 							/>
 
-              <div className="input-valid-icon valid">
-                <i className="bx bx-check"></i>
-              </div>
-
+							<div className="input-valid-icon">
+								<i className={passwordValid ? 'bx bx-check' : 'bx bx-x invalid'}></i>
+							</div>
 						</div>
 
 						<div className="field checkbox">
@@ -120,10 +134,13 @@ const SignIn: React.FC = () => {
 						</div>
 					</div>
 
+					{error.length > 0 ? <div className="error-message">{error}</div> : ''}
+					
+
 					{loading ? (
 						<div className="spinner">
-              <MetroSpinner size={30} color="black" />
-            </div>
+							<MetroSpinner size={30} color="black" />
+						</div>
 					) : (
 						<button className="submit" onClick={() => sign_in()}>
 							Submit
@@ -157,6 +174,6 @@ const SignIn: React.FC = () => {
 			</div>
 		</div>
 	);
-}
+};
 
-export default SignIn
+export default SignIn;
