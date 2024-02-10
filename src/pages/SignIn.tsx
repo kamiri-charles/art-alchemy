@@ -98,6 +98,10 @@ const SignIn: React.FC = () => {
 					<div className="back-btn" onClick={() => nav("/")}>
 						<i className="bx bx-x"></i>
 					</div>
+
+					<div className="brand-mobile">ART ALCHEMY</div>
+
+
 					<div className="form-title">Log In</div>
 
 					<div className="fields">

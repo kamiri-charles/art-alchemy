@@ -104,6 +104,9 @@ const SignUp: React.FC = () => {
 					<div className="back-btn" onClick={() => nav("/")}>
 						<i className="bx bx-x"></i>
 					</div>
+
+					<div className="brand-mobile">ART ALCHEMY</div>
+
 					<div className="form-title">Join Art Alchemy</div>
 
 					<div className="fields">
@@ -185,7 +188,7 @@ const SignUp: React.FC = () => {
 					</div>
 
 					<div className="form-footer">
-						Already a member
+						Already a member.
 						<Link to="/sign-in"> Log in</Link>
 					</div>
 				</div>

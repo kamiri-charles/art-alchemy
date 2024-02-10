@@ -66,6 +66,10 @@
         }
       }
 
+      .brand-mobile {
+        display: none;
+      }
+
       .form-title {
         width: 100%;
         font-size: 30px;
@@ -244,6 +248,48 @@
           text-decoration: none;
           color: var(--ui-primary);
           cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .sign-in, .sign-up {
+    .form-wrapper {
+      width: 100%;
+
+      .left {
+        display: none;
+      }
+
+      .right {
+        width: 100%;
+        padding: 20px;
+
+        .brand-mobile {
+          display: flex;
+          font-family: 'Honk', sans-serif;
+          font-size: 20px;
+          font-weight: 700;
+          width: 100%;
+        }
+
+        .form-title {
+          font-size: 24px;
+        }
+
+        .fields {
+          height: 40%;
+        }
+
+        .other-links {
+          .link {
+            .icon {
+              font-size: 20px;
+            }
+          }
         }
       }
     }
