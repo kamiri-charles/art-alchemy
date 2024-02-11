@@ -85,7 +85,6 @@ const SignUp: React.FC = () => {
 		<div className="sign-up">
 			<RandomBackground />
 			<div className="form-wrapper">
-				{/* Placeholder image goes here */}
 				<div className="left">
 					<div className="brand">ART ALCHEMY</div>
 
