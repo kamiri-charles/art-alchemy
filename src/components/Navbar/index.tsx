@@ -6,12 +6,17 @@ const Navbar: React.FC = () => {
   const [currentTab, setCurrentTab] = useState('');
 
   useEffect(() => {
-    setCurrentTab('home');
+    if (localStorage.getItem('artAlchemyCurrentNavTab')) {
+      setCurrentTab(localStorage.getItem("artAlchemyCurrentNavTab") ?? "");
+    } else {
+      setCurrentTab('home');
+    }
   }, []);
 
   // Handle link click
   const handleTabChange = (tabValue: string) => {
     setCurrentTab(tabValue);
+    localStorage.setItem('artAlchemyCurrentNavTab', tabValue);
   }
 
 
@@ -30,6 +35,14 @@ const Navbar: React.FC = () => {
 
         <div className={`link ${currentTab == 'events' ? 'active': ''}`} onClick={() => handleTabChange('events')}>
           <i className="bx bx-calendar-event"></i>
+        </div>
+
+        <div className={`link ${currentTab == 'cart' ? 'active': ''}`} onClick={() => handleTabChange('cart')}>
+          <i className="bx bx-cart"></i>
+        </div>
+
+        <div className='link logout'>
+          <i className="bx bx-log-out"></i>
         </div>
 
       </div>
