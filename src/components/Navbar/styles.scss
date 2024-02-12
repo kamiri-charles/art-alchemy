@@ -5,4 +5,41 @@
     width: var(--navbar-width);
     height: calc(100vh - var(--header-height));
     background: var(--ui-light-black);
+    color: var(--ui-white);
+
+    .links {
+        position: absolute;
+        top: 40px;
+        width: 100%;
+        height: calc(100vh - 120px);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+
+        .link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-block: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            i {
+                font-size: 24px;
+            }
+
+
+            &:hover, &.active {
+                background: var(--ui-white);
+                color: var(--ui-black);
+            }
+        }
+    }
 }

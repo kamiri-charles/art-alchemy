@@ -19,10 +19,6 @@ const Header:React.FC = () => {
     <div className='header'>
       <div className="left">
 
-        <div className="menu-icon">
-          <i className="bx bx-menu"></i>
-        </div>
-
         <div className="logo">
           <span>Art</span>
           <span>Alchemy</span>
@@ -31,11 +27,6 @@ const Header:React.FC = () => {
       </div>
 
       <div className="right">
-
-        <div className="searchbar">
-          <input type="text" placeholder="Search" />
-          <i className="bx bx-search"></i>
-        </div>
         {userData ? (
             <div className="user-logged-in-icons">
               <div className="cart-icon">
