@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 import ArtListings from '../components/ArtListings'
 import PageLoader from '../components/PageLoader'
 
-const LandingPage: React.FC = () => {
+const Landing: React.FC = () => {
 
   const [loading, setLoading] = useState(true);
 
@@ -27,4 +27,4 @@ const LandingPage: React.FC = () => {
   )
 }
 
-export default LandingPage
+export default Landing

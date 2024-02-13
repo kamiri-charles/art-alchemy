@@ -1,0 +1,141 @@
+/* Sign in */
+.admin-sign-in {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .admin-sign-in-logo {
+        position: absolute;
+        top: 20px;
+        left: 40px;
+        width: 100px;
+        font-family: 'Honk', sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--ui-white);
+    }
+    
+    .admin-sign-in-form {
+        position: relative;
+        width: 60%;
+        min-width: 400px;
+        min-height: 80%;
+        padding: 20px;
+        border-radius: 10px;
+        background: white;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .admin-sign-in-title {
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            font-size: 24px;
+            color: black;
+            padding: 40px 20px;
+
+            span.deco {
+                font-size: 24px;
+                font-weight: 600;
+                color: var(--ui-primary);
+            
+            }
+        }
+        
+        
+        .fields {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            height: 30%;
+            
+            .field {
+                width: 100%;
+                position: relative;
+                
+                label {
+                    font-family: monospace;
+                }
+                
+                input {
+                    width: 100%;
+                    padding: 4px 10px;
+                    border: 2px solid var(--ui-black);
+                    border-radius: 6px;
+                    font-family: 'Edu TAS Beginner', sans-serif;
+                    font-size: 16px;
+                    font-weight: 600;
+                    transition: all 0.3s ease;
+                    
+                    &::placeholder {
+                        font-family: 'Ubuntu', sans-serif;
+                        font-size: 12px;
+                        font-weight: 600;
+                    }
+                    
+                    &:active, &:focus, &:not(:empty) {
+                        border: 2px solid var(--ui-primary);
+                    }
+                }
+                
+                .input-valid-icon {
+                    position: absolute;
+                    font-size: 20px;
+                    top: 70%;
+                    right: 15px;
+                    transform: translateY(-50%);
+                    color: green;
+                    
+                    i.invalid {
+                        color: red;
+                    }
+                }
+            }
+        }
+        
+        .error-message {
+            width: 100%;
+            text-align: center;
+            color: red;
+            font-family: 'Edu TAS Beginner', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            margin-block: 10px;
+        }
+        
+        button.submit {
+            width: 80%;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: var(--ui-black);
+            color: white;
+            font-family: monospace;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-block: 40px;
+            
+            &:hover {
+                background: transparent;
+                background: var(--ui-primary);
+            }
+        }
+        
+        .spinner {
+            width: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-block: 40px;
+        }
+    }
+}
