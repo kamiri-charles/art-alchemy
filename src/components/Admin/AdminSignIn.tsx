@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import RandomBackground from '../../assets/utils/RandomBackground'
 import { MetroSpinner } from 'react-spinners-kit'
-import '../../styles/admin.scss'
+import '../../styles/admin/adminSignIn.scss'
 
 const AdminSignIn: React.FC = () => {
 

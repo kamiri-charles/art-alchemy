@@ -80,3 +80,18 @@ p, h1, h2, h3, h4, h5, h6 {
   font-family: 'Ubuntu', sans-serif;
   z-index: -2;
 }
+
+/* Admin */
+.admin {
+  display: flex;
+
+  .admin-content {
+    position: absolute;
+    top: 0;
+    left: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ui-white);
+  }
+}
