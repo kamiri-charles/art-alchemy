@@ -1,0 +1,70 @@
+.admin-dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .admin-meta, .system-meta {
+        display: flex;
+        background: var(--ui-primary);
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px;
+        min-width: 500px;
+
+        .placeholder-img {
+            font-size: 60px;
+        }
+
+        .system-info {
+            width: 100%;
+            .info {
+                position: relative;
+                width: 80%;
+                display: flex;
+                padding: 10px;
+                font-size: 18px;
+
+                .info-icon {
+                    position: absolute;
+                    display: grid;
+                    place-items: center;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    background: white;
+                    color: black;
+                    right: 20px;
+                    cursor: pointer;
+
+                }
+            }
+        }
+    }
+
+    .app-metrics {
+        position: relative;
+        width: 85%;
+        height: 300px;
+        background: var(--ui-white);
+        border-radius: 10px;
+
+        .app-metrics-title {
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            font-family: 'Edu TAS Beginner';
+            font-size: 24px;
+            font-weight: 600;
+            text-decoration: underline;
+            color: black;
+        }
+
+        .metrics-loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}

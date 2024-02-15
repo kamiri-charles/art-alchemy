@@ -24,6 +24,7 @@ const AdminSignIn: React.FC = () => {
 
 
   const handle_change = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setError('');
     setUserData({
       ...userData,
       [e.target.name]: e.target.value,
@@ -44,11 +45,10 @@ const AdminSignIn: React.FC = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.error) {
-            console.log(data.error);
-            setError(data.error);
+            setError(data.message);
             setLoading(false);
           } else {
-            localStorage.setItem("artAlchemyUserData", JSON.stringify(data));
+            localStorage.setItem("artAlchemyAdminUserData", JSON.stringify(data));
             nav("/admin");
           }
         })
@@ -131,9 +131,11 @@ const AdminSignIn: React.FC = () => {
               evt.preventDefault();
               sign_in();
             }}>
-						Submit
+						Log In
 					</button>
 				)}
+
+        <button className='admin-request'>Request for admin priviledges</button>
 			</form>
 		</div>
 	);
