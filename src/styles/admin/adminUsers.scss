@@ -1,0 +1,71 @@
+.admin-users {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    overflow-y: scroll;
+    width: calc(100vw - 80px);
+    min-height: 60vh;
+    max-height: 100vh;
+
+    .admin-user-wrapper {
+        position: relative;
+        display: flex;
+        width: 500px;
+        height: 200px;
+        background: var(--ui-white);
+        margin: 20px;
+        color: black;
+        border-radius: 10px;
+        padding: 20px;
+
+        .admin-user-img {
+            width: 30%;
+            height: 100%;
+            display: grid;
+            place-items: center;
+            font-size: 60px;
+            color: black;
+        }
+
+        .admin-user-meta {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .id {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                font-family: 'Edu TAS Beginner';
+                font-weight: 600;
+            }
+        }
+    }
+
+    .pagination-btns {
+        width: 60%;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 100px;
+
+        button {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: white;
+            color: black;
+            font-size: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+    }
+}
