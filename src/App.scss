@@ -94,7 +94,7 @@ p, h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     color: var(--ui-white);
     padding: 20px;
-    background: linear-gradient(45deg, var(--ui-primary) 80%, var(--ui-tertiary));
+    background: var(--ui-primary);
 
     .admin-component {
       background: transparent;

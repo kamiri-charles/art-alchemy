@@ -54,6 +54,15 @@ const AdminUsers: React.FC = () => {
         <div className='admin-users admin-component'>
 
           <div className="admin-tab-title">Users</div>
+
+          <div className="searchbar">
+            <input type="text" placeholder='Search' />
+            <i className="bx bx-search"></i>
+          </div>
+
+          <button className="new-user-btn">New User</button>
+
+
           {loading ? (
             <div className="users-loader">
               <MetroSpinner />

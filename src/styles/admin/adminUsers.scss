@@ -1,4 +1,5 @@
 .admin-users {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -7,6 +8,38 @@
     width: calc(100vw - 80px);
     min-height: 60vh;
     max-height: 100vh;
+
+    .searchbar {
+        position: absolute;
+        top: 20px;
+        right: 200px;
+        background-color: var(--ui-white);
+        padding: 8px 20px;
+        border-radius: 10px;
+
+        i {
+            color: black;
+            cursor: pointer;
+        }
+    }
+
+    button.new-user-btn {
+        position: absolute;
+        top: 20px;
+        right: 60px;
+        width: 120px;
+        padding: 10px 20px;
+        background: black;
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            color: black;
+            background: white;
+        }
+    }
 
     .admin-user-wrapper {
         position: relative;
