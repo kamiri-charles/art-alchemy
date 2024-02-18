@@ -17,6 +17,7 @@ const AdminNavbar: React.FC<{currentTab: string; setCurrentTab: (tab: string) =>
 					onClick={() => handleTabChange("dashboard")}
 				>
 					<i className="bx bxs-dashboard"></i>
+					<span>Dashboard</span>
 				</div>
 
 				<div
@@ -24,6 +25,7 @@ const AdminNavbar: React.FC<{currentTab: string; setCurrentTab: (tab: string) =>
 					onClick={() => handleTabChange("users")}
 				>
 					<i className="bx bx-user"></i>
+					<span>Users</span>
 				</div>
 
 				<div
@@ -31,6 +33,7 @@ const AdminNavbar: React.FC<{currentTab: string; setCurrentTab: (tab: string) =>
 					onClick={() => handleTabChange("art")}
 				>
 					<i className="bx bx-palette"></i>
+					<span>Art</span>
 				</div>
 
 				<div
@@ -38,6 +41,7 @@ const AdminNavbar: React.FC<{currentTab: string; setCurrentTab: (tab: string) =>
 					onClick={() => handleTabChange("events")}
 				>
 					<i className="bx bx-calendar-event"></i>
+					<span>Events</span>
 				</div>
 
 				<div
@@ -45,6 +49,7 @@ const AdminNavbar: React.FC<{currentTab: string; setCurrentTab: (tab: string) =>
 					onClick={() => handleTabChange("stats")}
 				>
 					<i className="bx bx-stats"></i>
+					<span>Stats</span>
 				</div>
 
 				<div
@@ -52,6 +57,7 @@ const AdminNavbar: React.FC<{currentTab: string; setCurrentTab: (tab: string) =>
 					onClick={() => handleTabChange("settings")}
 				>
 					<i className="bx bx-cog"></i>
+					<span>Settings</span>
 				</div>
 			</div>
 		</div>

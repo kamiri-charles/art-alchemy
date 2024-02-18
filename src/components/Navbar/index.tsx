@@ -27,22 +27,22 @@ const Navbar: React.FC = () => {
 
         <div className={`link ${currentTab == 'home' ? 'active': ''}`} onClick={() => handleTabChange('home')}>
           <i className="bx bx-home"></i>
-        </div>
-
-        <div className={`link ${currentTab == 'search' ? 'active': ''}`} onClick={() => handleTabChange('search')}>
-          <i className="bx bx-search"></i>
+          <span>Home</span>
         </div>
 
         <div className={`link ${currentTab == 'events' ? 'active': ''}`} onClick={() => handleTabChange('events')}>
           <i className="bx bx-calendar-event"></i>
+          <span>Events</span>
         </div>
 
         <div className={`link ${currentTab == 'cart' ? 'active': ''}`} onClick={() => handleTabChange('cart')}>
           <i className="bx bx-cart"></i>
+          <span>Cart</span>
         </div>
 
         <div className='link logout'>
           <i className="bx bx-log-out"></i>
+          <span>Sign out</span>
         </div>
 
       </div>

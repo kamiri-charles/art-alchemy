@@ -69,3 +69,16 @@
         }
     }
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .admin-dashboard {
+        height: 100%;
+        overflow: scroll;
+
+        .admin-meta, .system-meta {
+            min-width: auto;
+            width: 100%;            
+        }
+    }
+}

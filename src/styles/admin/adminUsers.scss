@@ -2,20 +2,23 @@
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
     overflow-y: scroll;
-    width: calc(100vw - 80px);
-    min-height: 60vh;
-    max-height: 100vh;
+    //width: calc(100vw - 80px);
+    height: 100vh;
 
     .searchbar {
+        width: 300px;
         position: absolute;
         top: 20px;
         right: 200px;
         background-color: var(--ui-white);
         padding: 8px 20px;
         border-radius: 10px;
+
+        input {
+            width: 92%;
+        }
 
         i {
             color: black;
@@ -28,16 +31,16 @@
         top: 20px;
         right: 60px;
         width: 120px;
-        padding: 10px 20px;
-        background: black;
-        color: white;
+        padding: 8px 20px;
+        background: white;
+        color: black;
         border-radius: 10px;
         cursor: pointer;
         transition: all 0.3s ease;
 
         &:hover {
-            color: black;
-            background: white;
+            color: white;
+            background: var(--ui-primary);
         }
     }
 
@@ -99,6 +102,28 @@
             &:hover {
                 transform: scale(1.2);
             }
+        }
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .admin-users {
+        height: 100%;
+
+        .searchbar {
+            position: relative;
+            top: auto;
+            left: auto;
+            right: auto;
+        }
+
+        button.new-user-btn {
+            right: 10px;
+        }
+
+        .admin-user-wrapper {
+            width: 100%;
         }
     }
 }
