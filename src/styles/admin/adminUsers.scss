@@ -4,7 +4,7 @@
     flex-wrap: wrap;
     justify-content: center;
     overflow-y: scroll;
-    //width: calc(100vw - 80px);
+    min-width: calc(100vw - 80px);
     height: 100vh;
 
     .searchbar {
@@ -77,6 +77,15 @@
                 font-weight: 600;
             }
         }
+    }
+
+    .users-fetch-error {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
     }
 
     .pagination-btns {

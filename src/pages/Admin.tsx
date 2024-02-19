@@ -25,7 +25,7 @@ const Admin: React.FC = () => {
   },  [currentTab, nav]);
 
   const tabComponents: { [key: string]: JSX.Element } = {
-    dashboard: <AdminDashboard />,
+    dashboard: <AdminDashboard setCurrentTab={setCurrentTab} />,
     users: <AdminUsers />,
     art: <AdminArt />,
     events: <AdminEvents />,

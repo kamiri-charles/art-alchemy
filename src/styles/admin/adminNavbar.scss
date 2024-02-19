@@ -3,16 +3,16 @@
     top: 40px;
     left: 0;
     width: 80px;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 40px);
     //background: var(--ui-light-black);
     border-right: 1px solid white;
     color: var(--ui-white);
 
     .links {
         position: absolute;
-        top: 40px;
+        top: 10px;
         width: 100%;
-        height: calc(100vh - 120px);
+        height: calc(100vh - 60px);
 
         display: flex;
         flex-direction: column;
@@ -29,7 +29,7 @@
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            margin-block: 20px;
+            margin-block: 30px;
             overflow: visible;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -44,12 +44,6 @@
                 font-family: 'Edu TAS Beginner', cursive;
                 font-size: 16px;
                 transition: all 0.3s ease;
-            }
-
-            &.settings {
-                position: absolute;
-                top: auto;
-                bottom: 0;
             }
 
 
@@ -87,11 +81,6 @@
 
                 span {
                     display: none;
-                }
-
-                &.settings {
-                    position: relative;
-                    bottom: auto;
                 }
             }
 

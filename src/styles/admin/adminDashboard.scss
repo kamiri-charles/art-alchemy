@@ -17,6 +17,16 @@
             font-size: 60px;
         }
 
+        .admin-info .welcome {
+            display: flex;
+
+            .span-spinner {
+                margin-left: 20px;
+            }
+
+            .primary {margin-left: 10px;}
+        }
+
         .system-info {
             width: 100%;
             .info {
@@ -25,6 +35,18 @@
                 display: flex;
                 padding: 10px;
                 font-size: 18px;
+
+                span {
+                    display: flex;
+                    
+                    .span-spinner {
+                        margin-left: 20px;
+                    }
+
+                    .primary {
+                        margin-left: 10px;
+                    }
+                }
 
                 .info-icon {
                     position: absolute;

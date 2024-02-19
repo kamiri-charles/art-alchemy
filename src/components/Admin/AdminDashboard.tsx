@@ -1,9 +1,27 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import PlaceholderImg from '../../assets/admin-dash-placeholder-img.svg'
 import { MetroSpinner } from 'react-spinners-kit'
 import '../../styles/admin/adminDashboard.scss'
 
-const AdminDashboard: React.FC = () => {
+const AdminDashboard: React.FC<{setCurrentTab: (tab: string) => void}> = ({setCurrentTab}) => {
+
+	const [totalUsers, setTotalUsers] = useState();
+	const [totalArt, setTotalArt] = useState();
+	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		setLoading(true);
+		fetch('http://localhost:8080/api/users/total')
+			.then(res => res.json())
+			.then(data => setTotalUsers(data))
+			.catch(error => console.log(error))
+
+		fetch('http://localhost:8080/api/art/total')
+			.then(res => res.json())
+			.then(data => setTotalArt(data))
+			.catch(error => console.log(error))
+			setLoading(false);
+	}, []);
 
   const adminUserData = localStorage.getItem('artAlchemyAdminUserData');
   let adminName = '';
@@ -22,7 +40,16 @@ const AdminDashboard: React.FC = () => {
 				</div>
 
 				<div className="admin-info">
-					<div className="welcome">Welcome back, {adminName}!</div>
+					<div className="welcome">
+						Welcome back,{" "}
+						{loading ? (
+							<span className="span-spinner">
+								<MetroSpinner color="black" size={20} />
+							</span>
+						) : (
+							<span className="primary">{adminName}.</span>
+						)}
+					</div>
 				</div>
 			</div>
 
@@ -33,38 +60,65 @@ const AdminDashboard: React.FC = () => {
 
 				<div className="system-info">
 					<div className="info">
-						<span>Users: 0</span>
+						<span>
+							Users:{" "}
+							{loading ? (
+								<span className="span-spinner">
+									<MetroSpinner color="black" size={20} />
+								</span>
+							) : (
+								<span className="primary">{totalUsers}</span>
+							)}
+						</span>
 
-						<div className="info-icon">
+						<div className="info-icon" onClick={() => setCurrentTab("users")}>
 							<i className="bx bx-right-arrow-alt"></i>
 						</div>
 					</div>
 
 					<div className="info">
-						<span>Art: 0</span>
+						<span>
+							Art:{" "}
+							{loading ? (
+								<span className="span-spinner">
+									<MetroSpinner color="black" size={20} />
+								</span>
+							) : (
+								<span className="primary">{totalArt}</span>
+							)}
+						</span>
 
-						<div className="info-icon">
+						<div className="info-icon" onClick={() => setCurrentTab("art")}>
 							<i className="bx bx-right-arrow-alt"></i>
 						</div>
 					</div>
 
 					<div className="info">
-						<span>Events: 0</span>
+						<span>
+							Events:{" "}
+							{loading ? (
+								<span className="span-spinner">
+									<MetroSpinner color="black" size={20} />
+								</span>
+							) : (
+								<span className="primary">0</span>
+							)}
+						</span>
 
-						<div className="info-icon">
+						<div className="info-icon" onClick={() => setCurrentTab("art")}>
 							<i className="bx bx-right-arrow-alt"></i>
 						</div>
 					</div>
 				</div>
 			</div>
 
-      <div className="app-metrics">
-        <div className="app-metrics-title">Metrics</div>
+			<div className="app-metrics">
+				<div className="app-metrics-title">Metrics</div>
 
-        <div className="metrics-loader">
-          <MetroSpinner color='black' size={30} />
-        </div>
-      </div>
+				<div className="metrics-loader">
+					<MetroSpinner color="black" size={30} />
+				</div>
+			</div>
 		</div>
 	);
 }

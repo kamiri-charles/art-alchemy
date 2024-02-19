@@ -53,7 +53,7 @@ const AdminNavbar: React.FC<{currentTab: string; setCurrentTab: (tab: string) =>
 				</div>
 
 				<div
-					className={`link settings ${currentTab == "settings" ? "active" : ""}`}
+					className={`link ${currentTab == "settings" ? "active" : ""}`}
 					onClick={() => handleTabChange("settings")}
 				>
 					<i className="bx bx-cog"></i>

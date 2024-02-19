@@ -55,6 +55,10 @@ p, h1, h2, h3, h4, h5, h6 {
   --navbar-width: 80px;
 }
 
+.primary {
+  color: var(--ui-primary);
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 2px;

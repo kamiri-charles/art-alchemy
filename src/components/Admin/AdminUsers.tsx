@@ -86,7 +86,7 @@ const AdminUsers: React.FC = () => {
                 </div>
               ))}
 
-              {loading ? '' : (
+              {users.length == 0 ? <div className="users-fetch-error">There was an error fetching users!</div> : (
                 <div className="pagination-btns">
                 <button onClick={prevPage} disabled={currentPage === 1}>
                   <i className="bx bx-chevron-left"></i>
