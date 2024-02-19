@@ -7,6 +7,7 @@ const AdminUsers: React.FC = () => {
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true);
 
     type UserType = {
@@ -18,6 +19,18 @@ const AdminUsers: React.FC = () => {
       isArtist: boolean,
       isAdmin: boolean
     }
+
+    const handleSearch = async () => {
+        setLoading(true);
+        try {
+            const response = await fetch(`http://localhost:8080/api/users/search?query=${searchTerm}`);
+            const data = await response.json();
+            setUsers(data);
+        } catch (error) {
+            console.error('Error searching users:', error);
+        }
+        setLoading(false);
+    };
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -56,8 +69,14 @@ const AdminUsers: React.FC = () => {
           <div className="admin-tab-title">Users</div>
 
           <div className="searchbar">
-            <input type="text" placeholder='Search' />
-            <i className="bx bx-search"></i>
+            <input
+              type="text"
+              placeholder='Search'
+              value={searchTerm}
+              onChange={
+                e => setSearchTerm(e.target.value)} />
+
+            <i className="bx bx-search" onClick={handleSearch}></i>
           </div>
 
           <button className="new-user-btn">New User</button>
@@ -80,9 +99,12 @@ const AdminUsers: React.FC = () => {
                     <div className="username">{user.username}</div>
                     <div className="names">{user.firstName} {user.lastName}</div>
                     <div className="email">{user.email}</div>
-
-                    <div className="admin-user-btns"></div>
                   </div>
+
+                    <div className="admin-user-btns">
+                      <button className="manage-btn">Manage</button>
+                      <button className="remove-btn">Remove Account</button>
+                    </div>
                 </div>
               ))}
 
