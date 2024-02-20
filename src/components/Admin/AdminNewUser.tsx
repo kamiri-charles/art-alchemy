@@ -24,6 +24,7 @@ const AdminNewUser: React.FC = () => {
 	const [usernameValid, setUsernameValid] = useState(false);
 	const [emailValid, setEmailValid] = useState(false);
 	const [passwordValid, setPasswordValid] = useState(false);
+	const [showPassword, setShowPassword] = useState(false);
 	const [error, setError] = useState("");
 	const nav = useNavigate();
 
@@ -171,7 +172,7 @@ const AdminNewUser: React.FC = () => {
 							<label>Create a password</label>
 							<input
 								name="password"
-								type="password"
+								type={showPassword ? "text" : "password"}
 								placeholder="At least 8 characters"
 								value={userData?.password}
 								onChange={handle_change}
@@ -181,6 +182,13 @@ const AdminNewUser: React.FC = () => {
 								<i
 									className={passwordValid ? "bx bx-check" : "bx bx-x invalid"}
 								></i>
+							</div>
+
+							<div
+								className="show-password-icon"
+								onClick={() => setShowPassword(!showPassword)}
+							>
+								<i className={showPassword ? "bx bx-hide" : "bx bx-show"}></i>
 							</div>
 						</div>
 					</div>

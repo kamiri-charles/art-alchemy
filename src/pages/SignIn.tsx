@@ -17,6 +17,7 @@ const SignIn: React.FC = () => {
 	const [loading, setLoading] = useState(false);
 	const [usernameValid, setUsernameValid] = useState(false);
 	const [passwordValid, setPasswordValid] = useState(false);
+	const [showPassword, setShowPassword] = useState(false);
 	const [error, setError] = useState('');
 	const nav = useNavigate();
 
@@ -124,7 +125,7 @@ const SignIn: React.FC = () => {
 							<label>Password</label>
 							<input
 								name="password"
-								type="password"
+								type={showPassword ? "text": "password"}
 								placeholder="Enter your password"
 								value={userData?.password}
 								onChange={handle_change}
@@ -132,6 +133,10 @@ const SignIn: React.FC = () => {
 
 							<div className="input-valid-icon">
 								<i className={passwordValid ? 'bx bx-check' : 'bx bx-x invalid'}></i>
+							</div>
+
+							<div className="show-password-icon" onClick={() => setShowPassword(!showPassword)}>
+								<i className={showPassword ? "bx bx-hide" : "bx bx-show"}></i>
 							</div>
 						</div>
 

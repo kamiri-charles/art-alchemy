@@ -105,6 +105,7 @@
             font-weight: 600;
             transition: all 0.3s ease;
 
+
             &::placeholder {
               font-family: 'Ubuntu', sans-serif;
               font-size: 12px;
@@ -115,6 +116,7 @@
               border: 2px solid var(--ui-primary);
             }
           }
+
 
           .input-valid-icon {
             position: absolute;
@@ -127,6 +129,15 @@
             i.invalid {
               color: red;
             }
+          }
+
+          .show-password-icon {
+            position: absolute;
+            font-size: 20px;
+            top: 70%;
+            right: 40px;
+            transform: translateY(-50%);
+            cursor: pointer;
           }
 
           &.checkbox {

@@ -21,6 +21,7 @@ const SignUp: React.FC = () => {
 	const [usernameValid, setUsernameValid] = useState(false);
 	const [emailValid, setEmailValid] = useState(false);
 	const [passwordValid, setPasswordValid] = useState(false);
+	const [showPassword, setShowPassword] = useState(false);
 	const [error, setError] = useState('');
 	const nav = useNavigate();
 
@@ -114,13 +115,15 @@ const SignUp: React.FC = () => {
 							<input
 								name="username"
 								type="text"
-								placeholder="No special characters @, #, $, %" 
+								placeholder="No special characters @, #, $, %"
 								value={userData?.username}
 								onChange={handle_change}
 							/>
 
 							<div className="input-valid-icon">
-								<i className={usernameValid ? "bx bx-check" : "bx bx-x invalid"}></i>
+								<i
+									className={usernameValid ? "bx bx-check" : "bx bx-x invalid"}
+								></i>
 							</div>
 						</div>
 
@@ -135,7 +138,9 @@ const SignUp: React.FC = () => {
 							/>
 
 							<div className="input-valid-icon">
-								<i className={emailValid ? "bx bx-check" : "bx bx-x invalid"}></i>
+								<i
+									className={emailValid ? "bx bx-check" : "bx bx-x invalid"}
+								></i>
 							</div>
 						</div>
 
@@ -143,14 +148,23 @@ const SignUp: React.FC = () => {
 							<label>Create a password</label>
 							<input
 								name="password"
-								type="password"
+								type={showPassword ? "text" : "password"}
 								placeholder="At least 8 characters"
 								value={userData?.password}
 								onChange={handle_change}
 							/>
 
 							<div className="input-valid-icon">
-								<i className={passwordValid ? "bx bx-check" : "bx bx-x invalid"}></i>
+								<i
+									className={passwordValid ? "bx bx-check" : "bx bx-x invalid"}
+								></i>
+							</div>
+
+							<div
+								className="show-password-icon"
+								onClick={() => setShowPassword(!showPassword)}
+							>
+								<i className={showPassword ? "bx bx-hide" : "bx bx-show"}></i>
 							</div>
 						</div>
 					</div>

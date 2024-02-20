@@ -129,20 +129,13 @@
             }
           }
 
-          &.checkbox {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            
-            input {
-              width: 16px;
-              height: 16px;
-              margin-right: 10px;
-            }
-
-            label {
-              font-size: 16px;
-            }
+          .show-password-icon {
+            position: absolute;
+            font-size: 20px;
+            top: 70%;
+            right: 40px;
+            transform: translateY(-50%);
+            cursor: pointer;
           }
         }
       }
