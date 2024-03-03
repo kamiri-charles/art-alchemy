@@ -1,5 +1,5 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom'
-import Landing from './pages/Landing'
+import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Product from './pages/Product'
@@ -15,7 +15,7 @@ function App() {
     <div className='App'>
       <Router>
         <Routes>
-          <Route path='' element={ <Landing /> } />
+          <Route path='' element={ <Home /> } />
           <Route path='/sign-in' element={ <SignIn /> } />
           <Route path='/sign-up' element={ <SignUp /> } />
           <Route path='/product' element={ <Product />} />

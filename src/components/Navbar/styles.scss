@@ -53,12 +53,13 @@
             }
 
 
-            &:hover, &.active {
+            &:hover:has(i), &.active {
                 background: var(--ui-white);
                 color: var(--ui-black);
             }
 
-            &:hover{
+
+            &:hover, &.active{
                 span {
                     opacity: 1;
                 }

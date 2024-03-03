@@ -67,8 +67,7 @@ const SignIn: React.FC = () => {
 						// Save user data to local storage
 						localStorage.setItem("artAlchemyUserData", JSON.stringify(data));
 						setLoading(false);
-						console.log("User data:", data);
-						//nav('/');
+						nav('/')
 					}
 				});
 		} else {
