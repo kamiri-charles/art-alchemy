@@ -66,6 +66,8 @@ const AdminUsers: React.FC = () => {
     return (
         <div className='admin-users admin-component'>
 
+          <div className="top-mobile-placeholder"></div>
+
           <div className="admin-tab-title">Users</div>
 
           <div className="searchbar">
@@ -89,7 +91,7 @@ const AdminUsers: React.FC = () => {
           ) : (
             <>
               {users.map((user: UserType) => (
-                <div className="admin-user-wrapper">
+                <div className="admin-user-wrapper" key={user.id}>
                   <div className="admin-user-img">
                     <i className="bx bx-user"></i>
                   </div>

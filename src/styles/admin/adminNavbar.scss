@@ -52,7 +52,7 @@
                 color: var(--ui-black);
             }
 
-            &:hover {span {opacity: 1;}}
+            &:hover, &.active {span {opacity: 1;}}
         }
     }
 }

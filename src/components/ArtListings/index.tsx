@@ -10,7 +10,6 @@ const ArtListings:React.FC = () => {
 
   return (
     <div className='art-listings'>
-
       {/* To be replaced with the art piece component */}
 
       <div className="placeholder-art-piece">
@@ -51,9 +50,7 @@ const ArtListings:React.FC = () => {
         <img src={TestImage5} alt="" />
       </div>
 
-      <div className="placeholder-art-piece">
-        <img src={TestImage1} alt="" />
-      </div>
+      
 
     </div>
   )

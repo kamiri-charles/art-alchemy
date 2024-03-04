@@ -1,11 +1,16 @@
 .admin-users {
-    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     overflow-y: scroll;
     min-width: calc(100vw - 80px);
     height: 100vh;
+
+    .admin-tab-title {
+        position: fixed;
+        top: 20px;
+        left: 100px;
+    }
 
     .searchbar {
         width: 300px;
@@ -44,6 +49,13 @@
         }
     }
 
+    .users-loader {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
     .admin-user-wrapper {
         position: relative;
         display: flex;
@@ -73,7 +85,8 @@
                 position: absolute;
                 top: 5px;
                 right: 5px;
-                font-family: 'Edu TAS Beginner';
+                font-size: 12px;
+                font-family: 'Edu TAS Beginner', cursive;
                 font-weight: 600;
             }
         }
@@ -94,6 +107,11 @@
 
                 &.manage-btn {
                     background: var(--ui-primary);
+
+                    @media (max-width: 768px) {
+                        background: var(--ui-white);
+                        color: var(--ui-black);
+                    }
                 }
 
                 &.remove-btn {
@@ -143,20 +161,44 @@
 @media (max-width: 768px) {
     .admin-users {
         height: 100%;
+        overflow-x: hidden;
+
+        .top-mobile-placeholder {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: var(--ui-black);
+            z-index: 1;
+        }
+
+        .admin-tab-title {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
 
         .searchbar {
-            position: relative;
-            top: auto;
-            left: auto;
+            position: fixed;
+            top: 80px;
+            left: 8%;
             right: auto;
+            z-index: 1;
+            margin-bottom: 20px;
         }
 
         button.new-user-btn {
-            right: 10px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1;
         }
 
         .admin-user-wrapper {
             width: 100%;
+            background: var(--ui-primary);
+            color: white;
         }
     }
 }

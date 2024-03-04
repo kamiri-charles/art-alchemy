@@ -16,37 +16,35 @@ const Header:React.FC = () => {
 
 
   return (
-    <div className='header'>
-      <div className="left">
+		<div className="header">
+			<div className="left">
+				<div className="logo">
+					<span>Art</span>
+					<span>Alchemy</span>
+				</div>
+			</div>
 
-        <div className="logo">
-          <span>Art</span>
-          <span>Alchemy</span>
-        </div>
-        
-      </div>
+			<div className="right">
+				{userData ? (
+					<div className="user-logged-in">
+						<div className="searchbar">
+							<input type="text" placeholder="Search" />
+							<i className="bx bx-search"></i>
+						</div>
 
-      <div className="right">
-        {userData ? (
-            <div className="user-logged-in-icons">
-              <div className="cart-icon">
-                <i className="bx bx-cart"></i>
-              </div>
-
-              <div className="user-icon">
-                <i className="bx bx-user"></i>
-              </div>
-            </div> ) : (
-              <div className="user-not-signed-in-buttons">
-                <button onClick={() => nav('/sign-up')}>Join</button>
-                <button onClick={() => nav('/sign-in')}>Log In</button>
-              </div>
-            )
-          }
-
-      </div>
-    </div>
-  )
+						<div className="user-icon" onClick={() => nav('/profile')}>
+							<i className="bx bx-user"></i>
+						</div>
+					</div>
+				) : (
+					<div className="user-not-signed-in-buttons">
+						<button onClick={() => nav("/sign-up")}>Join</button>
+						<button onClick={() => nav("/sign-in")}>Log In</button>
+					</div>
+				)}
+			</div>
+		</div>
+	);
 }
 
 export default Header
