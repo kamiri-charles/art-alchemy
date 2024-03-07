@@ -13,6 +13,13 @@ type UserType = {
     [key: string]: string | ArrayBuffer,
 }
 
+type EditablesType = {
+	firstname: boolean,
+	lastname: boolean,
+	email: boolean,
+	[key: string]: boolean
+}
+
 const Profile: React.FC = () => {
 
     const nav = useNavigate();
@@ -36,14 +43,13 @@ const Profile: React.FC = () => {
         password: '',
     });
 
-    
-
-
-    const [editables, setEditables] = useState({
+    const [editables, setEditables] = useState<EditablesType>({
         firstname: false,
         lastname: false,
         email: false,
     });
+
+	const [userDataChanged, setUserDataChanged] = useState(false);
 
     useEffect(() => {
         // Get user data from local storage
@@ -56,11 +62,16 @@ const Profile: React.FC = () => {
         }
     }, [nav]);
 
-   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setUserData({
-            ...userData,
-            [e.target.name]: e.target.value,
-        });
+	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (editables[e.target.name]) { // Check if field is editable	
+			setUserData({
+				...userData,
+				[e.target.name]: e.target.value,
+			});
+			console.log(userData[e.target.name]);
+			
+			handleDataChange();
+		}
     };
 
     const handleEditableToTrue = (field: string) => {
@@ -69,10 +80,24 @@ const Profile: React.FC = () => {
 
     const handleEditableToFalse = (field: string) => {
         setEditables({...editables, [field]: false});
-        console.log(editables);
         // Return field value to original value
+		let original_value =  userDataCopy[field];
+		if (!original_value) original_value = '';
         setUserData({...userData, [field]: userDataCopy[field]});
+		handleDataChange();
     };
+
+	const handleDataChange = () => {
+		if (
+			userData.firstname != userDataCopy.firstname ||
+			userData.lastname != userDataCopy.lastname ||
+			userData.email != userDataCopy.email
+		) {
+			setUserDataChanged(true);
+		} else {
+			setUserDataChanged(false);
+		}
+	};
 
 
 
@@ -95,14 +120,14 @@ const Profile: React.FC = () => {
 					<div className="profile-firstname">
 						First name:{" "}
 						<input
+							name='firstname'
 							type="text"
 							className={editables.firstname ? "editable" : "read-only"}
-							value={userData.firstname}
+							value={userData.firstname ? userData.firstname : ''}
 							placeholder="Not set"
 							onChange={handleInputChange}
-							contentEditable={editables.firstname}
 						/>
-						{editables.lastname ? (
+						{editables.firstname ? (
 							<i
 								className="bx bx-x"
 								onClick={() => handleEditableToFalse("firstname")}
@@ -118,12 +143,12 @@ const Profile: React.FC = () => {
 					<div className="profile-lastname">
 						Last name:{" "}
 						<input
+							name='lastname'
 							type="text"
 							className={editables.lastname ? "editable" : "read-only"}
-							value={userData.lastname}
+							value={userData.lastname ? userData.lastname : ''}
 							placeholder="Not set"
 							onChange={handleInputChange}
-							contentEditable={editables.lastname}
 						/>
 						{editables.lastname ? (
 							<i
@@ -141,13 +166,13 @@ const Profile: React.FC = () => {
 					<div className="profile-email">
 						Email:{" "}
 						<input
+							name='email'
 							type="text"
 							className={editables.email ? "editable" : "read-only"}
-							value={userData.email}
+							value={userData.email ? userData.email : ''}
 							placeholder="Not set"
-							contentEditable={editables.email}
 						/>
-						{!userData.email ? (
+						{userData.email ? (
 							""
 						) : (
 							<i
@@ -159,6 +184,8 @@ const Profile: React.FC = () => {
 
                     {/* TODO: After adding password retrieval from backend */}
 					{/* <div className="password"><input type="password" value={userData.password}  /></div> */}
+
+					<button className={`update-profile-info ${userDataChanged ? 'active' : ''}`}>Update Info</button>
 				</div>
 			</div>
 		</div>

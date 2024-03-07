@@ -31,7 +31,7 @@ const Navbar: React.FC<{ currentTab : string, setCurrentTab: (tab: string) => vo
       localStorage.removeItem('artAlchemyUserData');
       setSignOutLoading(false);
       nav('/sign-in');
-    }, 5000);
+    }, 3000);
   }
 
 	return (
