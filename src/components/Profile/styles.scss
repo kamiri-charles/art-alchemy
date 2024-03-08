@@ -1,5 +1,33 @@
 .profile {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     padding: 20px;
+
+    .back-to-home {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--ui-black);
+        color: white;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: var(--ui-white);
+            color: var(--ui-black);
+        }
+    }
 
     .profile-meta {
         position: relative;
@@ -73,5 +101,20 @@
                 cursor: pointer;
             }
         }
+    }
+
+    .placeholder-wrapper-sm {
+        width: 500px;
+        height: 300px;
+        background: white;
+        border-radius: 10px
+    }
+
+    .placeholder-wrapper-lg {
+        width: 80%;
+        height: 300px;
+        background: white;
+        border-radius: 10px;
+        margin-top: 40px;
     }
 }

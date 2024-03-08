@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import RandomBackground from '../../assets/utils/RandomBackground'
 import './styles.scss'
 
 type UserType = {
@@ -103,6 +104,13 @@ const Profile: React.FC = () => {
 
   return (
 		<div className="profile">
+
+			<RandomBackground />
+
+			<div className="back-to-home" onClick={() => nav('/')}>
+				<i className="bx bx-x"></i>
+			</div>
+
 			<div className="profile-meta">
 				<div className="profile-pic">
 					{userData.profile_picture ? (
@@ -188,6 +196,10 @@ const Profile: React.FC = () => {
 					<button className={`update-profile-info ${userDataChanged ? 'active' : ''}`}>Update Info</button>
 				</div>
 			</div>
+
+			<div className="placeholder-wrapper-sm"></div>
+
+			<div className="placeholder-wrapper-lg"></div>
 		</div>
 	);
 }

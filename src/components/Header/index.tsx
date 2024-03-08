@@ -53,14 +53,14 @@ const Header:React.FC = () => {
 						</div>
 
 						<div className={`options ${menuActive ? "" : "hidden"}`}>
-							<div className="option">
+							<div className="option" onClick={() => nav('/profile')}>
 								<i className="bx bx-user"></i>
 								<span>My Profile</span>
 							</div>
 
 							<div className="option">
 								<i className="bx bx-message"></i>
-								<span>Messages</span>
+								<span>Notifications</span>
 							</div>
 
 							<div className="option sign-out" onClick={() => logout()}>
