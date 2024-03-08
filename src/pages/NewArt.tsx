@@ -1,0 +1,273 @@
+import React, { useState, useRef, useEffect } from "react";
+import SwiperCore from "swiper";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import RandomBackground from "../assets/utils/RandomBackground";
+import { MetroSpinner } from "react-spinners-kit";
+import "swiper/swiper-bundle.css";
+import "../styles/newArt.scss";
+import { useNavigate } from "react-router-dom";
+
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
+const NewArt: React.FC = () => {
+
+	const [swiper, setSwiper] = useState<SwiperCore | null>(null);
+	const image_upload_ref = useRef<HTMLInputElement>(null);
+	const [imageFiles, setImageFiles] = useState<FileList | null>(null);
+	const [formValues, setFormValues] = useState({
+		title: "",
+		description: "",
+		tags: "",
+		category: "",
+		price: ""
+	});
+	const [userId, setUserId] = useState("");
+	const [loading, setLoading] = useState(false);
+
+	const nav = useNavigate();
+
+	useEffect(() => {
+		const item = localStorage.getItem("artAlchemyUserData");
+		if (item !== null) {
+			const userData = JSON.parse(item);
+			setUserId(userData.id);
+		} else {
+			nav("/sign-in");
+		}
+	}, [nav]);
+
+	// Function to handle image upload
+	const handleImageUpload = () => {
+		image_upload_ref.current?.click();
+	}
+
+	// Function to handle navigation buttons
+	const handleNavBtns = (direction: string) => {
+		if (swiper) {
+			if (direction === "prev") {
+				swiper.slidePrev();
+			} else {
+				swiper.slideNext();
+			}
+		}
+	}
+
+	// Function to submit the form
+	const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+		setLoading(true);
+
+		// Convert images to binary
+		const images: string[] = [];
+		if (imageFiles) {
+			Array.from(imageFiles).forEach((file) => {
+				const reader = new FileReader();
+				reader.readAsDataURL(file);
+				reader.onload = () => {
+					images.push(reader.result as string);
+				}
+			});
+		}
+
+		const data = {
+			title: formValues.title,
+			description: formValues.description,
+			tags: formValues.tags.split(" "),
+			category: formValues.category,
+			price: formValues.price,
+			images: images,
+			likes: 0,
+			comments: [],
+			ownerId: userId
+
+		}
+
+		fetch("http://localhost:8080/api/art", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(data)
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				setLoading(false);
+				nav("/");
+			})
+	}
+
+	return (
+		<div className="new-art">
+			<RandomBackground />
+
+			<div className="form-wrapper">
+				<Swiper
+					spaceBetween={10}
+					pagination={{ clickable: true }}
+					onSwiper={(swiper) => setSwiper(swiper)}
+				>
+					{/* Slide 1 */}
+					<SwiperSlide className="form-slide">
+						<div className="slide-logo">
+							<span>Art Alchemy</span> | New Art
+						</div>
+
+						<div className="slide-title">Art Details</div>
+
+						<div className="slide-content">
+							<div className="field">
+								<label>Title</label>
+								<input
+									type="text"
+									placeholder="Art piece title"
+									value={formValues.title}
+									onChange={(e) =>
+										setFormValues({ ...formValues, title: e.target.value })
+									}
+								/>
+							</div>
+
+							<div
+								className="field image-input"
+								onClick={() => handleImageUpload()}
+							>
+								<label>
+									{/* If there are no images, display the add images text else display the names of the images in a list */}
+									{imageFiles ? (
+										<ul>
+											{Array.from(imageFiles).map((file, index) => (
+												<li key={index}>{file.name}</li>
+											))}
+										</ul>
+									) : (
+										"Add Images"
+									)}
+								</label>
+
+								{imageFiles ? "" : <i className="bx bx-image"></i>}
+
+								<input
+									type="file"
+									accept="image/*"
+									multiple
+									ref={image_upload_ref}
+									onChange={(e) => setImageFiles(e.target.files)}
+								/>
+							</div>
+						</div>
+					</SwiperSlide>
+
+					{/* Slide 2 */}
+					<SwiperSlide className="form-slide">
+						<div className="slide-logo">
+							<span>Art Alchemy</span> | New Art
+						</div>
+
+						<div className="slide-title">Description & Tags</div>
+
+						<div className="slide-content">
+							<div className="field">
+								<label>Description</label>
+								<textarea
+									placeholder="Art piece description"
+									value={formValues.description}
+									onChange={(e) =>
+										setFormValues({
+											...formValues,
+											description: e.target.value,
+										})
+									}
+								></textarea>
+							</div>
+
+							<div className="field">
+								<label>Tags</label>
+								<input
+									type="text"
+									placeholder="Separate with a space. (Max 8 tags)"
+									value={formValues.tags}
+									onChange={(e) =>
+										setFormValues({ ...formValues, tags: e.target.value })
+									}
+								/>
+							</div>
+						</div>
+					</SwiperSlide>
+
+					{/* Slide 3 */}
+					<SwiperSlide className="form-slide">
+						<div className="slide-logo">
+							<span>Art Alchemy</span> | New Art
+						</div>
+
+						<div className="slide-title">Category & Price</div>
+
+						<div className="slide-content">
+							<div className="field">
+								<label>Category</label>
+								<select
+									value={formValues.category}
+									onChange={(e) =>
+										setFormValues({ ...formValues, category: e.target.value })
+									}
+								>
+									<option value="painting">Painting</option>
+									<option value="sculpture">Sculpture</option>
+									<option value="photography">Photography</option>
+									<option value="digital">Digital</option>
+									<option value="other">Other</option>
+								</select>
+							</div>
+
+							<div className="field">
+								<label>Price</label>
+								<input
+									type="text"
+									placeholder="Set a price"
+									value={formValues.price}
+									onChange={(e) =>
+										setFormValues({ ...formValues, price: e.target.value })
+									}
+								/>
+							</div>
+
+							{loading ? <div className="loader"><MetroSpinner color="black" size={30} /></div>  : (
+								<button
+									className={`submit-btn ${
+										formValues.title && formValues.price && imageFiles
+											? ""
+											: "disabled"
+									}`}
+									onClick={(e) => handleSubmit(e)}
+								>
+									Submit
+								</button>
+							)}
+						</div>
+					</SwiperSlide>
+
+					{/* Navigation buttons */}
+					<div className="slides-nav-btns">
+						<div
+							className="prev-slide-btn"
+							onClick={() => handleNavBtns("prev")}
+						>
+							<i className="bx bx-chevron-left"></i>
+						</div>
+
+						<div
+							className="next-slide-btn"
+							onClick={() => handleNavBtns("next")}
+						>
+							<i className="bx bx-chevron-right"></i>
+						</div>
+					</div>
+				</Swiper>
+			</div>
+		</div>
+	);
+};
+
+export default NewArt;

@@ -4,6 +4,7 @@ import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Product from './pages/Product'
 import Profile from './components/Profile'
+import NewArt from './pages/NewArt'
 
 import Admin from './pages/Admin'
 import AdminSignIn from './components/Admin/AdminSignIn'
@@ -22,6 +23,7 @@ function App() {
           <Route path='/sign-up' element={ <SignUp /> } />
           <Route path='/product' element={ <Product />} />
           <Route path='/profile' element={ <Profile /> } />
+          <Route path='/new-art' element={ <NewArt /> } />
 
           {/* Admin */}
           <Route path='/admin' element={ <Admin /> } />

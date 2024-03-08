@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import './styles.scss'
 import { MetroSpinner } from 'react-spinners-kit';
+import './styles.scss'
 
 const Header:React.FC = () => {
 	const [userData, setUserData] = useState();
