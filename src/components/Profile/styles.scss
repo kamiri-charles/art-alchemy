@@ -6,6 +6,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 20px;
+    overflow-y: scroll;
 
     .back-to-home {
         position: absolute;
@@ -40,6 +41,16 @@
         padding: 20px;
         padding-bottom: 80px;
 
+        .profile-wrapper-title {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Edu TAS Beginner', sans-serif;
+            font-size: 30px;
+            text-decoration: underline;
+        }
+
         .profile-pic {
             position: relative;
             width: 100px;
@@ -58,6 +69,7 @@
         }
 
         .profile-meta-content {
+            margin-top: 60px;
             div {
                 input {
                     margin: 10px 0;
@@ -104,17 +116,46 @@
     }
 
     .placeholder-wrapper-sm {
+        position: relative;
         width: 500px;
         height: 300px;
         background: white;
-        border-radius: 10px
+        border-radius: 10px;
+
+        .profile-wrapper-title {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Edu TAS Beginner', sans-serif;
+            font-size: 30px;
+            text-decoration: underline;
+        }
     }
 
     .placeholder-wrapper-lg {
+        position: relative;
         width: 80%;
-        height: 300px;
+        height: 500px;
         background: white;
         border-radius: 10px;
-        margin-top: 40px;
+        margin-top: 80px;
+
+        .profile-wrapper-title {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Edu TAS Beginner', sans-serif;
+            font-size: 30px;
+            text-decoration: underline;
+        }
+
+        .loader {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     }
 }

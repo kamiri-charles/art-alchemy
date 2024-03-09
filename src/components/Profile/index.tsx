@@ -1,98 +1,98 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import RandomBackground from '../../assets/utils/RandomBackground'
-import './styles.scss'
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import RandomBackground from "../../assets/utils/RandomBackground";
+import { MetroSpinner } from "react-spinners-kit";
+import "./styles.scss";
 
 type UserType = {
-    id: string,
-    username: string,
-    firstname: string,
-    lastname: string,
-    profile_picture: ArrayBuffer,
-    email: string,
-    password: string,
-    [key: string]: string | ArrayBuffer,
-}
+	id: string;
+	username: string;
+	firstname: string;
+	lastname: string;
+	profile_picture: ArrayBuffer;
+	email: string;
+	password: string;
+	[key: string]: string | ArrayBuffer;
+};
 
 type EditablesType = {
-	firstname: boolean,
-	lastname: boolean,
-	email: boolean,
-	[key: string]: boolean
-}
+	firstname: boolean;
+	lastname: boolean;
+	email: boolean;
+	[key: string]: boolean;
+};
 
 const Profile: React.FC = () => {
+	const nav = useNavigate();
+	const [userData, setUserData] = useState<UserType>({
+		id: "",
+		username: "",
+		firstname: "",
+		lastname: "",
+		profile_picture: new ArrayBuffer(0),
+		email: "",
+		password: "",
+	});
 
-    const nav = useNavigate();
-    const [userData, setUserData] = useState<UserType>({
-        id: '',
-        username: '',
-        firstname: '',
-        lastname: '',
-        profile_picture: new ArrayBuffer(0),
-        email: '',
-        password: '',
-    });
+	const [userDataCopy, setUserDataCopy] = useState<UserType>({
+		id: "",
+		username: "",
+		firstname: "",
+		lastname: "",
+		profile_picture: new ArrayBuffer(0),
+		email: "",
+		password: "",
+	});
 
-    const [userDataCopy, setUserDataCopy] = useState<UserType>({
-        id: '',
-        username: '',
-        firstname: '',
-        lastname: '',
-        profile_picture: new ArrayBuffer(0),
-        email: '',
-        password: '',
-    });
-
-    const [editables, setEditables] = useState<EditablesType>({
-        firstname: false,
-        lastname: false,
-        email: false,
-    });
+	const [editables, setEditables] = useState<EditablesType>({
+		firstname: false,
+		lastname: false,
+		email: false,
+	});
 
 	const [userDataChanged, setUserDataChanged] = useState(false);
 
-    useEffect(() => {
-        // Get user data from local storage
-        const user = localStorage.getItem('artAlchemyUserData');
-        if (user) {
-            setUserData(JSON.parse(user));
-            setUserDataCopy(JSON.parse(user));
-        } else {
-            nav('/sign-in');
-        }
-    }, [nav]);
+	useEffect(() => {
+		// Get user data from local storage
+		const user = localStorage.getItem("artAlchemyUserData");
+		if (user) {
+			setUserData(JSON.parse(user));
+			setUserDataCopy(JSON.parse(user));
+		} else {
+			nav("/sign-in");
+		}
+	}, [nav]);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (editables[e.target.name]) { // Check if field is editable	
-			setUserData({
-				...userData,
+		if (editables[e.target.name]) {
+			// Check if field is editable
+			setUserData((prevUserData) => ({
+				...prevUserData,
 				[e.target.name]: e.target.value,
-			});
-			console.log(userData[e.target.name]);
-			
+			}));
+			console.log(e.target.value); // Log the updated value directly
 			handleDataChange();
 		}
-    };
+	};
 
-    const handleEditableToTrue = (field: string) => {
-        setEditables({...editables, [field]: true});
-    };
+	const handleEditableToTrue = (field: string) => {
+		setEditables({ ...editables, [field]: true });
+	};
 
-    const handleEditableToFalse = (field: string) => {
-        setEditables({...editables, [field]: false});
-        // Return field value to original value
-		let original_value =  userDataCopy[field];
-		if (!original_value) original_value = '';
-        setUserData({...userData, [field]: userDataCopy[field]});
+	const handleEditableToFalse = (field: string) => {
+		setEditables({ ...editables, [field]: false });
+		// Return field value to original value
+		let original_value = userDataCopy[field];
+		if (!original_value) original_value = "";
+		setUserData({ ...userData, [field]: userDataCopy[field] });
 		handleDataChange();
-    };
+	};
 
 	const handleDataChange = () => {
 		if (
-			userData.firstname != userDataCopy.firstname ||
-			userData.lastname != userDataCopy.lastname ||
-			userData.email != userDataCopy.email
+			userData.firstname !== userDataCopy.firstname ||
+			userData.lastname !== userDataCopy.lastname ||
+			userData.email !== userDataCopy.email
 		) {
 			setUserDataChanged(true);
 		} else {
@@ -100,18 +100,16 @@ const Profile: React.FC = () => {
 		}
 	};
 
-
-
-  return (
+	return (
 		<div className="profile">
-
 			<RandomBackground />
 
-			<div className="back-to-home" onClick={() => nav('/')}>
+			<div className="back-to-home" onClick={() => nav("/")}>
 				<i className="bx bx-x"></i>
 			</div>
 
 			<div className="profile-meta">
+				<div className="profile-wrapper-title">Profile</div>
 				<div className="profile-pic">
 					{userData.profile_picture ? (
 						<img src={userData.profile_picture.toString()} alt="Profile" />
@@ -128,10 +126,10 @@ const Profile: React.FC = () => {
 					<div className="profile-firstname">
 						First name:{" "}
 						<input
-							name='firstname'
+							name="firstname"
 							type="text"
 							className={editables.firstname ? "editable" : "read-only"}
-							value={userData.firstname ? userData.firstname : ''}
+							value={userData.firstname ? userData.firstname : ""}
 							placeholder="Not set"
 							onChange={handleInputChange}
 						/>
@@ -151,10 +149,10 @@ const Profile: React.FC = () => {
 					<div className="profile-lastname">
 						Last name:{" "}
 						<input
-							name='lastname'
+							name="lastname"
 							type="text"
 							className={editables.lastname ? "editable" : "read-only"}
-							value={userData.lastname ? userData.lastname : ''}
+							value={userData.lastname ? userData.lastname : ""}
 							placeholder="Not set"
 							onChange={handleInputChange}
 						/>
@@ -174,10 +172,10 @@ const Profile: React.FC = () => {
 					<div className="profile-email">
 						Email:{" "}
 						<input
-							name='email'
-							type="text"
+							name="email"
+							type="email"
 							className={editables.email ? "editable" : "read-only"}
-							value={userData.email ? userData.email : ''}
+							value={userData.email ? userData.email : ""}
 							placeholder="Not set"
 						/>
 						{userData.email ? (
@@ -190,18 +188,30 @@ const Profile: React.FC = () => {
 						)}
 					</div>
 
-                    {/* TODO: After adding password retrieval from backend */}
+					{/* TODO: After adding password retrieval from backend */}
 					{/* <div className="password"><input type="password" value={userData.password}  /></div> */}
 
-					<button className={`update-profile-info ${userDataChanged ? 'active' : ''}`}>Update Info</button>
+					<button
+						className={`update-profile-info ${userDataChanged ? "active" : ""}`}
+					>
+						Update Info
+					</button>
 				</div>
 			</div>
 
-			<div className="placeholder-wrapper-sm"></div>
+			<div className="placeholder-wrapper-sm">
+				<div className="profile-wrapper-title"></div>
+			</div>
 
-			<div className="placeholder-wrapper-lg"></div>
+			<div className="placeholder-wrapper-lg">
+				<div className="profile-wrapper-title">Activity</div>
+
+				<div className="loader">
+					<MetroSpinner color="black" />
+				</div>
+			</div>
 		</div>
 	);
-}
+};
 
 export default Profile;

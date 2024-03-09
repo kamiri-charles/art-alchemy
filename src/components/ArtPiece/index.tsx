@@ -1,36 +1,28 @@
-import React, { useState, useEffect} from 'react'
-import './styles.scss'
+import React from "react";
+import "./styles.scss";
 
-interface ArtPieceProps {
-  imageData: ArrayBuffer | null
-}
+type ArtType = {
+	title: string;
+	imageData: string[];
+	description: string;
+	tags: string;
+	category: string;
+	price: string;
+};
 
-const ArtPiece: React.FC<ArtPieceProps> = ({ imageData }) => {
-  const [imageSrc, setImageSrc] = useState<string | null>(null);
+const ArtPiece: React.FC<{ data: ArtType }> = ({ data }) => {
 
-	useEffect(() => {
-		if (imageData) {
-			// Convert binary data to a URL
-			const imageUrl = URL.createObjectURL(new Blob([imageData]));
-			setImageSrc(imageUrl);
-
-			// Cleanup function to revoke the URL when component is unmounted
-			return () => URL.revokeObjectURL(imageUrl);
-		} else {
-			setImageSrc(null);
-		}
-	}, [imageData]);
-  return (
+	return (
 		<div className="art-piece">
 			<div className="image-overlay">
-				{imageSrc ? (
-					<img src={imageSrc} alt="Database Image" />
+				{data.imageData ? (
+					<img src={data.imageData[0]} alt="Art image" />
 				) : (
 					<p>No image data available</p>
 				)}
 			</div>
 		</div>
 	);
-}
+};
 
-export default ArtPiece
+export default ArtPiece;

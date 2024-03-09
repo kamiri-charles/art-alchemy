@@ -45,6 +45,10 @@ const Header:React.FC = () => {
 				{userData ? (
 					<div className="user-logged-in">
 
+						<div className="add-art-btn" onClick={() => nav('/new-art')}>
+							<i className="bx bx-plus"></i>
+						</div>
+
 						<div
 							className="menu-icon"
 							onClick={() => setMenuActive(!menuActive)}

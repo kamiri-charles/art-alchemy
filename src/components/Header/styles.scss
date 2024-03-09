@@ -71,8 +71,7 @@
         .user-logged-in {
             display: flex;
 
-
-            .menu-icon {
+            .menu-icon, .add-art-btn {
                 width: 40px;
                 height: 40px;
                 margin-inline: 20px;
@@ -92,6 +91,12 @@
                     position: fixed;
                     top: 30px;
                     right: 20px;
+                }
+            }
+
+            .add-art-btn {
+                @media (max-width: 768px) {
+                    right: 80px;
                 }
             }
 

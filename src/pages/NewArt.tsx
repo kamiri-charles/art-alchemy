@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import SwiperCore from "swiper";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -6,12 +7,10 @@ import RandomBackground from "../assets/utils/RandomBackground";
 import { MetroSpinner } from "react-spinners-kit";
 import "swiper/swiper-bundle.css";
 import "../styles/newArt.scss";
-import { useNavigate } from "react-router-dom";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const NewArt: React.FC = () => {
-
 	const [swiper, setSwiper] = useState<SwiperCore | null>(null);
 	const image_upload_ref = useRef<HTMLInputElement>(null);
 	const [imageFiles, setImageFiles] = useState<FileList | null>(null);
@@ -20,9 +19,9 @@ const NewArt: React.FC = () => {
 		description: "",
 		tags: "",
 		category: "",
-		price: ""
+		price: "",
 	});
-	const [userId, setUserId] = useState("");
+	const [username, setUsername] = useState("");
 	const [loading, setLoading] = useState(false);
 
 	const nav = useNavigate();
@@ -31,7 +30,7 @@ const NewArt: React.FC = () => {
 		const item = localStorage.getItem("artAlchemyUserData");
 		if (item !== null) {
 			const userData = JSON.parse(item);
-			setUserId(userData.id);
+			setUsername(userData.username);
 		} else {
 			nav("/sign-in");
 		}
@@ -40,7 +39,7 @@ const NewArt: React.FC = () => {
 	// Function to handle image upload
 	const handleImageUpload = () => {
 		image_upload_ref.current?.click();
-	}
+	};
 
 	// Function to handle navigation buttons
 	const handleNavBtns = (direction: string) => {
@@ -51,7 +50,17 @@ const NewArt: React.FC = () => {
 				swiper.slideNext();
 			}
 		}
-	}
+	};
+
+	const readImageFile = (file: File) => {
+		return new Promise<string>((resolve) => {
+			const reader = new FileReader();
+			reader.onload = () => {
+				resolve(reader.result as string);
+			};
+			reader.readAsDataURL(file);
+		});
+	};
 
 	// Function to submit the form
 	const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -59,44 +68,53 @@ const NewArt: React.FC = () => {
 		setLoading(true);
 
 		// Convert images to binary
-		const images: string[] = [];
+		const imagesPromises: Promise<string>[] = [];
 		if (imageFiles) {
 			Array.from(imageFiles).forEach((file) => {
-				const reader = new FileReader();
-				reader.readAsDataURL(file);
-				reader.onload = () => {
-					images.push(reader.result as string);
-				}
+				imagesPromises.push(readImageFile(file));
 			});
+
+			Promise.all(imagesPromises)
+				.then((images) => {
+					const formData = {
+						title: formValues.title,
+						description: formValues.description,
+						tags: formValues.tags.split(" "),
+						category: formValues.category,
+						price: formValues.price,
+						imageData: images,
+						likes: 0,
+						comments: [],
+						owner: username,
+					};
+
+
+					fetch("http://localhost:8080/api/art/", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify(formData)
+					})
+						.then(res => res.json())
+						.then(data => {
+							console.log(data);
+							setLoading(false);
+							nav('/');
+						})
+						.catch(err => {
+							console.log(err);
+							setLoading(false);
+							alert("There was an error processing your request.")
+						})
+				})
+				.catch((error) => {
+					console.error("Error reading image files:", error);
+					setLoading(false);
+					alert("There was an error processing your request.");
+				});
 		}
-
-		const data = {
-			title: formValues.title,
-			description: formValues.description,
-			tags: formValues.tags.split(" "),
-			category: formValues.category,
-			price: formValues.price,
-			images: images,
-			likes: 0,
-			comments: [],
-			ownerId: userId
-
-		}
-
-		fetch("http://localhost:8080/api/art", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(data)
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data);
-				setLoading(false);
-				nav("/");
-			})
-	}
+	};
 
 	return (
 		<div className="new-art">
@@ -233,7 +251,11 @@ const NewArt: React.FC = () => {
 								/>
 							</div>
 
-							{loading ? <div className="loader"><MetroSpinner color="black" size={30} /></div>  : (
+							{loading ? (
+								<div className="loader">
+									<MetroSpinner color="black" size={30} />
+								</div>
+							) : (
 								<button
 									className={`submit-btn ${
 										formValues.title && formValues.price && imageFiles
