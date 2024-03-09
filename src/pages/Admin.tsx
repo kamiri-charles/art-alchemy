@@ -37,7 +37,7 @@ const Admin: React.FC = () => {
     <div className='admin'>
       <AdminNavbar currentTab={currentTab} setCurrentTab={setCurrentTab} />
 
-      <div className="admin-content">
+      <div className="admin-content fl-c-c">
         {tabComponents[currentTab]}
       </div>
     </div>

@@ -4,12 +4,16 @@ import { MetroSpinner } from "react-spinners-kit";
 import "./styles.scss";
 
 type ArtType = {
+	id: string;
 	title: string;
 	imageData: string[];
 	description: string;
 	tags: string;
 	category: string;
-	price: string;
+	price: number;
+	owner: string;
+	stars: number;
+	comments: string[];
 };
 
 const ArtListings: React.FC = () => {
@@ -31,7 +35,7 @@ const ArtListings: React.FC = () => {
 	}, []);
 
 	return (
-		<div className="art-listings">
+		<div className="art-listings fl-c">
 			{loading ? (
 				<div className="loader"><MetroSpinner /></div>
 			): (
@@ -40,7 +44,7 @@ const ArtListings: React.FC = () => {
 						<div className="error">{error}</div>
 					) : (
 						<>
-						{art?.map(piece => <ArtPiece data={piece} />)}
+						{art?.map(piece => <ArtPiece data={piece} key={piece.id} />)}
 						</>
 					)}
 				</div>

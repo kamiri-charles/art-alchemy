@@ -30,14 +30,14 @@ const Header:React.FC = () => {
 
 	return (
 		<div className="header">
-			<div className="left">
+			<div className="left fl-c">
 				<div className="logo">
 					<span>Art</span>
 					<span>Alchemy</span>
 				</div>
 			</div>
 
-			<div className="right">
+			<div className="right fl-c">
 				<div className="searchbar">
 					<input type="text" placeholder="Artists, pieces or events" />
 					<i className="bx bx-search"></i>
@@ -56,18 +56,18 @@ const Header:React.FC = () => {
 							<i className={menuActive ? "bx bx-x" : "bx bx-menu"}></i>
 						</div>
 
-						<div className={`options ${menuActive ? "" : "hidden"}`}>
-							<div className="option" onClick={() => nav('/profile')}>
+						<div className={`options fl-c-c ${menuActive ? "" : "hidden"}`}>
+							<div className="option fl-c-c" onClick={() => nav('/profile')}>
 								<i className="bx bx-user"></i>
 								<span>My Profile</span>
 							</div>
 
-							<div className="option">
+							<div className="option fl-c-c">
 								<i className="bx bx-message"></i>
 								<span>Notifications</span>
 							</div>
 
-							<div className="option sign-out" onClick={() => logout()}>
+							<div className="option fl-c-c sign-out" onClick={() => logout()}>
 								{signingOut ? (
 									<MetroSpinner color="black" size={20} />
 								) : (

@@ -24,12 +24,8 @@ img, picture, video, canvas, svg {
 
 input, button, textarea, select {
   font: inherit;
-}
-
-input, button {
   border: none;
   outline: none;
-
 }
 
 p, h1, h2, h3, h4, h5, h6 {
@@ -55,23 +51,43 @@ p, h1, h2, h3, h4, h5, h6 {
   --navbar-width: 80px;
 }
 
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  width: 2px;
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 10px;
+}
+
+
+/* Custom classes */
 .primary {
   color: var(--ui-primary);
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 2px;
+.fl-c {
+	display: flex;
+	align-items: center;
 }
 
-::-webkit-scrollbar-track {
-    width: 2px;
-    background: black;
+.fl-c-c { // Display flex, align center, justify center
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-::-webkit-scrollbar-thumb {
-    background: white;
-    border-radius: 10px;
+.fl-c-ar { // Display flex, align center, justify space-around
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 
@@ -93,9 +109,6 @@ p, h1, h2, h3, h4, h5, h6 {
     position: absolute;
     top: 0;
     left: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: var(--ui-white);
     padding: 20px;
     background: var(--ui-black);

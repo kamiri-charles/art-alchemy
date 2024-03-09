@@ -12,9 +12,6 @@
     z-index: 9999;
 
     .left {
-        display: flex;
-        align-items: center;
-
         .logo {
             position: absolute;
             left: 10%;
@@ -32,8 +29,6 @@
         top: 0;
         right: 0;
         height: 100%;
-        display: flex;
-        align-items: center;
         justify-content: flex-end;
         padding: 20px 40px;
 
@@ -102,10 +97,7 @@
 
             .options {
                 position: fixed;
-                display: flex;
                 flex-direction: column;
-                align-items: center;
-                justify-content: center;
                 padding: 10px 20px;
                 top: 80px;
                 right: 20px;
@@ -115,9 +107,6 @@
                 z-index: 999;
 
                 .option {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
                     color: black;
                     padding: 10px 20px;
                     width: 100%;

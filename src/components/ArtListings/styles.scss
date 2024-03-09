@@ -6,17 +6,23 @@
     height: calc(100vh - var(--header-height) - 50px);
     scroll-behavior: smooth;
     overflow-y: scroll;
+    overflow-x: hidden;
 
-    display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    justify-content: center;
 
     .loader {
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+    }
+
+    .pieces {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-around;
+        flex-wrap: wrap;
     }
 }
 
@@ -25,5 +31,6 @@
     .art-listings {
         left: 0;
         width: 100vw;
+        flex-direction: column;
     }
 }

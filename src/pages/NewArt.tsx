@@ -83,7 +83,7 @@ const NewArt: React.FC = () => {
 						category: formValues.category,
 						price: formValues.price,
 						imageData: images,
-						likes: 0,
+						stars: 0,
 						comments: [],
 						owner: username,
 					};
@@ -121,6 +121,7 @@ const NewArt: React.FC = () => {
 			<RandomBackground />
 
 			<div className="form-wrapper">
+				<div className="back-btn fl-c-c" onClick={() => nav('/')}><i className="bx bx-x"></i></div>
 				<Swiper
 					spaceBetween={10}
 					pagination={{ clickable: true }}
