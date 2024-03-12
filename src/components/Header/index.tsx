@@ -31,7 +31,7 @@ const Header:React.FC = () => {
 	return (
 		<div className="header">
 			<div className="left fl-c">
-				<div className="logo">
+				<div className="logo" onClick={() => nav('/')}>
 					<span>Art</span>
 					<span>Alchemy</span>
 				</div>

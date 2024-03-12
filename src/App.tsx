@@ -5,6 +5,7 @@ import SignUp from './pages/SignUp'
 import Product from './pages/Product'
 import Profile from './components/Profile'
 import NewArt from './pages/NewArt'
+import Art from './pages/Art'
 
 import Admin from './pages/Admin'
 import AdminSignIn from './components/Admin/AdminSignIn'
@@ -24,6 +25,7 @@ function App() {
           <Route path='/product' element={ <Product />} />
           <Route path='/profile' element={ <Profile /> } />
           <Route path='/new-art' element={ <NewArt /> } />
+          <Route path='/art/:art-id' element={ <Art /> } />
 
           {/* Admin */}
           <Route path='/admin' element={ <Admin /> } />

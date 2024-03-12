@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.scss";
+import { useNavigate } from "react-router-dom";
 
 type ArtType = {
 	id: string;
@@ -16,13 +17,20 @@ type ArtType = {
 
 const ArtPiece: React.FC<{ data: ArtType }> = ({ data }) => {
 
+	const nav = useNavigate();
+
+	const addToCart = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+		evt.stopPropagation();
+		console.log("Product added to cart!");
+	};
+
 	return (
-		<div className="art-piece">
+		<div className="art-piece" onClick={() => nav(`/art/${data.id}`)}>
 			<div className="image-overlay fl-c-c">
 				{data.imageData ? (
 					<img src={data.imageData[0]} alt="Art image" />
 				) : (
-					<p>No image data available</p>
+					<p>There was an error getting this image.</p>
 				)}
 			</div>
 
@@ -44,9 +52,8 @@ const ArtPiece: React.FC<{ data: ArtType }> = ({ data }) => {
 
 				<div className="actions fl-c-c">
 					<div className="price">Ksh. {data.price}</div>
-					<i className="bx bx-cart fl-c-c"></i>
+					<i className="bx bx-cart fl-c-c" onClick={addToCart}></i>
 				</div>
-				
 			</div>
 		</div>
 	);

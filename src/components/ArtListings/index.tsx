@@ -26,12 +26,15 @@ const ArtListings: React.FC = () => {
 		
 		fetch("http://localhost:8080/api/art/")
 		.then((res) => res.json())
-		.then((data) => setArt(data))
+		.then((data) => {
+			setArt(data);
+			setLoading(false);
+		})
 		.catch((err) => {
 			setError("There was an error getting your art. Try refrshing the page. <br /> Error: " + err);
+			setLoading(false);
 		});
 
-		setLoading(false);
 	}, []);
 
 	return (
