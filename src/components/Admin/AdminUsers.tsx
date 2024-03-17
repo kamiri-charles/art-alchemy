@@ -1,24 +1,15 @@
 import React, { useState, useEffect }from 'react'
 import '../../styles/admin/adminUsers.scss'
 import { MetroSpinner } from 'react-spinners-kit';
+import { UserType } from '../../assets/utils/custom_types';
 
 
 const AdminUsers: React.FC = () => {
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState<UserType[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true);
-
-    type UserType = {
-      id: string,
-      username: string, 
-      firstName: string, 
-      lastName: string, 
-      email: string,
-      isArtist: boolean,
-      isAdmin: boolean
-    }
 
     const handleSearch = async () => {
         setLoading(true);
@@ -99,7 +90,7 @@ const AdminUsers: React.FC = () => {
                   <div className="admin-user-meta">
                     <div className="id">{user.id}</div>
                     <div className="username">{user.username}</div>
-                    <div className="names">{user.firstName} {user.lastName}</div>
+                    <div className="names">{user.firstname} {user.lastname}</div>
                     <div className="email">{user.email}</div>
                   </div>
 

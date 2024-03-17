@@ -38,10 +38,6 @@ const Header:React.FC = () => {
 			</div>
 
 			<div className="right fl-c">
-				<div className="searchbar">
-					<input type="text" placeholder="Artists, pieces or events" />
-					<i className="bx bx-search"></i>
-				</div>
 				{userData ? (
 					<div className="user-logged-in">
 

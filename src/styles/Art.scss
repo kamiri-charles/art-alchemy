@@ -180,6 +180,14 @@
     .recommended {
         top: 600px;
     }
+
+
+    .loader {
+        position: fixed;
+        top: 30%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 
 

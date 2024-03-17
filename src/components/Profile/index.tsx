@@ -2,25 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RandomBackground from "../../assets/utils/RandomBackground";
 import { MetroSpinner } from "react-spinners-kit";
+import { UserType, EditablesType } from "../../assets/utils/custom_types";
 import "./styles.scss";
 
-type UserType = {
-	id: string;
-	username: string;
-	firstname: string;
-	lastname: string;
-	profile_picture: ArrayBuffer;
-	email: string;
-	password: string;
-	[key: string]: string | ArrayBuffer;
-};
 
-type EditablesType = {
-	firstname: boolean;
-	lastname: boolean;
-	email: boolean;
-	[key: string]: boolean;
-};
 
 const Profile: React.FC = () => {
 	const nav = useNavigate();
