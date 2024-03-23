@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ArtPiece from "../ArtPiece";
 import { MetroSpinner } from "react-spinners-kit";
-import { ArtType } from "../../assets/utils/custom_types";
+import { ArtType, CartType } from "../../assets/utils/custom_types";
 import "./styles.scss";
 
 
@@ -12,6 +12,7 @@ const ArtListings: React.FC = () => {
     const [totalPages, setTotalPages] = useState(1);
 	const [searchTerm, setSearchTerm] = useState('');
 	const [loading, setLoading] = useState(false);
+	const [cart, setCart] = useState<CartType>();
 
 	useEffect(() => {
 		const fetchArt = async () => {
@@ -30,6 +31,33 @@ const ArtListings: React.FC = () => {
 			}
 		};
 		fetchArt();
+
+		const fetchCart = async () => {
+			const rawUserData = localStorage.getItem("artAlchemyUserData");
+
+			if (rawUserData != null) {
+				const userId = JSON.parse(rawUserData).id;
+
+				try {
+					const response = await fetch(
+						`http://localhost:8080/api/cart/${userId}`
+					);
+					const data = await response.json();
+					setCart(data);
+					
+				} catch (error) {
+					console.error(
+						"There was an error getting the cart associated with this user.",
+						error
+					);
+				}
+			}
+		};
+
+		fetchCart();
+
+		
+
 	}, [currentPage]);
 
 	// Implement next and previous page handlers
@@ -79,7 +107,7 @@ const ArtListings: React.FC = () => {
 					) : (
 						<>
 							{art?.map((piece) => (
-								<ArtPiece data={piece} key={piece.id} />
+								<ArtPiece data={piece} cart={cart} setCart={setCart} key={piece.id} />
 							))}
 						</>
 					)}

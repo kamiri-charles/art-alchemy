@@ -47,7 +47,7 @@ p, h1, h2, h3, h4, h5, h6 {
   --ui-dark-grey: #2E2E2E;
   --ui-white: #FFF;
 
-  --header-height: 80px;
+  --header-height: 100px;
   --navbar-width: 80px;
 }
 
@@ -87,14 +87,15 @@ p, h1, h2, h3, h4, h5, h6 {
 .fl-c-ar { // Display flex, align center, justify space-around
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-around;
 }
 
 
 /* App */
 .App {
   position: fixed;
-  background: var(--ui-black);
+  //background: var(--ui-primary);
+  background: linear-gradient(to bottom right, var(--ui-primary), var(--ui-secondary));
   width: 100vw;
   height: 100vh;
   font-family: 'Ubuntu', sans-serif;

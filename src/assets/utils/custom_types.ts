@@ -16,12 +16,13 @@ export type ArtType = {
 	title: string;
 	imageData: string[];
 	description: string;
-	tags: string;
+	tags: string[];
 	category: string;
 	price: number;
 	owner: string;
 	stars: number;
 	comments: string[];
+	views: number;
 };
 
 export type EditablesType = {
@@ -30,3 +31,9 @@ export type EditablesType = {
 	email: boolean;
 	[key: string]: boolean;
 };
+
+export type CartType = {
+	id: string;
+	username: string;
+	artIds: string[];
+}

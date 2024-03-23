@@ -3,7 +3,7 @@
     top: calc(var(--header-height));
     left: calc(var(--navbar-width) + 20px);
     width: calc(100vw - var(--navbar-width) - 20px);
-    height: calc(100vh - var(--header-height) - 50px);
+    height: calc(100vh - var(--header-height));
     scroll-behavior: smooth;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -39,7 +39,7 @@
 
     .loader {
         position: fixed;
-        top: 30%;
+        top: 40%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
