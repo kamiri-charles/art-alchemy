@@ -34,6 +34,6 @@ export type EditablesType = {
 
 export type CartType = {
 	id: string;
-	username: string;
+	userId: string;
 	artIds: string[];
 }
