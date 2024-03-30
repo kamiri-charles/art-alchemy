@@ -36,7 +36,7 @@
         top: 0;
         width: 100%;
         height: 60px;
-        background: var(--ui-primary);
+        background: var(--ui-black);
         z-index: 999;
         padding-inline: 40px;
 
@@ -52,7 +52,7 @@
             font-family: 'Edu TAS Beginner', cursive;
         }
 
-        .item-count, .total, .to-checkout {
+        .item-count, .to-checkout {
             margin-inline: 20px;
         }
 

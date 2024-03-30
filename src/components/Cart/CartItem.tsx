@@ -3,14 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { ArtType, CartType } from "../../assets/utils/custom_types";
 import { MetroSpinner } from "react-spinners-kit";
 
-export const CartItem: React.FC<{
-	id: string;
-	cart: CartType;
-	setCart: (cart: CartType) => void;
-	updateCartItemQuantity: (id: string, quantity: number) => void;
-	quantity: number;
-}> = ({ id, cart, setCart, updateCartItemQuantity, quantity }) => {
+export const CartItem: React.FC<{id: string, cart: CartType, setCart: (cart: CartType) => void}> = ({ id, cart, setCart }) => {
+	
 	const [data, setData] = useState<ArtType>();
+	const [quantity, setQuantity] = useState(1);
 	const [loading, setLoading] = useState(true);
 	const nav = useNavigate();
 
@@ -32,17 +28,23 @@ export const CartItem: React.FC<{
 		};
 
 		fetchData();
+
+		localStorage.setItem(`artAlchemyCartItemQuantity${id}`, '1');
 	}, [id]);
 
 	const increase_count = () => {
 		if (quantity < 5) {
-			updateCartItemQuantity(id, quantity + 1);
+			setQuantity(quantity + 1);
+			localStorage.setItem(`artAlchemyCartItemQuantity${id}`, (quantity + 1).toString());
+			console.log(localStorage.getItem(`artAlchemyCartItemQuantity${id}`));
 		}
 	};
 
 	const decrease_count = () => {
 		if (quantity > 1) {
-			updateCartItemQuantity(id, quantity - 1);
+			setQuantity(quantity - 1);
+			localStorage.setItem(`artAlchemyCartItemQuantity${id}`, (quantity - 1).toString());
+			console.log(localStorage.getItem(`artAlchemyCartItemQuantity${id}`));
 		}
 	};
 

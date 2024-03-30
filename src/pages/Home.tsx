@@ -7,10 +7,10 @@ import Cart from '../components/Cart'
 
 const Home: React.FC = () => {
 
-  const [currentTab, setCurrentTab] = useState('');
+  const [currentTab, setCurrentTab] = useState(localStorage.getItem('artAlchemyCurrentTab') || 'home');
 
   useEffect(() => {
-    if (currentTab == '') setCurrentTab('home');
+    if (!currentTab) setCurrentTab('home');
   }, [currentTab]);
 
   const tabComponents: { [key: string]: JSX.Element } = {
