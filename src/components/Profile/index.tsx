@@ -14,9 +14,11 @@ const Profile: React.FC = () => {
 		username: "",
 		firstname: "",
 		lastname: "",
-		profile_picture: new ArrayBuffer(0),
+		profilePicture: "",
 		email: "",
 		password: "",
+		isArtist: false,
+		isAdmin: false,
 	});
 
 	const [userDataCopy, setUserDataCopy] = useState<UserType>({
@@ -24,9 +26,11 @@ const Profile: React.FC = () => {
 		username: "",
 		firstname: "",
 		lastname: "",
-		profile_picture: new ArrayBuffer(0),
+		profilePicture: "",
 		email: "",
 		password: "",
+		isArtist: false,
+		isAdmin: false,
 	});
 
 	const [editables, setEditables] = useState<EditablesType>({
@@ -55,7 +59,6 @@ const Profile: React.FC = () => {
 				...prevUserData,
 				[e.target.name]: e.target.value,
 			}));
-			console.log(e.target.value); // Log the updated value directly
 			handleDataChange();
 		}
 	};

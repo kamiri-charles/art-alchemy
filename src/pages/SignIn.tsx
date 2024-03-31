@@ -60,7 +60,7 @@ const SignIn: React.FC = () => {
 				.then((res) => res.json())
 				.then((data) => {
 					if (data.error) {
-						console.log(data.error);
+						console.error(data.error);
 						setError(data.error);
 						setLoading(false);
 					} else {

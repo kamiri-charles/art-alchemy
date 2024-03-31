@@ -53,7 +53,7 @@ const AdminSignIn: React.FC = () => {
           }
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
           setError("An error occurred. Please try again.");
           setLoading(false);
         });

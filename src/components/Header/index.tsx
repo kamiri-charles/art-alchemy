@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { MetroSpinner } from 'react-spinners-kit';
+import { MetroSpinner } from 'react-spinners-kit'
 import './styles.scss'
 
 const Header:React.FC = () => {
@@ -53,17 +53,22 @@ const Header:React.FC = () => {
 						</div>
 
 						<div className={`options fl-c-c ${menuActive ? "" : "hidden"}`}>
-							<div className="option fl-c-c" onClick={() => nav('/profile')}>
+							<div className="option fl-c" onClick={() => nav('/profile')}>
 								<i className="bx bx-user"></i>
 								<span>My Profile</span>
 							</div>
 
-							<div className="option fl-c-c">
+							<div className="option fl-c">
 								<i className="bx bx-message"></i>
 								<span>Notifications</span>
 							</div>
 
-							<div className="option fl-c-c sign-out" onClick={() => logout()}>
+							<div className="option fl-c">
+								<i className="bx bx-car"></i>
+								<span>Orders</span>
+							</div>
+
+							<div className="option fl-c sign-out" onClick={() => logout()}>
 								{signingOut ? (
 									<MetroSpinner color="black" size={20} />
 								) : (

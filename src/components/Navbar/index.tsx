@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import { MetroSpinner } from 'react-spinners-kit';
-import './styles.scss'
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { MetroSpinner } from "react-spinners-kit";
+import "./styles.scss";
 
-const Navbar: React.FC<{ currentTab : string, setCurrentTab: (tab: string) => void }> = ({currentTab, setCurrentTab}) => {
-
-  const nav = useNavigate();
-  const [signOutLoading, setSignOutLoading] = useState(false);
-
+const Navbar: React.FC<{
+	currentTab: string;
+	setCurrentTab: (tab: string) => void;
+}> = ({ currentTab, setCurrentTab }) => {
+	const nav = useNavigate();
+	const [signOutLoading, setSignOutLoading] = useState(false);
 
 	useEffect(() => {
 		if (localStorage.getItem("artAlchemyCurrentNavTab")) {
@@ -20,19 +21,19 @@ const Navbar: React.FC<{ currentTab : string, setCurrentTab: (tab: string) => vo
 	// Handle link click
 	const handleTabChange = (tabValue: string) => {
 		localStorage.setItem("artAlchemyCurrentNavTab", tabValue);
-    setCurrentTab(tabValue);
+		setCurrentTab(tabValue);
 	};
 
-  // Log out user
-  const logout = () => {
-    setSignOutLoading(true);
+	// Log out user
+	const logout = () => {
+		setSignOutLoading(true);
 
-    setTimeout(() => {
-      localStorage.removeItem('artAlchemyUserData');
-      setSignOutLoading(false);
-      nav('/sign-in');
-    }, 3000);
-  }
+		setTimeout(() => {
+			localStorage.removeItem("artAlchemyUserData");
+			setSignOutLoading(false);
+			nav("/sign-in");
+		}, 3000);
+	};
 
 	return (
 		<div className="navbar">
@@ -54,14 +55,21 @@ const Navbar: React.FC<{ currentTab : string, setCurrentTab: (tab: string) => vo
 				</div>
 
 				<div
-					className={`link ${currentTab == "cart" ? "active" : ""}`}
+					className={`link ${
+						localStorage.getItem("artAlchemyUserData") ? "" : "hidden"
+					} ${currentTab == "cart" ? "active" : ""}`}
 					onClick={() => handleTabChange("cart")}
 				>
 					<i className="bx bx-cart"></i>
 					<span>Cart</span>
 				</div>
 
-				<div className="link logout" onClick={() => logout()}>
+				<div
+					className={`link logout ${
+						localStorage.getItem("artAlchemyUserData") ? "" : "hidden"
+					}`}
+					onClick={() => logout()}
+				>
 					{signOutLoading ? (
 						<MetroSpinner size={25} />
 					) : (
@@ -76,4 +84,4 @@ const Navbar: React.FC<{ currentTab : string, setCurrentTab: (tab: string) => vo
 	);
 };
 
-export default Navbar
+export default Navbar;

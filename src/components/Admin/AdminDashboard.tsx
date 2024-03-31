@@ -14,12 +14,12 @@ const AdminDashboard: React.FC<{setCurrentTab: (tab: string) => void}> = ({setCu
 		fetch('http://localhost:8080/api/users/total')
 			.then(res => res.json())
 			.then(data => setTotalUsers(data))
-			.catch(error => console.log(error))
+			.catch(error => console.error(error))
 
 		fetch('http://localhost:8080/api/art/total')
 			.then(res => res.json())
 			.then(data => setTotalArt(data))
-			.catch(error => console.log(error))
+			.catch(error => console.error(error))
 			setLoading(false);
 	}, []);
 

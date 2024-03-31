@@ -97,13 +97,13 @@ const NewArt: React.FC = () => {
 						body: JSON.stringify(formData)
 					})
 						.then(res => res.json())
-						.then(data => {
-							console.log(data);
+						.then(() => {
 							setLoading(false);
 							nav('/');
 						})
+						
 						.catch(err => {
-							console.log(err);
+							console.error(err);
 							setLoading(false);
 							alert("There was an error processing your request.")
 						})

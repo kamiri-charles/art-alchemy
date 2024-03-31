@@ -25,7 +25,7 @@ const ArtPiece: React.FC<{ data: ArtType, cart: CartType | undefined, setCart: (
 
 	const updateCart = async () => {
 		try {
-			const response = await fetch('http://localhost:8080/api/cart/update', {
+			await fetch('http://localhost:8080/api/cart/update', {
 				method: "POST",
 				body: JSON.stringify(cart),
 				headers: {
@@ -33,11 +33,8 @@ const ArtPiece: React.FC<{ data: ArtType, cart: CartType | undefined, setCart: (
 				},
 			})
 			
-			const data = await response.json();
-			console.log(data);
-
 		} catch(error) {
-			console.log(error);
+			console.error(error);
 		}
 	}
 
@@ -53,7 +50,6 @@ const ArtPiece: React.FC<{ data: ArtType, cart: CartType | undefined, setCart: (
 
 			updateCart();
 		}
-
 
 	};
 
@@ -85,7 +81,7 @@ const ArtPiece: React.FC<{ data: ArtType, cart: CartType | undefined, setCart: (
 					<Swiper
 						pagination={{ clickable: true }}
 						autoplay={{ delay: Math.floor(Math.random() * 6000 + 3000) }}
-						loop={data.imageData.length >= 3}
+						loop={data.imageData.length > 3}
 						onSwiper={(swiper) => (swiperRef.current = swiper)}
 					>
 						{data.imageData.map((image, index) => (

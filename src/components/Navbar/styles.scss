@@ -48,7 +48,11 @@
 
             &.logout {
                 position: absolute;
-                bottom: 0;
+                bottom: 40px;
+            }
+
+            &.hidden {
+                display: none;
             }
 
 

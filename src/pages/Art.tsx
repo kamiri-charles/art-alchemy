@@ -6,7 +6,7 @@ import { MetroSpinner } from "react-spinners-kit";
 import SwiperCore from "swiper";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "../styles/Art.scss";
+import "../styles/art.scss";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
@@ -95,7 +95,9 @@ const Art: React.FC = () => {
 
 							<div className="art-meta">
 								<div className="title-section">
-									<div className="owner-img"></div>
+									<div className="owner-img">
+										<i className="bx bx-user"></i>
+									</div>
 									<div className="text-sec">
 										<div className="title">{art?.title}</div>
 										<div className="owner">By {art?.owner}</div>
