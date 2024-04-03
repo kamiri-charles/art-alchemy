@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import { ArtType, OrderType } from "../assets/utils/custom_types";
-import { MetroSpinner } from "react-spinners-kit";
+import { ImpulseSpinner, MetroSpinner } from "react-spinners-kit";
 import "swiper/swiper-bundle.css";
 import "../styles/checkout.scss";
 
@@ -12,6 +12,9 @@ const Checkout: React.FC = () => {
 	const [loading, setLoading] = useState(true);
 	const nav = useNavigate();
 	const loc = useLocation();
+
+	const [orderSubmitting, setOrderSubmitting] = useState(false);
+
 
 	// Form variables
 	const [order, setOrder] = useState<OrderType>({
@@ -68,14 +71,37 @@ const Checkout: React.FC = () => {
 		return t;
 	};
 
-	const handle_change = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setOrder({
 			...order,
 			[e.target.name]: e.target.value,
 		});
 	};
 
-	const handle_order_submission = () => {
+	const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const input = e.target.value;
+		// Remove any non-digit characters from input
+		const sanitizedInput = input.replace(/\D/g, "");
+		// Restrict input to 16 characters
+		const truncatedInput = sanitizedInput.slice(0, 16);
+		// Insert hyphens after every 4 characters, except for the last group
+		const formattedInput = truncatedInput.replace(/(\d{4})(?=\d{4})/g, "$1-");
+
+		setOrder({ ...order, cardNumber: formattedInput });
+	};
+
+
+	const handleCSVChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const input = e.target.value;
+		// Remove any non-digit characters from input
+		const sanitizedInput = input.replace(/\D/g, "");
+		// Restrict input to 3 characters
+		const truncatedInput = sanitizedInput.slice(0, 3);
+
+		setOrder({ ...order, csv: truncatedInput });
+	};
+
+	const handleOrderSubmission = () => {
 		// Set user id
 		const x = localStorage.getItem("artAlchemyUserData");
 
@@ -101,7 +127,7 @@ const Checkout: React.FC = () => {
 			});
 
 			// Custom order variable due to some bugs with state update
-			const custom_order = {
+			const customOrder = {
 				id: '',
 				userId: y.id,
 				location: order.location,
@@ -112,7 +138,7 @@ const Checkout: React.FC = () => {
 				items: items
 			}
 
-
+			setOrderSubmitting(true);
 			// Send order to db
 			try {
 				fetch("http://localhost:8080/api/orders", {
@@ -120,9 +146,24 @@ const Checkout: React.FC = () => {
 					headers: {
 						'Content-Type': 'application/json'
 					},
-					body: JSON.stringify(custom_order)
-					
+					body: JSON.stringify(customOrder)
 				})
+					.then(res => {
+						if (res.ok) {
+							// Clear cart
+							fetch(`http://localhost:8080/api/cart/clear/${y.id}`)
+							// Reset home navTab
+							localStorage.setItem('artAlchemyCurrentNavTab', 'home');
+							alert("Order created successfully!");
+							// Navigate to homepage
+							nav('/');
+						} else {
+							alert("There was an error creating your order.");
+							setOrderSubmitting(false);
+						}
+					})
+
+
 			} catch (err) {
 				console.error(err);
 			}
@@ -130,15 +171,17 @@ const Checkout: React.FC = () => {
 	};
 
 
-
 	return (
 		<div className="checkout">
+			<div className={`blanket-loader ${orderSubmitting ? 'visible': ''}`}>
+				<ImpulseSpinner frontColor='white' size={80} />
+			</div>
 			<Header />
 			<div className="checkout-header">
 				<div className="checkout-title">Checkout</div>
 
 				<div className="total">Total: Ksh. {calculateTotal()}</div>
-				<button className="order-btn" onClick={() => handle_order_submission()}>
+				<button className="order-btn" onClick={() => handleOrderSubmission()}>
 					Order
 				</button>
 				<button className="cart-btn" onClick={() => nav("/")}>
@@ -209,7 +252,7 @@ const Checkout: React.FC = () => {
 												name="email"
 												type="email"
 												value={order.email}
-												onChange={handle_change}
+												onChange={handleChange}
 											/>
 										</div>
 
@@ -219,7 +262,7 @@ const Checkout: React.FC = () => {
 												name="phone"
 												type="text"
 												value={order.phone}
-												onChange={handle_change}
+												onChange={handleChange}
 											/>
 										</div>
 									</div>
@@ -233,13 +276,14 @@ const Checkout: React.FC = () => {
 											<input
 												name="cardNumber"
 												type="text"
-												onChange={handle_change}
+												value={order.cardNumber}
+												onChange={handleCardNumberChange}
 											/>
 										</div>
 
 										<div className="field">
 											<label>CSV</label>
-											<input name="csv" type="text" onChange={handle_change} />
+											<input name="csv" type="text" value={order.csv} onChange={handleCSVChange} />
 										</div>
 									</div>
 								</div>
