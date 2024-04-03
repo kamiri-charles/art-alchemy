@@ -12,7 +12,7 @@ export type UserType = {
 };
 
 export type ArtType = {
-    id: string;
+	id: string;
 	title: string;
 	imageData: string[];
 	description: string;
@@ -36,4 +36,15 @@ export type CartType = {
 	id: string;
 	userId: string;
 	artIds: string[];
-}
+};
+
+export type OrderType = {
+	id: string;
+	userId: string;
+	location: string;
+	cardNumber: string;
+	csv: string;
+	email: string;
+	phone: string;
+	items: string[];
+};

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import { ArtType } from "../assets/utils/custom_types";
+import { ArtType, OrderType } from "../assets/utils/custom_types";
 import { MetroSpinner } from "react-spinners-kit";
 import "swiper/swiper-bundle.css";
 import "../styles/checkout.scss";
@@ -12,6 +12,18 @@ const Checkout: React.FC = () => {
 	const [loading, setLoading] = useState(true);
 	const nav = useNavigate();
 	const loc = useLocation();
+
+	// Form variables
+	const [order, setOrder] = useState<OrderType>({
+		id: "",
+		userId: "",
+		location: "Dagoretti, Nairobi", // Start with the first select option
+		cardNumber: "",
+		csv: "",
+		email: "",
+		phone: "",
+		items: [],
+	});
 
 	useEffect(() => {
 		setArtIds(loc.state.artIds);
@@ -56,6 +68,69 @@ const Checkout: React.FC = () => {
 		return t;
 	};
 
+	const handle_change = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setOrder({
+			...order,
+			[e.target.name]: e.target.value,
+		});
+	};
+
+	const handle_order_submission = () => {
+		// Set user id
+		const x = localStorage.getItem("artAlchemyUserData");
+
+		if (x != null) {
+			const y = JSON.parse(x);
+
+			// Set items
+			const items: string[] = [];
+
+			artIds.forEach((id) => {
+				const qty =
+					localStorage.getItem(`artAlchemyCartItemQuantity${id}`) || "1";
+
+				const item = { id: id, qty: qty };
+				items.push(JSON.stringify(item));
+			});
+
+			// Update order with userId and items
+			setOrder({
+				...order,
+				userId: y.id,
+				items: items,
+			});
+
+			// Custom order variable due to some bugs with state update
+			const custom_order = {
+				id: '',
+				userId: y.id,
+				location: order.location,
+				cardNumber: order.cardNumber,
+				csv: order.csv,
+				email: order.email,
+				phone: order.phone,
+				items: items
+			}
+
+
+			// Send order to db
+			try {
+				fetch("http://localhost:8080/api/orders", {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(custom_order)
+					
+				})
+			} catch (err) {
+				console.error(err);
+			}
+		}
+	};
+
+
+
 	return (
 		<div className="checkout">
 			<Header />
@@ -63,7 +138,7 @@ const Checkout: React.FC = () => {
 				<div className="checkout-title">Checkout</div>
 
 				<div className="total">Total: Ksh. {calculateTotal()}</div>
-				<button className="order-btn" onClick={() => nav("/order-successful")}>
+				<button className="order-btn" onClick={() => handle_order_submission()}>
 					Order
 				</button>
 				<button className="cart-btn" onClick={() => nav("/")}>
@@ -97,7 +172,15 @@ const Checkout: React.FC = () => {
 
 										<div className="field">
 											<label>Constituency</label>
-											<select name="constituency">
+											<select
+												name="constituency"
+												onChange={(e) =>
+													setOrder({
+														...order,
+														location: e.target.value + ", Nairobi",
+													})
+												}
+											>
 												<option value="Dagoretti">Dagoretti</option>
 												<option value="Embakasi">Embakasi</option>
 												<option value="Kamukunji">Kamukunji</option>
@@ -122,12 +205,22 @@ const Checkout: React.FC = () => {
 									<div className="fields">
 										<div className="field">
 											<label>Email</label>
-											<input type="email" />
+											<input
+												name="email"
+												type="email"
+												value={order.email}
+												onChange={handle_change}
+											/>
 										</div>
 
 										<div className="field">
 											<label>Phone Number</label>
-											<input type="text" />
+											<input
+												name="phone"
+												type="text"
+												value={order.phone}
+												onChange={handle_change}
+											/>
 										</div>
 									</div>
 								</div>
@@ -137,12 +230,16 @@ const Checkout: React.FC = () => {
 									<div className="fields">
 										<div className="field">
 											<label>Card Number</label>
-											<input type="text" />
+											<input
+												name="cardNumber"
+												type="text"
+												onChange={handle_change}
+											/>
 										</div>
 
 										<div className="field">
 											<label>CSV</label>
-											<input type="text" />
+											<input name="csv" type="text" onChange={handle_change} />
 										</div>
 									</div>
 								</div>
@@ -162,14 +259,17 @@ const Checkout: React.FC = () => {
 											<div className="title">{item.title.slice(0, 40)}...</div>
 											<div className="quantity">
 												Qty:{" "}
-												{localStorage.getItem(`artAlchemyCartItem${item.id}`) || '1'}
+												{localStorage.getItem(
+													`artAlchemyCartItemQuantity${item.id}`
+												) || "1"}
 											</div>
 										</div>
 										<div className="price">
 											Ksh.{" "}
 											{parseInt(
-												localStorage.getItem(`artAlchemyCartItem${item.id}`) ||
-													"1"
+												localStorage.getItem(
+													`artAlchemyCartItemQuantity${item.id}`
+												) || "1"
 											) * item.price}
 										</div>
 									</div>
