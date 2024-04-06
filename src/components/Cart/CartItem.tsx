@@ -14,7 +14,7 @@ export const CartItem: React.FC<{id: string, cart: CartType, setCart: (cart: Car
 		const fetchData = async () => {
 			setLoading(true);
 			try {
-				const response = await fetch(`http://localhost:8080/api/art/${id}`);
+				const response = await fetch(`https://art-alchemy-7302d99f4202.herokuapp.com//api/art/${id}`);
 				const data = await response.json();
 				setData(data);
 				setLoading(false);
@@ -58,7 +58,7 @@ export const CartItem: React.FC<{id: string, cart: CartType, setCart: (cart: Car
 
 		try {
 			// Attempt to remove the item from the cart on the server
-			const response = await fetch("http://localhost:8080/api/cart/update", {
+			const response = await fetch("https://art-alchemy-7302d99f4202.herokuapp.com//api/cart/update", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

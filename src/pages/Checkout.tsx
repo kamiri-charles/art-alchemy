@@ -130,7 +130,7 @@ const Checkout: React.FC = () => {
 			setOrderSubmitting(true);
 			// Send order to db
 			try {
-				fetch("http://localhost:8080/api/orders", {
+				fetch("https://art-alchemy-7302d99f4202.herokuapp.com//api/orders", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
@@ -139,7 +139,7 @@ const Checkout: React.FC = () => {
 				}).then((res) => {
 					if (res.ok) {
 						// Clear cart
-						fetch(`http://localhost:8080/api/cart/clear/${y.id}`);
+						fetch(`https://art-alchemy-7302d99f4202.herokuapp.com//api/cart/clear/${y.id}`);
 						// Reset home navTab
 						localStorage.setItem("artAlchemyCurrentNavTab", "home");
 						alert("Order created successfully!");

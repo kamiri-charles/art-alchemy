@@ -24,7 +24,7 @@ const ArtPiece: React.FC<{ data: ArtType, cart: CartType | undefined, setCart: (
 
 	const updateCart = async () => {
 		try {
-			await fetch('http://localhost:8080/api/cart/update', {
+			await fetch('https://art-alchemy-7302d99f4202.herokuapp.com//api/cart/update', {
 				method: "POST",
 				body: JSON.stringify(cart),
 				headers: {

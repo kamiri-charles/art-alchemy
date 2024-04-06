@@ -11,12 +11,12 @@ const AdminDashboard: React.FC<{setCurrentTab: (tab: string) => void}> = ({setCu
 
 	useEffect(() => {
 		setLoading(true);
-		fetch('http://localhost:8080/api/users/total')
+		fetch('https://art-alchemy-7302d99f4202.herokuapp.com//api/users/total')
 			.then(res => res.json())
 			.then(data => setTotalUsers(data))
 			.catch(error => console.error(error))
 
-		fetch('http://localhost:8080/api/art/total')
+		fetch('https://art-alchemy-7302d99f4202.herokuapp.com//api/art/total')
 			.then(res => res.json())
 			.then(data => setTotalArt(data))
 			.catch(error => console.error(error))

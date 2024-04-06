@@ -19,7 +19,7 @@ const ArtListings: React.FC = () => {
 			setLoading(true);
 			try {
 				const response = await fetch(
-					`http://localhost:8080/api/art?page=${currentPage - 1}&size=8`
+					`https://art-alchemy-7302d99f4202.herokuapp.com//api/art?page=${currentPage - 1}&size=8`
 				);
 				const data = await response.json();
 				setArt(data.content);
@@ -40,7 +40,7 @@ const ArtListings: React.FC = () => {
 
 				try {
 					const response = await fetch(
-						`http://localhost:8080/api/cart/${userId}`
+						`https://art-alchemy-7302d99f4202.herokuapp.com//api/cart/${userId}`
 					);
 					const data = await response.json();
 					setCart(data);
@@ -77,7 +77,7 @@ const ArtListings: React.FC = () => {
 		setLoading(true);
 		try {
 			const response = await fetch(
-				`http://localhost:8080/api/art/search?query=${searchTerm}`
+				`https://art-alchemy-7302d99f4202.herokuapp.com//api/art/search?query=${searchTerm}`
 			);
 			const data = await response.json();
 			setArt(data);
