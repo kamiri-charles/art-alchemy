@@ -2,7 +2,6 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
-import Product from './pages/Product'
 import Profile from './components/Profile'
 import NewArt from './pages/NewArt'
 import Art from './pages/Art'
@@ -23,7 +22,6 @@ function App() {
           <Route path='' element={ <Home /> } />
           <Route path='/sign-in' element={ <SignIn /> } />
           <Route path='/sign-up' element={ <SignUp /> } />
-          <Route path='/product' element={ <Product />} />
           <Route path='/profile' element={ <Profile /> } />
           <Route path='/new-art' element={ <NewArt /> } />
           <Route path='/art/:art-id' element={ <Art /> } />

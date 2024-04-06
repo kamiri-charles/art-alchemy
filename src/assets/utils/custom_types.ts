@@ -48,3 +48,15 @@ export type OrderType = {
 	phone: string;
 	items: string[];
 };
+
+
+export type UserSignInType = {
+	username: string;
+	password: string;
+}
+
+export type UserSignUpType = {
+	username: string;
+	email: string;
+	password: string;
+}

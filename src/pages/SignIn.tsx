@@ -2,18 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import RandomBackground from "../assets/utils/RandomBackground";
 import { MetroSpinner } from "react-spinners-kit";
+import { sign_in_user } from "../api/users";
+import { UserSignInType } from "../assets/utils/custom_types";
 import '../styles/signIn&signUp.scss';
 
 const SignIn: React.FC = () => {
-	type UserData = {
-		username: string;
-		password: string;
-	};
 
-	const [userData, setUserData] = useState<UserData>({
-		username: "",
-		password: "",
-	});
+	const [userData, setUserData] = useState<UserSignInType>({username: "", password: ""});
 	const [loading, setLoading] = useState(false);
 	const [usernameValid, setUsernameValid] = useState(false);
 	const [passwordValid, setPasswordValid] = useState(false);
@@ -49,16 +44,7 @@ const SignIn: React.FC = () => {
 		setLoading(true);
 
 		if (usernameValid && passwordValid) {
-			// Fetch user data from backend
-			fetch("http://localhost:8080/api/users/sign-in", {
-				method: "POST",
-				body: JSON.stringify(userData),
-				headers: {
-					"Content-Type": "application/json",
-				},
-			})
-				.then((res) => res.json())
-				.then((data) => {
+				sign_in_user(userData).then(data => {
 					if (data.error) {
 						console.error(data.error);
 						setError(data.error);
@@ -78,7 +64,9 @@ const SignIn: React.FC = () => {
 
 	return (
 		<div className="sign-in">
+
 			<RandomBackground />
+			
 			<div className="form-wrapper">
 				<div className="left">
 					<div className="brand">ART ALCHEMY</div>

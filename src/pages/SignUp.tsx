@@ -2,21 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { MetroSpinner } from "react-spinners-kit";
 import RandomBackground from "../assets/utils/RandomBackground";
+import { sign_up_user } from "../api/users";
+import { UserSignUpType } from "../assets/utils/custom_types";
 import '../styles/signIn&signUp.scss';
 
 const SignUp: React.FC = () => {
-	
-	type UserData = {
-		username: string;
-		email: string;
-		password: string;
-	};
 
-	const [userData, setUserData] = useState<UserData>({
-		username: "",
-		email: "",
-		password: "",
-	});
+	const [userData, setUserData] = useState<UserSignUpType>({username: "", email: "", password: ""});
 	const [loading, setLoading] = useState(false);
 	const [usernameValid, setUsernameValid] = useState(false);
 	const [emailValid, setEmailValid] = useState(false);
@@ -58,14 +50,7 @@ const SignUp: React.FC = () => {
 
 		if (usernameValid && emailValid && passwordValid) {
 			// Fetch user data from backend
-			fetch("http://localhost:8080/api/users/sign-up", {
-				method: "POST",
-				body: JSON.stringify(userData),
-				headers: {
-					"Content-Type": "application/json",
-				},
-			})
-				.then((res) => res.json())
+			sign_up_user(userData)
 				.then((data) => {
 					if (data.error) {
 						setError(data.error);

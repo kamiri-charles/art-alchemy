@@ -2,19 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import { ArtType, OrderType } from "../assets/utils/custom_types";
+import { fetch_art_by_ids } from "../api/art";
 import { ImpulseSpinner, MetroSpinner } from "react-spinners-kit";
 import "swiper/swiper-bundle.css";
 import "../styles/checkout.scss";
 
 const Checkout: React.FC = () => {
-	const [artIds, setArtIds] = useState([]);
+	const [artIds, setArtIds] = useState<string[]>();
 	const [artData, setArtData] = useState<ArtType[]>();
 	const [loading, setLoading] = useState(true);
 	const nav = useNavigate();
 	const loc = useLocation();
 
 	const [orderSubmitting, setOrderSubmitting] = useState(false);
-
 
 	// Form variables
 	const [order, setOrder] = useState<OrderType>({
@@ -31,31 +31,21 @@ const Checkout: React.FC = () => {
 	useEffect(() => {
 		setArtIds(loc.state.artIds);
 
-		const fetchArtData = async () => {
+		if (artIds) {
 			setLoading(true);
-
-			try {
-				const response = await fetch("http://localhost:8080/api/art/ids", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(artIds),
+			fetch_art_by_ids(artIds)
+				.then((data) => {
+					setArtData(data);
+					setLoading(false);
+				})
+				.catch((err) => {
+					console.error(
+						"There was an error getting the cart associated with this user.",
+						err
+					);
+					setLoading(false);
 				});
-
-				const data = await response.json();
-				setArtData(data);
-				setLoading(false);
-			} catch (error) {
-				console.error(
-					"There was an error getting the cart associated with this user.",
-					error
-				);
-				setLoading(false);
-			}
-		};
-
-		fetchArtData();
+		}
 	}, [artIds, loc]);
 
 	const calculateTotal = () => {
@@ -90,7 +80,6 @@ const Checkout: React.FC = () => {
 		setOrder({ ...order, cardNumber: formattedInput });
 	};
 
-
 	const handleCSVChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const input = e.target.value;
 		// Remove any non-digit characters from input
@@ -111,7 +100,7 @@ const Checkout: React.FC = () => {
 			// Set items
 			const items: string[] = [];
 
-			artIds.forEach((id) => {
+			artIds?.forEach((id) => {
 				const qty =
 					localStorage.getItem(`artAlchemyCartItemQuantity${id}`) || "1";
 
@@ -128,53 +117,49 @@ const Checkout: React.FC = () => {
 
 			// Custom order variable due to some bugs with state update
 			const customOrder = {
-				id: '',
+				id: "",
 				userId: y.id,
 				location: order.location,
 				cardNumber: order.cardNumber,
 				csv: order.csv,
 				email: order.email,
 				phone: order.phone,
-				items: items
-			}
+				items: items,
+			};
 
 			setOrderSubmitting(true);
 			// Send order to db
 			try {
 				fetch("http://localhost:8080/api/orders", {
-					method: 'POST',
+					method: "POST",
 					headers: {
-						'Content-Type': 'application/json'
+						"Content-Type": "application/json",
 					},
-					body: JSON.stringify(customOrder)
-				})
-					.then(res => {
-						if (res.ok) {
-							// Clear cart
-							fetch(`http://localhost:8080/api/cart/clear/${y.id}`)
-							// Reset home navTab
-							localStorage.setItem('artAlchemyCurrentNavTab', 'home');
-							alert("Order created successfully!");
-							// Navigate to homepage
-							nav('/');
-						} else {
-							alert("There was an error creating your order.");
-							setOrderSubmitting(false);
-						}
-					})
-
-
+					body: JSON.stringify(customOrder),
+				}).then((res) => {
+					if (res.ok) {
+						// Clear cart
+						fetch(`http://localhost:8080/api/cart/clear/${y.id}`);
+						// Reset home navTab
+						localStorage.setItem("artAlchemyCurrentNavTab", "home");
+						alert("Order created successfully!");
+						// Navigate to homepage
+						nav("/");
+					} else {
+						alert("There was an error creating your order.");
+						setOrderSubmitting(false);
+					}
+				});
 			} catch (err) {
 				console.error(err);
 			}
 		}
 	};
 
-
 	return (
 		<div className="checkout">
-			<div className={`blanket-loader ${orderSubmitting ? 'visible': ''}`}>
-				<ImpulseSpinner frontColor='white' size={80} />
+			<div className={`blanket-loader ${orderSubmitting ? "visible" : ""}`}>
+				<ImpulseSpinner frontColor="white" size={80} />
 			</div>
 			<Header />
 			<div className="checkout-header">
@@ -283,7 +268,12 @@ const Checkout: React.FC = () => {
 
 										<div className="field">
 											<label>CSV</label>
-											<input name="csv" type="text" value={order.csv} onChange={handleCSVChange} />
+											<input
+												name="csv"
+												type="text"
+												value={order.csv}
+												onChange={handleCSVChange}
+											/>
 										</div>
 									</div>
 								</div>

@@ -1,47 +1,103 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../components/Header";
-import { ArtType } from "../assets/utils/custom_types";
-import { MetroSpinner } from "react-spinners-kit";
 import SwiperCore from "swiper";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { ArtType, CartType } from "../assets/utils/custom_types";
+import { fetch_art_by_id } from "../api/art";
+import { MetroSpinner } from "react-spinners-kit";
 import "../styles/art.scss";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const Art: React.FC = () => {
+	const loc = useLocation();
 	const [art, setArt] = useState<ArtType>();
+	const [cart, setCart] = useState<CartType>();
+	const [inCart, setInCart] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
-	const loc = useLocation();
 	const swiperRef = useRef<SwiperCore | null>(null);
 
 	useEffect(() => {
-		const fetchArt = async () => {
-			setLoading(true);
-			try {
-				const response = await fetch(
-					`http://localhost:8080/api/art/${loc.state.art_id}`
-				);
-				const data = await response.json();
+		setLoading(true);
+		fetch_art_by_id(loc.state.art_id)
+			.then((data) => {
 				setArt(data);
 				setLoading(false);
-			} catch (err) {
-				console.error("Error fetching users:", err);
+			})
+			.catch((err) => {
 				setError(
 					"There was an error getting your art. Try refrshing the page. <br /> Error: " +
 						err
 				);
 				setLoading(false);
+			});
+
+		
+		const fetchCart = async () => {
+			const rawUserData = localStorage.getItem("artAlchemyUserData");
+
+			if (rawUserData != null) {
+				const userId = JSON.parse(rawUserData).id;
+
+				try {
+					const response = await fetch(
+						`http://localhost:8080/api/cart/${userId}`
+					);
+					const data = await response.json();
+					setCart(data);
+
+					if (cart?.artIds.includes(loc.state.art_id)) setInCart(true);
+
+				} catch (error) {
+					console.error(
+						"There was an error getting the cart associated with this user.",
+						error
+					);
+				}
 			}
 		};
-		fetchArt();
+
+		fetchCart();
 
 		if (swiperRef.current) {
 			swiperRef.current.update();
 		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [loc.state.art_id]);
+
+	const updateCart = async () => {
+		try {
+			await fetch("http://localhost:8080/api/cart/update", {
+				method: "POST",
+				body: JSON.stringify(cart),
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	const addToCart = (
+		evt: React.MouseEvent<HTMLElement, MouseEvent>,
+		id: string
+	) => {
+		evt.stopPropagation();
+
+		const tempArtIds = cart?.artIds;
+
+		if (tempArtIds) {
+			tempArtIds.push(id);
+			setCart({ ...cart, artIds: tempArtIds });
+			setInCart(true);
+
+			updateCart();
+		}
+	};
 
 	return (
 		<div className="art">
@@ -86,10 +142,17 @@ const Art: React.FC = () => {
 										<span>Share</span>
 									</div>
 
-									<div className="action fl-c-c">
-										<i className="bx bx-cart"></i>
-										<span>Add to Cart</span>
-									</div>
+									{inCart ? (
+										<div className="action fl-c-c">
+											<i className="bx bx-check"></i>
+											<span>Item already in cart</span>
+										</div>
+									) : (
+										<div className="action fl-c-c" onClick={evt => addToCart(evt, loc.state.art_id)}>
+											<i className="bx bx-cart"></i>
+											<span>Add to Cart</span>
+										</div>
+									)}
 								</div>
 							</div>
 

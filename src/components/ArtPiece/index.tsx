@@ -20,7 +20,6 @@ const ArtPiece: React.FC<{ data: ArtType, cart: CartType | undefined, setCart: (
 			swiperRef.current.update();
 		}
 
-
 	}, [data.imageData]);
 
 	const updateCart = async () => {
@@ -51,23 +50,6 @@ const ArtPiece: React.FC<{ data: ArtType, cart: CartType | undefined, setCart: (
 			updateCart();
 		}
 
-	};
-
-	const removeFromCart = (evt: React.MouseEvent<HTMLElement, MouseEvent>, id: string) => {
-		evt.stopPropagation();
-		
-		const tempArtIds = cart?.artIds;
-		
-		if (tempArtIds) {
-			// Remove the id from the array
-			const idx = tempArtIds.indexOf(id);
-			const tempArtIds2 = tempArtIds.splice(idx, 1);
-			
-			setCart({...cart, artIds: tempArtIds2});
-			setInCart(false);
-
-			updateCart();
-		}
 	};
 
 
@@ -115,7 +97,7 @@ const ArtPiece: React.FC<{ data: ArtType, cart: CartType | undefined, setCart: (
 					<div className="price">Ksh. {data.price}</div>
 
 					{inCart ? (
-						<i className="bx bx-check fl-c-c" onClick={evt => removeFromCart(evt, data.id)}></i>
+						<i className="bx bx-check fl-c-c"></i>
 					) : (
 						<i className="bx bx-cart fl-c-c" onClick={evt => addToCart(evt, data.id)}></i>
 					)}

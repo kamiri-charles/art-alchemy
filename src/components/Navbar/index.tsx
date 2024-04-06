@@ -47,14 +47,6 @@ const Navbar: React.FC<{
 				</div>
 
 				<div
-					className={`link ${currentTab == "events" ? "active" : ""}`}
-					onClick={() => handleTabChange("events")}
-				>
-					<i className="bx bx-calendar-event"></i>
-					<span>Events</span>
-				</div>
-
-				<div
 					className={`link ${
 						localStorage.getItem("artAlchemyUserData") ? "" : "hidden"
 					} ${currentTab == "cart" ? "active" : ""}`}
