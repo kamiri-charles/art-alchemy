@@ -89,7 +89,7 @@ const NewArt: React.FC = () => {
 					};
 
 
-					fetch("https://art-alchemy-7302d99f4202.herokuapp.com//api/art/", {
+					fetch("https://art-alchemy-7302d99f4202.herokuapp.com/api/art/", {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json",

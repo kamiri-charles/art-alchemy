@@ -14,7 +14,7 @@ const AdminUsers: React.FC = () => {
     const handleSearch = async () => {
         setLoading(true);
         try {
-            const response = await fetch(`https://art-alchemy-7302d99f4202.herokuapp.com//api/users/search?query=${searchTerm}`);
+            const response = await fetch(`https://art-alchemy-7302d99f4202.herokuapp.com/api/users/search?query=${searchTerm}`);
             const data = await response.json();
             setUsers(data);
         } catch (error) {
@@ -27,7 +27,7 @@ const AdminUsers: React.FC = () => {
         const fetchUsers = async () => {
           setLoading(true);
             try {
-                const response = await fetch(`https://art-alchemy-7302d99f4202.herokuapp.com//api/users?page=${currentPage - 1}&size=8`);
+                const response = await fetch(`https://art-alchemy-7302d99f4202.herokuapp.com/api/users?page=${currentPage - 1}&size=8`);
                 const data = await response.json();
                 setUsers(data.content);
                 setTotalPages(data.totalPages);

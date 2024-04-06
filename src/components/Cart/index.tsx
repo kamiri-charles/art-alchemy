@@ -21,7 +21,7 @@ const Cart: React.FC = () => {
 
 				try {
 					const response = await fetch(
-						`https://art-alchemy-7302d99f4202.herokuapp.com//api/cart/${userId}`
+						`https://art-alchemy-7302d99f4202.herokuapp.com/api/cart/${userId}`
 					);
 					const data = await response.json();
 					setCart(data);

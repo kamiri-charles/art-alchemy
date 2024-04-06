@@ -57,7 +57,7 @@ const AdminNewUser: React.FC = () => {
 
 		if (usernameValid && emailValid && passwordValid) {
 			// Fetch user data from backend
-			fetch("https://art-alchemy-7302d99f4202.herokuapp.com//api/users/sign-up", {
+			fetch("https://art-alchemy-7302d99f4202.herokuapp.com/api/users/sign-up", {
 				method: "POST",
 				body: JSON.stringify(userData),
 				headers: {
