@@ -46,8 +46,8 @@ const SignIn: React.FC = () => {
 		if (usernameValid && passwordValid) {
 				sign_in_user(userData).then(data => {
 					if (data.error) {
-						console.error(data.error);
-						setError(data.error);
+						console.error(data);
+						setError("There was an error signning you in. Check your credentials and try again.");
 						setLoading(false);
 					} else {
 						// Save user data to local storage

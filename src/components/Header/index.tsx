@@ -76,6 +76,12 @@ const Header:React.FC = () => {
 								)}
 								<span>Sign Out</span>
 							</div>
+
+							<div className="option fl-c admin" onClick={() => nav('/admin')}>
+								<i className="bx bx-shield"></i>
+								<span>Admin</span>
+							</div>
+
 						</div>
 					</div>
 				) : (

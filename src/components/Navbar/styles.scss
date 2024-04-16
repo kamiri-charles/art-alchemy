@@ -51,10 +51,6 @@
                 bottom: 40px;
             }
 
-            &.hidden {
-                display: none;
-            }
-
 
             &:hover:has(i), &.active {
                 background: var(--ui-white);

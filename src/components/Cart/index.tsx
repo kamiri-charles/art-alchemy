@@ -41,6 +41,14 @@ const Cart: React.FC = () => {
 
 	return (
 		<div className="cart fl-c">
+			{
+				localStorage.getItem("artAlchemyUserData") == null && (
+					<div className="cart-empty fl-c-c">
+						<i className="bx bx-cart"></i>
+						<span>Please log in to view your cart.</span>
+					</div>
+				)
+			}
 			{loading ? (
 				<div className="loader">
 					<MetroSpinner />

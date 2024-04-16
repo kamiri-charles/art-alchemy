@@ -101,6 +101,10 @@
                         color: white;
                     }
 
+                    &.admin {
+                        background: var(--ui-tertiary);
+                    }
+
                     @media (min-width: 768px) {
                         &.sign-out {display: none;}
                     }
