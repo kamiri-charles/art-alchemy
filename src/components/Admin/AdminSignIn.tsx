@@ -71,11 +71,16 @@ const AdminSignIn: React.FC = () => {
     else setPasswordValid(false);
   }, [userData.password.length, userData.username.length]);
 
+  const request_for_admin = () => {
+    alert("Your request has been sent succesfully!");
+    nav('/');
+  };
+
 
   return (
 		<div className="admin-sign-in">
 			<RandomBackground />
-			<div className="admin-sign-in-logo">
+			<div className="admin-sign-in-logo" onClick={() => nav('/')}>
         ART ALCHEMY
 			</div>
 
@@ -135,7 +140,7 @@ const AdminSignIn: React.FC = () => {
 					</button>
 				)}
 
-        <button className='admin-request'>Request for admin priviledges</button>
+        <button className='admin-request' onClick={() => request_for_admin()}>Request for admin priviledges</button>
 			</form>
 		</div>
 	);

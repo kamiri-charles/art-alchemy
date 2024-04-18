@@ -1,4 +1,4 @@
-.admin-users {
+.admin-art {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -13,49 +13,14 @@
         left: 120px;
     }
 
-    button.gen-report {
-        position: fixed;
-        top: 60px;
-        right: 200px;
-        padding: 8px 20px;
-        background: var(--ui-primary);
-        color: white;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-
-        &:hover {
-            background: var(--ui-white);
-            color: black;
-        }
-    }
-
-    button.new-user-btn {
-        position: fixed;
-        top: 60px;
-        right: 60px;
-        width: 120px;
-        padding: 8px 20px;
-        background: var(--ui-primary);
-        color: white;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-
-        &:hover {
-            background: var(--ui-white);
-            color: black;
-        }
-    }
-
-    .users-loader {
+    .art-loader {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
 
-    .admin-user-wrapper {
+    .admin-art-wrapper {
         position: relative;
         display: flex;
         width: 500px;
@@ -66,16 +31,15 @@
         border-radius: 10px;
         padding: 20px;
 
-        .admin-user-img {
-            width: 30%;
-            height: 100%;
+        .admin-art-img {
+            width: 40%;
             display: grid;
             place-items: center;
             font-size: 60px;
-            color: black;
+            margin-inline: 10px;
         }
 
-        .admin-user-meta {
+        .admin-art-meta {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -90,37 +54,24 @@
             }
         }
 
-        .admin-user-btns {
+        .admin-art-btns {
             position: absolute;
             bottom: 10px;
             right: 10px;
             display: flex;
 
             button {
-                background: black;
-                color: white;
-                border-radius: 5px;
                 padding: 5px 10px;
                 margin-inline: 10px;
+                border-radius: 5px;
+                background: var(--ui-secondary);
+                color: white;
                 cursor: pointer;
-
-                &.manage-btn {
-                    background: var(--ui-primary);
-
-                    @media (max-width: 768px) {
-                        background: var(--ui-white);
-                        color: var(--ui-black);
-                    }
-                }
-
-                &.remove-btn {
-                    background: var(--ui-secondary);
-                }
             }
         }
     }
 
-    .users-fetch-error {
+    .art-fetch-error {
         position: absolute;
         top: 40%;
         left: 50%;
@@ -158,7 +109,7 @@
 
 /* Mobile */
 @media (max-width: 768px) {
-    .admin-users {
+    .admin-art {
         height: 100%;
         overflow-x: hidden;
 
@@ -178,14 +129,14 @@
             z-index: 1;
         }
 
-        button.new-user-btn {
+        button.new-art-btn {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1;
         }
 
-        .admin-user-wrapper {
+        .admin-art-wrapper {
             width: 100%;
             background: var(--ui-primary);
             color: white;

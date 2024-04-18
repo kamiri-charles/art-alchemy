@@ -1,7 +1,10 @@
 import React from 'react'
 import '../../styles/admin/adminNavbar.scss'
+import { useNavigate } from 'react-router-dom';
 
 const AdminNavbar: React.FC<{currentTab: string; setCurrentTab: (tab: string) => void}> = ({currentTab, setCurrentTab}) => {
+
+	const nav = useNavigate();
 
 	// Handle link click
 	const handleTabChange = (tabValue: string) => {
@@ -45,19 +48,16 @@ const AdminNavbar: React.FC<{currentTab: string; setCurrentTab: (tab: string) =>
 				</div>
 
 				<div
-					className={`link ${currentTab == "stats" ? "active" : ""}`}
-					onClick={() => handleTabChange("stats")}
-				>
-					<i className="bx bx-stats"></i>
-					<span>Stats</span>
-				</div>
-
-				<div
 					className={`link ${currentTab == "settings" ? "active" : ""}`}
 					onClick={() => handleTabChange("settings")}
 				>
 					<i className="bx bx-cog"></i>
 					<span>Settings</span>
+				</div>
+
+				<div className="link" onClick={() => nav('/')}>
+					<i className="bx bx-left-arrow-alt"></i>
+					<span>Back</span>
 				</div>
 			</div>
 		</div>

@@ -55,7 +55,7 @@ const Navbar: React.FC<{
 				</div>
 
 				<div
-					className={`link ${currentTab == "products" ? "active" : ""}`}
+					className={`link ${currentTab == "cart" ? "active" : ""}`}
 					onClick={() => handleTabChange("cart")}
 				>
 					<i className="bx bx-cart"></i>

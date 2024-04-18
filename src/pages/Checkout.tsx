@@ -182,7 +182,7 @@ const Checkout: React.FC = () => {
 				) : (
 					<>
 						<div className="left">
-							<div className="left-title">Getting your order</div>
+							<div className="left-title">Preparing your order</div>
 
 							<form>
 								<div className="form-section">

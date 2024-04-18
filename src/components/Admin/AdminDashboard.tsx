@@ -112,11 +112,11 @@ const AdminDashboard: React.FC<{setCurrentTab: (tab: string) => void}> = ({setCu
 				</div>
 			</div>
 
-			<div className="app-metrics">
+			<div className="app-metrics fl-c-c">
 				<div className="app-metrics-title">Metrics</div>
 
 				<div className="metrics-loader">
-					<MetroSpinner color="black" size={30} />
+					{loading ? <MetroSpinner color="black" size={30} /> : <span>No issues detected!</span> }
 				</div>
 			</div>
 		</div>

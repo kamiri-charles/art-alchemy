@@ -95,7 +95,7 @@ const AdminNewUser: React.FC = () => {
 				</div>
 
 				<div className="right">
-					<div className="back-btn" onClick={() => nav("/")}>
+					<div className="back-btn" onClick={() => nav("/admin")}>
 						<i className="bx bx-x"></i>
 					</div>
 

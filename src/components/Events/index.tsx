@@ -4,7 +4,7 @@ import './styles.scss'
 const Events: React.FC = () => {
   return (
     <div className='events'>
-        This is the events page.
+        <div className="no-events">There are no events to display.</div>
     </div>
   )
 }
