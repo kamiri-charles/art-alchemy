@@ -4,8 +4,8 @@
     left: 0;
     width: 100vw;
     height: var(--header-height);
-    color: white;
-    background: var(--ui-black);
+    color: var(--ui-black);
+    background: var(--ui-white);
 
     display: flex;
     padding: 20px;
@@ -15,12 +15,25 @@
     .left {
         .logo {
             position: absolute;
-            left: 10%;
+            left: 0;
             font-family: 'Honk', sans-serif;
             font-size: 30px;
             cursor: pointer;
             display: grid;
             place-items: center;
+
+            img {
+                height: 60%;
+                pointer-events: none;
+
+                @media (max-width: 768px) {
+                    height: 50%;
+                }
+            }
+
+            @media (max-width: 768px) {
+                left: -40px;
+            }
             
         }
     }
@@ -48,8 +61,8 @@
                 cursor: pointer;
     
                 &:hover {
-                    color: var(--ui-black);
-                    background: var(--ui-white);
+                    color: var(--ui-white);
+                    background: var(--ui-black);
                 }
 
                 @media (max-width: 768px) {

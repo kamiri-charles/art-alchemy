@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MetroSpinner } from 'react-spinners-kit'
+import brand_img from '../../assets/images/art-alchemy-brand-text-light.jpg'
 import './styles.scss'
 
 const Header:React.FC = () => {
@@ -32,8 +33,7 @@ const Header:React.FC = () => {
 		<div className="header">
 			<div className="left fl-c">
 				<div className="logo" onClick={() => nav('/')}>
-					<span>Art</span>
-					<span>Alchemy</span>
+					<img src={brand_img} alt="Art Alchemy" />
 				</div>
 			</div>
 
