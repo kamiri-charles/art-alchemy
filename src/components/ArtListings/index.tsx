@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ArtPiece from "../ArtPiece";
 import { MetroSpinner } from "react-spinners-kit";
 import { ArtType, CartType } from "../../assets/utils/custom_types";
@@ -13,6 +13,7 @@ const ArtListings: React.FC = () => {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [cart, setCart] = useState<CartType>();
+	const artListingsRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		const fetchArt = async () => {
@@ -56,6 +57,16 @@ const ArtListings: React.FC = () => {
 
 		fetchCart();
 
+		const handleScroll = () => {
+			if (
+				artListingsRef.current?.scrollTop !== undefined &&
+				artListingsRef.current?.scrollTop > 10
+			) document.documentElement.style.setProperty('--header-height', '80px');
+				else document.documentElement.style.setProperty('--header-height', '100px');
+		}
+
+		artListingsRef.current?.addEventListener("scroll", handleScroll);
+
 		
 
 	}, [currentPage]);
@@ -89,7 +100,7 @@ const ArtListings: React.FC = () => {
 	};
 
 	return (
-		<div className="art-listings fl-c">
+		<div className="art-listings fl-c" ref={artListingsRef}>
 
 			<div className="searchbar">
 				<input type="text" placeholder="Search" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} />
