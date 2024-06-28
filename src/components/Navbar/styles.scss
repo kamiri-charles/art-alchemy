@@ -4,7 +4,7 @@
     left: 0;
     width: var(--navbar-width);
     height: calc(100vh - var(--header-height));
-    border-right: 1px solid white;
+    border-right: 1px solid var(--ui-black);
     color: var(--ui-white);
 
     .links {
@@ -33,13 +33,14 @@
             cursor: pointer;
             transition: all 0.3s ease;
             overflow: visible;
+            color: var(--ui-black);
 
             span {
                 position: absolute;
                 top: 100%;
                 width: 80px;
                 text-align: center;
-                color: white;
+                color: var(--ui-black);
                 opacity: 0;
                 font-family: 'Edu TAS Beginner', cursive;
                 font-size: 16px;
@@ -53,8 +54,8 @@
 
 
             &:hover:has(i), &.active {
-                background: var(--ui-white);
-                color: var(--ui-black);
+                background: var(--ui-black);
+                color: var(--ui-white);
             }
 
 

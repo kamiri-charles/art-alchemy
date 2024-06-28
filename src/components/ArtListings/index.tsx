@@ -27,7 +27,7 @@ const ArtListings: React.FC = () => {
 				setTotalPages(data.totalPages);
 				setLoading(false);
 			} catch (error) {
-				console.error("Error fetching users:", error);
+				console.error("Error fetching art:", error);
 				setLoading(false);
 			}
 		};
@@ -109,7 +109,7 @@ const ArtListings: React.FC = () => {
 
 			{loading ? (
 				<div className="loader">
-					<MetroSpinner />
+					<MetroSpinner color='black' />
 				</div>
 			) : (
 				<div className="pieces">

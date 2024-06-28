@@ -85,13 +85,13 @@
                 padding: 10px 20px;
                 top: 80px;
                 right: 20px;
-                background: white;
+                background: var(--ui-dark-grey);
                 border-radius: 10px;
                 transition: all 0.3s ease;
                 z-index: 999;
 
                 .option {
-                    color: black;
+                    color: var(--ui-white);
                     padding: 10px 20px;
                     width: 100%;
                     transition: all 0.3s ease;

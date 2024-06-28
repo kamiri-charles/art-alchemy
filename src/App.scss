@@ -43,7 +43,7 @@ p, h1, h2, h3, h4, h5, h6 {
   --ui-tertiary: #FDCA40;
   --ui-black: #080708;
   --ui-light-black: #1E1E1E;
-  --ui-light-grey: #F5F5F5;
+  --ui-light-grey: #F0F0F0;
   --ui-dark-grey: #2E2E2E;
   --ui-white: #FFF;
 
@@ -94,8 +94,7 @@ p, h1, h2, h3, h4, h5, h6 {
 /* App */
 .App {
   position: fixed;
-  //background: var(--ui-primary);
-  background: linear-gradient(to bottom right, var(--ui-primary), var(--ui-secondary));
+  background: var(--ui-white);
   width: 100vw;
   height: 100vh;
   font-family: 'Ubuntu', sans-serif;
