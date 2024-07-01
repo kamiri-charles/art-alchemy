@@ -16,6 +16,7 @@ const ArtPiece: React.FC<{ data: ArtType, cart: CartType | undefined, setCart: (
 	const [inCart, setInCart] = useState(cart?.artIds.includes(data.id));
 	const [imageData, setImageData] = useState<string[]>([]);
 	const [imagesLoaded, setImagesLoaded] = useState(false);
+	const [imageError, setImageError] = useState(false);
 	const nav = useNavigate();
 	const swiperRef = useRef<SwiperCore | null>(null);
 
@@ -28,7 +29,11 @@ const ArtPiece: React.FC<{ data: ArtType, cart: CartType | undefined, setCart: (
 		.then(imgData => {
 			setImageData(imgData);
 			setImagesLoaded(true);
-		});
+		})
+		.catch(err => {
+			setImageError(true);
+			console.error(err);
+		})
 
 	}, [data.id]);
 
@@ -84,7 +89,14 @@ const ArtPiece: React.FC<{ data: ArtType, cart: CartType | undefined, setCart: (
 					</Swiper>
 				) : (
 					<div className="art-image-loader">
-						<ImpulseSpinner backColor="#3772FF" frontColor="#DF2935" />
+						{imageError ? (
+							<div className="image-load-error">
+								<i className="bx bx-error"></i>
+								<span>There was an error getting image data for this piece. <br /> Try refreshing.</span>
+							</div>
+						) : (
+							<ImpulseSpinner backColor="#3772FF" frontColor="#DF2935" />
+						)}
 					</div>
 				)}
 			</div>

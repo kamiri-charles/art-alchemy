@@ -93,6 +93,17 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+
+        .image-load-error {
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: var(--ui-white);
+
+            i {
+                font-size: 40px;
+            }
+        }
     }
 }
 

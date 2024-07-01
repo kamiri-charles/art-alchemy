@@ -69,7 +69,7 @@ const Navbar: React.FC<{
 					onClick={() => logout()}
 				>
 					{signOutLoading ? (
-						<MetroSpinner size={25} />
+						<MetroSpinner size={25} color="black" />
 					) : (
 						<>
 							<i className="bx bx-log-out"></i>

@@ -90,13 +90,13 @@
 
             .text-sec {
                 width: 80%;
-                color: white;
 
                 .title {
                     padding-inline: 20px;
                 }
 
                 .owner {
+                    color: var(--ui-secondary);
                     padding-inline: 20px;
                 }
             }
@@ -104,7 +104,6 @@
 
         .stats {
             display: flex;
-            color: white;
             font-size: 18px;
 
             .stat {
@@ -124,7 +123,8 @@
             .tag {
                 padding: 5px 20px;
                 border-radius: 5px;
-                background: white;
+                background: var(--ui-black);
+                color: white;
                 margin: 10px;
                 cursor: pointer;
                 transition: all 0.3s ease;

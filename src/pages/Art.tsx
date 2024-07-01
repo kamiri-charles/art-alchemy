@@ -65,7 +65,6 @@ const Art: React.FC = () => {
 		if (swiperRef.current) {
 			swiperRef.current.update();
 		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [loc.state.art_id]);
 
 	const updateCart = async () => {
@@ -163,7 +162,7 @@ const Art: React.FC = () => {
 									</div>
 									<div className="text-sec">
 										<div className="title">{art?.title}</div>
-										<div className="owner">By {art?.owner}</div>
+										<div className="owner">{art?.owner}</div>
 									</div>
 								</div>
 
@@ -247,7 +246,7 @@ const Art: React.FC = () => {
 				</>
 			) : (
 				<div className="loader">
-					<MetroSpinner />
+					<MetroSpinner color="black" />
 				</div>
 			)}
 		</div>
