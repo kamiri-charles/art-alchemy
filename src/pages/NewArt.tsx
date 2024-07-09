@@ -5,6 +5,7 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import RandomBackground from "../assets/utils/RandomBackground";
 import { MetroSpinner } from "react-spinners-kit";
+import brand_img from '../assets/images/art-alchemy-brand-text-light.jpg';
 import "swiper/swiper-bundle.css";
 import "../styles/newArt.scss";
 
@@ -130,7 +131,8 @@ const NewArt: React.FC = () => {
 					{/* Slide 1 */}
 					<SwiperSlide className="form-slide">
 						<div className="slide-logo">
-							<span>Art Alchemy</span> | New Art
+							<img src={brand_img} alt="" />
+							<span>New Art</span>
 						</div>
 
 						<div className="slide-title">Art Details</div>
@@ -181,7 +183,8 @@ const NewArt: React.FC = () => {
 					{/* Slide 2 */}
 					<SwiperSlide className="form-slide">
 						<div className="slide-logo">
-							<span>Art Alchemy</span> | New Art
+							<img src={brand_img} alt="" />
+							<span>New Art</span>
 						</div>
 
 						<div className="slide-title">Description & Tags</div>
@@ -218,7 +221,8 @@ const NewArt: React.FC = () => {
 					{/* Slide 3 */}
 					<SwiperSlide className="form-slide">
 						<div className="slide-logo">
-							<span>Art Alchemy</span> | New Art
+							<img src={brand_img} alt="" />
+							<span>New Art</span>
 						</div>
 
 						<div className="slide-title">Category & Price</div>

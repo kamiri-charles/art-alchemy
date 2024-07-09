@@ -46,8 +46,14 @@
 		font-family: 'Edu TAS Beginner', cursive;
 		font-size: 24px;
 		
+		img {
+			width: 180px;
+		}
+		
 		span {
-			font-family: 'Honk', sans-serif;
+			color: var(--ui-primary);
+			font-weight: 600;
+			margin-left: 4px;
 		}
 	}
 
