@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MetroSpinner } from 'react-spinners-kit'
-import brand_img from '../../assets/images/art-alchemy-brand-text-light.jpg'
 import './styles.scss'
 
 const Header:React.FC = () => {
@@ -31,31 +30,25 @@ const Header:React.FC = () => {
 
 	return (
 		<div className="header">
-			<div className="left fl-c">
-				<div className="logo" onClick={() => nav('/')}>
-					<img src={brand_img} alt="Art Alchemy" />
-				</div>
+			<div className="left">
+				Art Alchemy
 			</div>
 
-			<div className="right fl-c">
+			<div className="right">
 				{userData ? (
 					<div className="user-logged-in">
-
-						<div className="add-art-btn" onClick={() => nav('/new-art')}>
-							<i className="bx bx-plus"></i>
-						</div>
 
 						<div
 							className="menu-icon"
 							onClick={() => setMenuActive(!menuActive)}
 						>
-							<i className={menuActive ? "bx bx-x" : "bx bx-menu"}></i>
+							<i className="bx bx-user"></i>
 						</div>
 
 						<div className={`options fl-c-c ${menuActive ? "" : "hidden"}`}>
 							<div className="option fl-c" onClick={() => nav('/profile')}>
 								<i className="bx bx-user"></i>
-								<span>My Profile</span>
+								<span>Profile</span>
 							</div>
 
 							<div className="option fl-c">
@@ -64,8 +57,8 @@ const Header:React.FC = () => {
 							</div>
 
 							<div className="option fl-c">
-								<i className="bx bx-car"></i>
-								<span>Orders</span>
+								<i className="bx bx-cart"></i>
+								<span>Cart</span>
 							</div>
 
 							<div className="option fl-c sign-out" onClick={() => logout()}>
@@ -75,11 +68,6 @@ const Header:React.FC = () => {
 									<i className="bx bx-log-out"></i>
 								)}
 								<span>Sign Out</span>
-							</div>
-
-							<div className="option fl-c admin" onClick={() => nav('/admin')}>
-								<i className="bx bx-shield"></i>
-								<span>Admin</span>
 							</div>
 
 						</div>

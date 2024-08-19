@@ -1,12 +1,10 @@
 .art-piece {
     position: relative;
     border-radius: 10px;
-    margin: 20px;
     cursor: pointer;
     overflow: hidden;
-    min-width: 450px;
-    min-height: 400px;
-    max-width: 500px;
+    width: 400px;
+    
     background: var(--ui-dark-grey);
     transition: all 0.3s ease;
 

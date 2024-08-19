@@ -10,7 +10,6 @@ const ArtListings: React.FC = () => {
 	const [error, setError] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-	const [searchTerm, setSearchTerm] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [cart, setCart] = useState<CartType>();
 	const artListingsRef = useRef<HTMLDivElement>(null);
@@ -27,6 +26,7 @@ const ArtListings: React.FC = () => {
 				setTotalPages(data.totalPages);
 				setLoading(false);
 			} catch (error) {
+				setError("There was an error fething the data. Please try refreshing the page.");
 				console.error("Error fetching art:", error);
 				setLoading(false);
 			}
@@ -84,28 +84,8 @@ const ArtListings: React.FC = () => {
 		}
 	};
 
-	const handleSearch = async () => {
-		setLoading(true);
-		try {
-			const response = await fetch(
-				`https://art-alchemy-7302d99f4202.herokuapp.com/api/art/search?query=${searchTerm}`
-			);
-			const data = await response.json();
-			setArt(data);
-		} catch (err) {
-			setError("There was an error getting your art. Try refreshing the page.");
-			console.error(err);
-		}
-		setLoading(false);
-	};
-
 	return (
 		<div className="art-listings fl-c" ref={artListingsRef}>
-
-			<div className="searchbar">
-				<input type="text" placeholder="Search" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} />
-				<i className="bx bx-search" onClick={() => handleSearch}></i>
-			</div>
 
 			{loading ? (
 				<div className="loader">

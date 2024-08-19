@@ -1,5 +1,6 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner&family=Honk&family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto&display=swap');
 
 /* Resets */
 * {
@@ -46,9 +47,6 @@ p, h1, h2, h3, h4, h5, h6 {
   --ui-light-grey: #F0F0F0;
   --ui-dark-grey: #2E2E2E;
   --ui-white: #FFF;
-
-  --header-height: 100px;
-  --navbar-width: 80px;
 }
 
 
@@ -61,7 +59,6 @@ p, h1, h2, h3, h4, h5, h6 {
   width: 2px;
   background: black;
 }
-
 ::-webkit-scrollbar-thumb {
   background: white;
   border-radius: 10px;
