@@ -76,7 +76,6 @@ const ArtPiece: React.FC<{ data: ArtType, cart: CartType | undefined, setCart: (
 			<div className="image-overlay fl-c-c">
 				{imagesLoaded ? (
 					<Swiper
-						pagination={{ clickable: true }}
 						autoplay={{ delay: Math.floor(Math.random() * 6000 + 3000) }}
 						loop={imageData.length > 3}
 						onSwiper={(swiper) => (swiperRef.current = swiper)}
