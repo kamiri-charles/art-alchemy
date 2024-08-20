@@ -12,6 +12,7 @@ import AdminSignIn from './components/Admin/AdminSignIn'
 import AdminNewUser from './components/Admin/AdminNewUser'
 import 'boxicons/css/boxicons.min.css'
 import './App.scss'
+import BreadCrumbsHeader from './components/BreadCrumbsHeader'
 
 function App() {
 
@@ -31,6 +32,9 @@ function App() {
           <Route path='/admin' element={ <Admin /> } />
           <Route path='/admin/sign-in' element={ <AdminSignIn /> } />
           <Route path='/admin/new-user' element={ <AdminNewUser /> } />
+
+          {/* Test */}
+          <Route path='/test' element={ <BreadCrumbsHeader /> } />
         </Routes>
       </Router>
     </div>

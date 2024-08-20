@@ -1,0 +1,33 @@
+.breadcrumbs-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 80px;
+    background: var(--ui-black);
+
+    display: flex;
+    align-items: center;
+
+    padding: 20px;
+    padding-left: 80px;
+    color: white;      
+    
+    .home-link {
+        font-family: "Permanent Marker", cursive;
+        font-size: 24px;
+        cursor: pointer;  
+    }
+
+    i {
+        font-size: 20px;
+        margin-inline: 5px;
+    }
+
+    .breadcrumbs {
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+    }
+    
+}

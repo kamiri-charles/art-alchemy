@@ -22,10 +22,39 @@
     }
 
     .right {
+        display: flex;
+
+
+        .searchbar {
+            display: flex;
+            align-items: center;
+            background: var(--ui-white);
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-inline: 20px;
+            width: 300px;
+            transition: all 0.3s ease;
+
+            input {
+                border: none;
+                background: transparent;
+                margin-inline: 10px;
+                width: 100%;
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            i {
+                font-size: 20px;
+                cursor: pointer;
+            }
+
+            @media (max-width: 768px) {
+                display: none;
+            }
+        }
 
         .user-logged-in {
-            
-
             .menu-icon{
                 width: 40px;
                 height: 40px;
