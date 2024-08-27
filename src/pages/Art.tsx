@@ -224,7 +224,7 @@ const Art: React.FC = () => {
 							</div>
 
 							<div className="recommended">
-								<div className="seb-sec-title">Recommended</div>
+								<div className="sub-sec-title">Recommended</div>
 
 								<div className="products">
 									<div className="sub-product"></div>

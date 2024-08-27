@@ -30,7 +30,7 @@ const Header:React.FC = () => {
 
 	return (
 		<div className="header">
-			<div className="left">
+			<div className="left" onClick={() => nav("/")}>
 				Art Alchemy
 			</div>
 
