@@ -55,12 +55,7 @@ const Header:React.FC = () => {
 								<span>Profile</span>
 							</div>
 
-							<div className="option fl-c">
-								<i className="bx bx-message"></i>
-								<span>Notifications</span>
-							</div>
-
-							<div className="option fl-c">
+							<div className="option fl-c" onClick={() => nav('/cart')}>
 								<i className="bx bx-cart"></i>
 								<span>Cart</span>
 							</div>

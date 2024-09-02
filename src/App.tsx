@@ -6,13 +6,13 @@ import Profile from './components/Profile'
 import NewArt from './pages/NewArt'
 import Art from './pages/Art'
 import Checkout from './pages/Checkout'
+import Cart from './components/Cart'
 
 import Admin from './pages/Admin'
 import AdminSignIn from './components/Admin/AdminSignIn'
 import AdminNewUser from './components/Admin/AdminNewUser'
 import 'boxicons/css/boxicons.min.css'
 import './App.scss'
-import BreadCrumbsHeader from './components/BreadCrumbsHeader'
 
 function App() {
 
@@ -27,14 +27,12 @@ function App() {
           <Route path='/new-art' element={ <NewArt /> } />
           <Route path='/art/:art-id' element={ <Art /> } />
           <Route path='/checkout' element={ <Checkout /> } />
+          <Route path='/cart' element={ <Cart /> } />
 
           {/* Admin */}
           <Route path='/admin' element={ <Admin /> } />
           <Route path='/admin/sign-in' element={ <AdminSignIn /> } />
           <Route path='/admin/new-user' element={ <AdminNewUser /> } />
-
-          {/* Test */}
-          <Route path='/test' element={ <BreadCrumbsHeader /> } />
         </Routes>
       </Router>
     </div>
