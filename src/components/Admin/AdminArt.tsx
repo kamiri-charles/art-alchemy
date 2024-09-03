@@ -53,7 +53,7 @@ const AdminArt: React.FC = () => {
 				</div>
 			) : (
 				<>
-					{art.map((art: ArtType) => (
+					{/* {art.map((art: ArtType) => (
 						<div className="admin-art-wrapper" key={art.id}>
 							<div className="admin-art-img">
 								<img src={art.imageData[0]} alt="Art image" />
@@ -70,7 +70,7 @@ const AdminArt: React.FC = () => {
 								<button className="remove-btn">Remove Piece</button>
 							</div>
 						</div>
-					))}
+					))} */}
 
 					{art.length == 0 ? (
 						<div className="art-fetch-error">
