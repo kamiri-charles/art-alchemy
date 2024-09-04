@@ -49,7 +49,6 @@ const AdminUsers: React.FC = () => {
 
 			<div className="admin-tab-title">Users</div>
 
-			<button className="gen-report">Export Data</button>
 
 			<button className="new-user-btn" onClick={() => nav("/admin/new-user")}>
 				New User
@@ -57,7 +56,7 @@ const AdminUsers: React.FC = () => {
 
 			{loading ? (
 				<div className="users-loader">
-					<MetroSpinner />
+					<MetroSpinner color='black' />
 				</div>
 			) : (
 				<>
@@ -88,6 +87,7 @@ const AdminUsers: React.FC = () => {
 							There was an error fetching users!
 						</div>
 					) : (
+
 						<div className="pagination-btns">
 							<button onClick={prevPage} disabled={currentPage === 1}>
 								<i className="bx bx-chevron-left"></i>

@@ -39,22 +39,6 @@ const AdminNavbar: React.FC<{currentTab: string; setCurrentTab: (tab: string) =>
 					<span>Art</span>
 				</div>
 
-				<div
-					className={`link ${currentTab == "events" ? "active" : ""}`}
-					onClick={() => handleTabChange("events")}
-				>
-					<i className="bx bx-calendar-event"></i>
-					<span>Events</span>
-				</div>
-
-				<div
-					className={`link ${currentTab == "settings" ? "active" : ""}`}
-					onClick={() => handleTabChange("settings")}
-				>
-					<i className="bx bx-cog"></i>
-					<span>Settings</span>
-				</div>
-
 				<div className="link" onClick={() => nav('/')}>
 					<i className="bx bx-left-arrow-alt"></i>
 					<span>Back</span>

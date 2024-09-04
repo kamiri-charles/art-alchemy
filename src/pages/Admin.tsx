@@ -4,9 +4,7 @@ import AdminNavbar from '../components/Admin/AdminNavbar'
 import AdminDashboard from '../components/Admin/AdminDashboard';
 import AdminUsers from '../components/Admin/AdminUsers';
 import AdminArt from '../components/Admin/AdminArt';
-import AdminEvents from '../components/Admin/AdminEvents';
 import AdminStats from '../components/Admin/AdminStats';
-import AdminSettings from '../components/Admin/AdminSettings';
 
 
 const Admin: React.FC = () => {
@@ -28,16 +26,14 @@ const Admin: React.FC = () => {
     dashboard: <AdminDashboard setCurrentTab={setCurrentTab} />,
     users: <AdminUsers />,
     art: <AdminArt />,
-    events: <AdminEvents />,
     stats: <AdminStats />,
-    settings: <AdminSettings />,
   }
 
   return (
     <div className='admin'>
       <AdminNavbar currentTab={currentTab} setCurrentTab={setCurrentTab} />
 
-      <div className="admin-content fl-c-c">
+      <div className="admin-content">
         {tabComponents[currentTab]}
       </div>
     </div>

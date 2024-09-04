@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import PlaceholderImg from '../../assets/admin-dash-placeholder-img.svg'
 import { MetroSpinner } from 'react-spinners-kit'
 import '../../styles/admin/adminDashboard.scss'
 
@@ -35,8 +34,8 @@ const AdminDashboard: React.FC<{setCurrentTab: (tab: string) => void}> = ({setCu
 			<div className="admin-tab-title">Dashboard</div>
 
 			<div className="admin-meta">
-				<div className="placeholder-img">
-					<img src={PlaceholderImg} alt="admin-placeholder-img" />
+				<div className="admin-icon">
+					<i className="bx bx-shield"></i>
 				</div>
 
 				<div className="admin-info">
@@ -54,7 +53,7 @@ const AdminDashboard: React.FC<{setCurrentTab: (tab: string) => void}> = ({setCu
 			</div>
 
 			<div className="system-meta">
-				<div className="placeholder-img">
+				<div className="admin-icon">
 					<i className="bx bx-buildings"></i>
 				</div>
 
@@ -92,33 +91,9 @@ const AdminDashboard: React.FC<{setCurrentTab: (tab: string) => void}> = ({setCu
 							<i className="bx bx-right-arrow-alt"></i>
 						</div>
 					</div>
-
-					<div className="info">
-						<span>
-							Events:{" "}
-							{loading ? (
-								<span className="span-spinner">
-									<MetroSpinner color="black" size={20} />
-								</span>
-							) : (
-								<span className="primary">0</span>
-							)}
-						</span>
-
-						<div className="info-icon" onClick={() => setCurrentTab("art")}>
-							<i className="bx bx-right-arrow-alt"></i>
-						</div>
-					</div>
 				</div>
 			</div>
 
-			<div className="app-metrics fl-c-c">
-				<div className="app-metrics-title">Metrics</div>
-
-				<div className="metrics-loader">
-					{loading ? <MetroSpinner color="black" size={30} /> : <span>No issues detected!</span> }
-				</div>
-			</div>
 		</div>
 	);
 }

@@ -1,10 +1,10 @@
 .admin-users {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    //justify-content: center;
     overflow-y: scroll;
     min-width: calc(100vw - 80px);
-    height: 100vh;
+    min-height: 100vh;
     margin-top: 100px;
 
     .admin-tab-title {
@@ -13,38 +13,20 @@
         left: 120px;
     }
 
-    button.gen-report {
-        position: fixed;
-        top: 60px;
-        right: 200px;
-        padding: 8px 20px;
-        background: var(--ui-primary);
-        color: white;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-
-        &:hover {
-            background: var(--ui-white);
-            color: black;
-        }
-    }
-
     button.new-user-btn {
         position: fixed;
         top: 60px;
         right: 60px;
         width: 120px;
         padding: 8px 20px;
-        background: var(--ui-primary);
+        background: var(--ui-black);
         color: white;
         border-radius: 5px;
         cursor: pointer;
         transition: all 0.3s ease;
 
         &:hover {
-            background: var(--ui-white);
-            color: black;
+            background: var(--ui-light-black);
         }
     }
 
@@ -53,6 +35,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+
         }
 
     .admin-user-wrapper {
@@ -60,9 +43,8 @@
         display: flex;
         width: 500px;
         height: 200px;
-        background: var(--ui-white);
+        background: var(--ui-black);
         margin: 20px;
-        color: black;
         border-radius: 10px;
         padding: 20px;
 
@@ -72,7 +54,6 @@
             display: grid;
             place-items: center;
             font-size: 60px;
-            color: black;
         }
 
         .admin-user-meta {
@@ -130,12 +111,13 @@
     }
 
     .pagination-btns {
-        width: 60%;
-        height: 400px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding-bottom: 100px;
+
+        span {
+            color: var(--ui-black);
+        }
 
         button {
             width: 40px;
