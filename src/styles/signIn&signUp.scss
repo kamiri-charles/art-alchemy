@@ -21,16 +21,17 @@
       padding: 20px;
 
       .brand {
-        font-family: 'Honk', sans-serif;
+        font-family: "Permanent Marker", cursive;
         font-size: 20px;
         font-weight: 700;
         width: 80px;
       }
-
+      
       .large-text {
         font-size: 38px;
         font-weight: 600;
         padding: 20px;
+        color: var(--ui-primary);
       }
 
       .small-text {
@@ -72,7 +73,7 @@
 
       .form-title {
         width: 100%;
-        font-size: 30px;
+        font-size: 20px;
         font-weight: 600;
         text-align: left;
         margin: 20px;

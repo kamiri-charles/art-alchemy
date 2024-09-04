@@ -93,8 +93,8 @@ const ArtListings: React.FC = () => {
 				</div>
 			) : (
 				<div className="pieces">
-					{error.length > 0 ? (
-						<div className="error">{error}</div>
+					{art.length <= 0 ? (
+						<div className="error">{error ? error : "There was an error getting the art. Try refreshing."}</div>
 					) : (
 						<>
 							{art?.map((piece) => (

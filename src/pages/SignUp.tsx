@@ -92,7 +92,7 @@ const SignUp: React.FC = () => {
 
 					<div className="brand-mobile">ART ALCHEMY</div>
 
-					<div className="form-title">Join Art Alchemy</div>
+					<div className="form-title">Create an Account</div>
 
 					<div className="fields">
 						<div className="field">

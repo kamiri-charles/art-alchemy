@@ -29,9 +29,9 @@ const Art: React.FC = () => {
 			})
 			.catch((err) => {
 				setError(
-					"There was an error getting your art. Try refrshing the page. <br /> Error: " +
-						err
+					"There was an error getting your art. Try refrshing the page."
 				);
+				console.error(err);
 				setLoading(false);
 			});
 
