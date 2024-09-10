@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MetroSpinner } from "react-spinners-kit";
-import "./adminDashboard.scss";
+import "./styles.scss";
 
 const AdminDashboard: React.FC<{ setCurrentTab: (tab: string) => void }> = ({
 	setCurrentTab,

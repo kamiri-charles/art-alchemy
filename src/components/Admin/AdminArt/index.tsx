@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MetroSpinner } from "react-spinners-kit";
-import { ArtType } from "../../assets/utils/custom_types";
-import "./AdminArt.scss";
+import { ArtType } from "../../../assets/utils/custom_types";
+import "./styles.scss";
 
 const AdminArt: React.FC = () => {
 	const [art, setArt] = useState<ArtType[]>([]);

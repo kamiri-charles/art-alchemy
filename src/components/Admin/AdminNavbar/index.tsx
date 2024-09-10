@@ -1,9 +1,11 @@
-import React from 'react'
-import '../../styles/admin/adminNavbar.scss'
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./styles.scss";
 
-const AdminNavbar: React.FC<{currentTab: string; setCurrentTab: (tab: string) => void}> = ({currentTab, setCurrentTab}) => {
-
+const AdminNavbar: React.FC<{
+	currentTab: string;
+	setCurrentTab: (tab: string) => void;
+}> = ({ currentTab, setCurrentTab }) => {
 	const nav = useNavigate();
 
 	// Handle link click
@@ -12,7 +14,7 @@ const AdminNavbar: React.FC<{currentTab: string; setCurrentTab: (tab: string) =>
 		localStorage.setItem("artAlchemyCurrentAdminNavTab", tabValue);
 	};
 
-  return (
+	return (
 		<div className="admin-navbar">
 			<div className="links">
 				<div
@@ -39,13 +41,13 @@ const AdminNavbar: React.FC<{currentTab: string; setCurrentTab: (tab: string) =>
 					<span>Art</span>
 				</div>
 
-				<div className="link" onClick={() => nav('/')}>
+				<div className="link" onClick={() => nav("/")}>
 					<i className="bx bx-left-arrow-alt"></i>
 					<span>Back</span>
 				</div>
 			</div>
 		</div>
 	);
-}
+};
 
-export default AdminNavbar
+export default AdminNavbar;

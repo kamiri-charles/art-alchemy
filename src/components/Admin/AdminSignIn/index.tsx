@@ -1,94 +1,97 @@
-import React, {useEffect, useState} from 'react'
-import { useNavigate } from 'react-router-dom'
-import RandomBackground from '../../assets/utils/RandomBackground'
-import { MetroSpinner } from 'react-spinners-kit'
-import '../../styles/admin/adminSignIn.scss'
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { MetroSpinner } from "react-spinners-kit";
+import RandomBackground from "../../../assets/utils/RandomBackground";
+import "./styles.scss";
 
 const AdminSignIn: React.FC = () => {
+	type UserData = {
+		username: string;
+		password: string;
+	};
 
-  type UserData = {
-    username: string;
-    password: string;
-  };
+	const nav = useNavigate();
 
-  const nav = useNavigate();
+	const [userData, setUserData] = useState<UserData>({
+		username: "",
+		password: "",
+	});
+	const [usernameValid, setUsernameValid] = useState(false);
+	const [passwordValid, setPasswordValid] = useState(false);
+	const [error, setError] = useState("");
+	const [loading, setLoading] = useState(false);
 
-  const [userData, setUserData] = useState<UserData>({
-    username: "",
-    password: "",
-  });
-  const [usernameValid, setUsernameValid] = useState(false);
-  const [passwordValid, setPasswordValid] = useState(false);
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+	const handle_change = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setError("");
+		setUserData({
+			...userData,
+			[e.target.name]: e.target.value,
+		});
+	};
 
+	const sign_in = () => {
+		setLoading(true);
 
-  const handle_change = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setError('');
-    setUserData({
-      ...userData,
-      [e.target.name]: e.target.value,
-    });
-  };
+		if (usernameValid && passwordValid) {
+			fetch(
+				"https://art-alchemy-7302d99f4202.herokuapp.com/api/users/admin/sign-in",
+				{
+					method: "POST",
+					body: JSON.stringify(userData),
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+			)
+				.then((res) => res.json())
+				.then((data) => {
+					if (data.error) {
+						setError(data.message);
+						setLoading(false);
+					} else {
+						localStorage.setItem(
+							"artAlchemyAdminUserData",
+							JSON.stringify(data)
+						);
+						nav("/admin");
+					}
+				})
+				.catch((err) => {
+					console.error(err);
+					setError("An error occurred. Please try again.");
+					setLoading(false);
+				});
+		} else {
+			setError("Invalid username or password");
+			setLoading(false);
+		}
+	};
 
-  const sign_in = () => {
-    setLoading(true);
+	useEffect(() => {
+		if (userData.username.length > 8) setUsernameValid(true);
+		else setUsernameValid(false);
 
-    if (usernameValid && passwordValid) {
-      fetch("https://art-alchemy-7302d99f4202.herokuapp.com/api/users/admin/sign-in", {
-        method: "POST",
-        body: JSON.stringify(userData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.error) {
-            setError(data.message);
-            setLoading(false);
-          } else {
-            localStorage.setItem("artAlchemyAdminUserData", JSON.stringify(data));
-            nav("/admin");
-          }
-        })
-        .catch((err) => {
-          console.error(err);
-          setError("An error occurred. Please try again.");
-          setLoading(false);
-        });
-    } else {
-      setError("Invalid username or password");
-      setLoading(false);
-    }
-  };
+		if (userData.password.length > 8) setPasswordValid(true);
+		else setPasswordValid(false);
+	}, [userData.password.length, userData.username.length]);
 
-  useEffect(() => {
-    if (userData.username.length > 8) setUsernameValid(true);
-    else setUsernameValid(false);
+	const request_for_admin = () => {
+		alert("Your request has been sent succesfully!");
+		nav("/");
+	};
 
-    if (userData.password.length > 8) setPasswordValid(true);
-    else setPasswordValid(false);
-  }, [userData.password.length, userData.username.length]);
-
-  const request_for_admin = () => {
-    alert("Your request has been sent succesfully!");
-    nav('/');
-  };
-
-
-  return (
+	return (
 		<div className="admin-sign-in">
 			<RandomBackground />
-			<div className="admin-sign-in-logo" onClick={() => nav('/')}>
-        ART ALCHEMY
+			<div className="admin-sign-in-logo" onClick={() => nav("/")}>
+				ART ALCHEMY
 			</div>
 
 			<form className="admin-sign-in-form">
-        <div className="admin-sign-in-title">
-          <span className='deco'>Admin</span>
-          <span>| Sign In</span>
-        </div>
+				<div className="admin-sign-in-title">
+					<span className="deco">Admin</span>
+					<span>| Sign In</span>
+				</div>
 				<div className="fields">
 					<div className="field">
 						<label>Username</label>
@@ -132,18 +135,23 @@ const AdminSignIn: React.FC = () => {
 						<MetroSpinner size={30} color="black" />
 					</div>
 				) : (
-					<button className="submit" onClick={evt => {
-              evt.preventDefault();
-              sign_in();
-            }}>
+					<button
+						className="submit"
+						onClick={(evt) => {
+							evt.preventDefault();
+							sign_in();
+						}}
+					>
 						Log In
 					</button>
 				)}
 
-        <button className='admin-request' onClick={() => request_for_admin()}>Request for admin priviledges</button>
+				<button className="admin-request" onClick={() => request_for_admin()}>
+					Request for admin priviledges
+				</button>
 			</form>
 		</div>
 	);
-}
+};
 
-export default AdminSignIn
+export default AdminSignIn;

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { MetroSpinner } from "react-spinners-kit";
-import RandomBackground from "../../assets/utils/RandomBackground";
-import '../../styles/admin/adminNewUser.scss';
+import RandomBackground from "../../../assets/utils/RandomBackground";
+import "./styles.scss";
 
 const AdminNewUser: React.FC = () => {
 	type UserData = {
@@ -52,7 +52,7 @@ const AdminNewUser: React.FC = () => {
 	};
 
 	// Sign up function
-	const sign_up = () => {
+	const create_user = () => {
 		setLoading(true);
 
 		if (usernameValid && emailValid && passwordValid) {
@@ -200,7 +200,7 @@ const AdminNewUser: React.FC = () => {
 							<MetroSpinner size={30} color="black" />
 						</div>
 					) : (
-						<button className="submit" onClick={() => sign_up()}>
+						<button className="submit" onClick={() => create_user()}>
 							Submit
 						</button>
 					)}
