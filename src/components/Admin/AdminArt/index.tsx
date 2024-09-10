@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MetroSpinner } from "react-spinners-kit";
 import { ArtType } from "../../assets/utils/custom_types";
-import "../../styles/admin/adminArt.scss";
+import "./AdminArt.scss";
 
 const AdminArt: React.FC = () => {
 	const [art, setArt] = useState<ArtType[]>([]);
@@ -43,17 +43,16 @@ const AdminArt: React.FC = () => {
 
 	return (
 		<div className="admin-art admin-component">
-			<div className="top-mobile-placeholder"></div>
 
 			<div className="admin-tab-title">Art</div>
 
 			{loading ? (
 				<div className="art-loader">
-					<MetroSpinner />
+					<MetroSpinner color="black" />
 				</div>
 			) : (
 				<>
-					{/* {art.map((art: ArtType) => (
+					{art.map((art: ArtType) => (
 						<div className="admin-art-wrapper" key={art.id}>
 							<div className="admin-art-img">
 								<img src={art.imageData[0]} alt="Art image" />
@@ -70,7 +69,7 @@ const AdminArt: React.FC = () => {
 								<button className="remove-btn">Remove Piece</button>
 							</div>
 						</div>
-					))} */}
+					))}
 
 					{art.length == 0 ? (
 						<div className="art-fetch-error">

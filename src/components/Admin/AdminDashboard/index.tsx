@@ -1,35 +1,36 @@
-import React, {useEffect, useState} from 'react'
-import { MetroSpinner } from 'react-spinners-kit'
-import '../../styles/admin/adminDashboard.scss'
+import React, { useEffect, useState } from "react";
+import { MetroSpinner } from "react-spinners-kit";
+import "./adminDashboard.scss";
 
-const AdminDashboard: React.FC<{setCurrentTab: (tab: string) => void}> = ({setCurrentTab}) => {
-
+const AdminDashboard: React.FC<{ setCurrentTab: (tab: string) => void }> = ({
+	setCurrentTab,
+}) => {
 	const [totalUsers, setTotalUsers] = useState();
 	const [totalArt, setTotalArt] = useState();
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		setLoading(true);
-		fetch('https://art-alchemy-7302d99f4202.herokuapp.com/api/users/total')
-			.then(res => res.json())
-			.then(data => setTotalUsers(data))
-			.catch(error => console.error(error))
+		fetch("https://art-alchemy-7302d99f4202.herokuapp.com/api/users/total")
+			.then((res) => res.json())
+			.then((data) => setTotalUsers(data))
+			.catch((error) => console.error(error));
 
-		fetch('https://art-alchemy-7302d99f4202.herokuapp.com/api/art/total')
-			.then(res => res.json())
-			.then(data => setTotalArt(data))
-			.catch(error => console.error(error))
-			setLoading(false);
+		fetch("https://art-alchemy-7302d99f4202.herokuapp.com/api/art/total")
+			.then((res) => res.json())
+			.then((data) => setTotalArt(data))
+			.catch((error) => console.error(error));
+		setLoading(false);
 	}, []);
 
-  const adminUserData = localStorage.getItem('artAlchemyAdminUserData');
-  let adminName = '';
+	const adminUserData = localStorage.getItem("artAlchemyAdminUserData");
+	let adminName = "";
 
-  if (adminUserData) {
-    adminName = JSON.parse(adminUserData).username;
-  }
+	if (adminUserData) {
+		adminName = JSON.parse(adminUserData).username;
+	}
 
-  return (
+	return (
 		<div className="admin-dashboard admin-component">
 			<div className="admin-tab-title">Dashboard</div>
 
@@ -93,9 +94,8 @@ const AdminDashboard: React.FC<{setCurrentTab: (tab: string) => void}> = ({setCu
 					</div>
 				</div>
 			</div>
-
 		</div>
 	);
-}
+};
 
-export default AdminDashboard
+export default AdminDashboard;
