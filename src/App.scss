@@ -1,6 +1,5 @@
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner&family=Ubuntu&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner&family=Permanent+Marker&family=Roboto&display=swap');
 
 /* Resets */
 * {
@@ -94,7 +93,7 @@ p, h1, h2, h3, h4, h5, h6 {
   background: var(--ui-white);
   width: 100vw;
   height: 100vh;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Roboto', sans-serif;
   z-index: -2;
 }
 

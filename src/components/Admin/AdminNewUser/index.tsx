@@ -105,7 +105,7 @@ const AdminNewUser: React.FC = () => {
 
 					<div className="fields">
 						<div className="field">
-							<label>Enter the first name</label>
+							<label>First name</label>
 							<input
 								name="firstname"
 								type="text"
@@ -120,7 +120,7 @@ const AdminNewUser: React.FC = () => {
 						</div>
 
 						<div className="field">
-							<label>Enter the last name</label>
+							<label>Last name</label>
 							<input
 								name="lastname"
 								type="text"
@@ -135,11 +135,11 @@ const AdminNewUser: React.FC = () => {
 						</div>
 
 						<div className="field">
-							<label>Choose a username</label>
+							<label>Username</label>
 							<input
 								name="username"
 								type="text"
-								placeholder="No special characters @, #, $, %"
+								placeholder="Create a username"
 								value={userData?.username}
 								onChange={handle_change}
 							/>
@@ -152,7 +152,7 @@ const AdminNewUser: React.FC = () => {
 						</div>
 
 						<div className="field">
-							<label>Add account email</label>
+							<label>Email</label>
 							<input
 								name="email"
 								type="text"
@@ -169,11 +169,11 @@ const AdminNewUser: React.FC = () => {
 						</div>
 
 						<div className="field">
-							<label>Create a password</label>
+							<label>Password</label>
 							<input
 								name="password"
 								type={showPassword ? "text" : "password"}
-								placeholder="At least 8 characters"
+								placeholder="Create a strong password"
 								value={userData?.password}
 								onChange={handle_change}
 							/>
