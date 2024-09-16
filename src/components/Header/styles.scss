@@ -55,6 +55,22 @@
         }
 
         .user-logged-in {
+            display: flex;
+
+            .new-art-btn {
+                border-radius: 8px;
+                padding-inline: 20px;
+                background: var(--ui-secondary);
+                transition: all 0.3s ease;
+                font-family: 'Edu TAS Beginner', cursive;
+                color: white;
+                cursor: pointer;
+
+                &:hover {
+                    background: var(--ui-primary);
+                }
+            }
+
             .menu-icon{
                 width: 40px;
                 height: 40px;
@@ -133,22 +149,18 @@
 
             button {
                 padding: 10px 20px;
-                margin-inline: 20px;
+                margin-inline: 4px;
                 border: none;
                 border-radius: 5px;
-                background: transparent;
+                background: var(--ui-secondary);
                 color: var(--ui-white);
                 font-size: 16px;
                 font-weight: 600;
                 cursor: pointer;
                 transition: all 0.3s ease;
 
-                &.join-btn {
+                &:hover {
                     background: var(--ui-primary);
-                }
-
-                &.log-in-btn {
-                    background: var(--ui-secondary);
                 }
             }
 

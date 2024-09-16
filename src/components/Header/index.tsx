@@ -42,6 +42,8 @@ const Header:React.FC = () => {
 				{userData ? (
 					<div className="user-logged-in">
 
+						<button className="new-art-btn" onClick={() => nav("/new-art")}>Create Art</button>
+
 						<div
 							className="menu-icon"
 							onClick={() => setMenuActive(!menuActive)}
@@ -73,7 +75,6 @@ const Header:React.FC = () => {
 					</div>
 				) : (
 					<div className="user-not-signed-in-buttons">
-						<button onClick={() => nav("/sign-up")} className='join-btn'>Join</button>
 						<button onClick={() => nav("/sign-in")} className='log-in-btn'>Log In</button>
 					</div>
 				)}

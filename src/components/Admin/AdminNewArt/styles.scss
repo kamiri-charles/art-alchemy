@@ -1,4 +1,4 @@
-.new-art {
+.admin-new-art {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -30,7 +30,6 @@
 		}
 	}
 
-
 .form-slide {
 	position: relative;
 	width: 100%;
@@ -46,24 +45,16 @@
 		.brand {
 			font-family: "Permanent Marker", cursive;
 			font-size: 24px;
+
+            span {
+                font-family: "Roboto", sans-serif;
+            }
 		}
-	
 		
 		span {
 			color: var(--ui-primary);
 			font-weight: 600;
 		}
-	}
-
-	.slide-title {
-		position: absolute;
-		top: 100px;
-		color: black;
-		font-family: 'Edu TAS Beginner', cursive;
-		font-size: 18px;
-		font-weight: 600;
-		width: 400px;
-		text-align: center;
 	}
 	
 	.slide-content {
@@ -273,7 +264,7 @@
 
 /* Mobile */
 @media (max-width: 768px) {
-	.new-art .form-wrapper {
+	.admin-new-art .form-wrapper {
 		border-radius: 0;
 		height: 100vh;
 		width: 100%;
