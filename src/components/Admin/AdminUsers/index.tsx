@@ -76,8 +76,8 @@ const AdminUsers: React.FC = () => {
 							</div>
 
 							<div className="admin-user-btns">
-								<button className="manage-btn">Manage</button>
-								<button className="remove-btn">Remove Account</button>
+								<i className="bx bx-edit-alt"></i>
+								<i className="bx bx-trash-alt"></i>
 							</div>
 						</div>
 					))}

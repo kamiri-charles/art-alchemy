@@ -5,7 +5,6 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import RandomBackground from "../assets/utils/RandomBackground";
 import { MetroSpinner } from "react-spinners-kit";
-import brand_img from '../assets/images/art-alchemy-brand-text-light.jpg';
 import "swiper/swiper-bundle.css";
 import "../styles/newArt.scss";
 
@@ -122,7 +121,9 @@ const NewArt: React.FC = () => {
 			<RandomBackground />
 
 			<div className="form-wrapper">
-				<div className="back-btn fl-c-c" onClick={() => nav('/')}><i className="bx bx-x"></i></div>
+				<div className="back-btn fl-c-c" onClick={() => nav("/")}>
+					<i className="bx bx-x"></i>
+				</div>
 				<Swiper
 					spaceBetween={10}
 					pagination={{ clickable: true }}
@@ -131,11 +132,14 @@ const NewArt: React.FC = () => {
 					{/* Slide 1 */}
 					<SwiperSlide className="form-slide">
 						<div className="slide-logo">
-							<img src={brand_img} alt="" />
-							<span>New Art</span>
+							<div className="brand">Art Alchemy</div>
+							<span>Name That Masterpiece</span>
 						</div>
 
-						<div className="slide-title">Art Details</div>
+						<div className="slide-title">
+							Where creativity begins - give your art a title and show off those
+							stunning visuals!
+						</div>
 
 						<div className="slide-content">
 							<div className="field">
@@ -183,11 +187,13 @@ const NewArt: React.FC = () => {
 					{/* Slide 2 */}
 					<SwiperSlide className="form-slide">
 						<div className="slide-logo">
-							<img src={brand_img} alt="" />
-							<span>New Art</span>
+							<div className="brand">Art Alchemy</div>
+							<span>What's The Story?</span>
 						</div>
 
-						<div className="slide-title">Description & Tags</div>
+						<div className="slide-title">
+							Every piece has a tale - describe yours and tag it right!
+						</div>
 
 						<div className="slide-content">
 							<div className="field">
@@ -221,11 +227,13 @@ const NewArt: React.FC = () => {
 					{/* Slide 3 */}
 					<SwiperSlide className="form-slide">
 						<div className="slide-logo">
-							<img src={brand_img} alt="" />
-							<span>New Art</span>
+							<div className="brand">Art Alchemy</div>
+							<span>Show Me The Money</span>
 						</div>
 
-						<div className="slide-title">Category & Price</div>
+						<div className="slide-title">
+							Time to seal the deal - set your price and finalize the details!
+						</div>
 
 						<div className="slide-content">
 							<div className="field">

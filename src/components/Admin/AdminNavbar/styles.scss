@@ -45,10 +45,16 @@
             }
 
 
-            &:hover, &.active {
+            &.active {
+                background: var(--ui-primary);
+            }
+
+            &:hover:not(.active) {
                 background: var(--ui-white);
                 color: var(--ui-black);
             }
+
+
 
             &:hover, &.active {span {opacity: 1;}}
         }

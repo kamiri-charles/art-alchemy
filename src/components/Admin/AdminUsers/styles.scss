@@ -4,7 +4,6 @@
     flex-wrap: wrap;
     overflow-y: scroll;
     min-width: calc(100vw - 80px);
-    //min-height: 100vh;
     margin-top: 100px;    
 
     .admin-tab-title {
@@ -19,7 +18,7 @@
         right: 60px;
         width: 120px;
         padding: 8px 20px;
-        background: var(--ui-black);
+        background: var(--ui-primary);
         color: white;
         border-radius: 5px;
         cursor: pointer;
@@ -43,7 +42,7 @@
         display: flex;
         width: 400px;
         height: 200px;
-        background: var(--ui-black);
+        background: var(--ui-secondary);
         margin: 20px 10px;
         border-radius: 10px;
         padding: 20px;
@@ -77,25 +76,22 @@
             right: 10px;
             display: flex;
 
-            button {
-                background: black;
-                color: white;
-                border-radius: 5px;
-                padding: 5px 10px;
+           i {
+                display: grid;
+                place-items: center;
+                width: 30px;
+                height: 30px;
+                font-size: 20px;
+                border-radius: 50%;
+                background: white;
+                color: black;
                 margin-inline: 10px;
                 cursor: pointer;
+                transition: all 0.3s ease;
 
-                &.manage-btn {
+                &:hover {
                     background: var(--ui-primary);
-
-                    @media (max-width: 768px) {
-                        background: var(--ui-white);
-                        color: var(--ui-black);
-                    }
-                }
-
-                &.remove-btn {
-                    background: var(--ui-secondary);
+                    color: white;
                 }
             }
         }
