@@ -11,7 +11,6 @@ import Cart from './components/Cart'
 import Admin from './pages/Admin'
 import AdminSignIn from './components/Admin/AdminSignIn'
 import AdminNewUser from './components/Admin/AdminNewUser'
-import AdminNewArt from './components/Admin/AdminNewArt'
 import 'boxicons/css/boxicons.min.css'
 import './App.scss'
 
@@ -34,7 +33,6 @@ function App() {
           <Route path='/admin' element={ <Admin /> } />
           <Route path='/admin/sign-in' element={ <AdminSignIn /> } />
           <Route path='/admin/new-user' element={ <AdminNewUser /> } />
-          <Route path='/admin/new-art' element={ <AdminNewArt /> } />
         </Routes>
       </Router>
     </div>
