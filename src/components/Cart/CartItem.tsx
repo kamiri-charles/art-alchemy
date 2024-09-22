@@ -132,10 +132,6 @@ export const CartItem: React.FC<{id: string, cart: CartType, setCart: (cart: Car
 							<span>Remove</span>
 						</div>
 
-						<div className="action fl-c-c">
-							<i className="bx bx-money-withdraw"></i>
-							<span>Negotiate</span>
-						</div>
 					</div>
 				</div>
 			)}
