@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArtType, CartType } from "../../assets/utils/custom_types";
-import { MetroSpinner } from "react-spinners-kit";
 
 export const CartItem: React.FC<{id: string, cart: CartType, setCart: (cart: CartType) => void}> = ({ id, cart, setCart }) => {
 	
@@ -82,59 +81,7 @@ export const CartItem: React.FC<{id: string, cart: CartType, setCart: (cart: Car
 	};
 
 	return (
-		<div className="cart-item-wrapper">
-			{loading ? (
-				<div className="loader">
-					<MetroSpinner color="black" />
-				</div>
-			) : (
-				<div className="cart-item">
-					<div className="cart-item-image">
-						<img src={data?.imageData[0]} alt="" />
-					</div>
-					<div className="cart-item-meta">
-						<div className="title">{data?.title}</div>
-						<div className="owner">{data?.owner}</div>
-
-						<div className="quantity">
-							<span>Quantity </span>
-							<div className="counter">
-								<i className="bx bx-minus fl-c-c" onClick={decrease_count}></i>
-								<span className="count">{quantity}</span>
-								<i className="bx bx-plus fl-c-c" onClick={increase_count}></i>
-							</div>
-						</div>
-
-						<div className="available">
-							<i className="bx bx-info-circle"></i>
-							<span>Available: 5</span>
-						</div>
-
-						<div className="price fl-c">
-							<i className="bx bx-purchase-tag"></i>
-							<span>Ksh. {data?.price ? data?.price * quantity : ""}</span>
-						</div>
-					</div>
-
-					<div className="actions">
-						<div
-							className="action fl-c-c"
-							onClick={() =>
-								nav(`/art/${data?.id}`, { state: { art_id: data?.id } })
-							}
-						>
-							<i className="bx bx-info-circle"></i>
-							<span>View</span>
-						</div>
-
-						<div className="action fl-c-c" onClick={remove_from_cart}>
-							<i className="bx bx-trash-alt"></i>
-							<span>Remove</span>
-						</div>
-
-					</div>
-				</div>
-			)}
+		<div>
 		</div>
 	);
 };

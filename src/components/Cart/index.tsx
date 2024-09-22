@@ -74,7 +74,7 @@ const Cart: React.FC = () => {
 
 							</div>
 
-							<div className="cart-items fl-c">
+							<div className="cart-items">
 								{cart?.artIds.map((id, idx) => (
 									<CartItem
 										id={id}
