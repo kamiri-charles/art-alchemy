@@ -4,6 +4,7 @@ import { CartType } from "../../assets/utils/custom_types";
 import { MetroSpinner } from "react-spinners-kit";
 import { CartItem } from "./CartItem";
 import "./styles.scss";
+import BreadCrumbsHeader from "../BreadCrumbsHeader";
 
 const Cart: React.FC = () => {
 
@@ -62,17 +63,7 @@ const Cart: React.FC = () => {
 						</div>
 					) : (
 						<>
-							<div className="cart-header">
-								<div className="cart-title">My Cart</div>
-
-								<div className="items-count">{cart?.artIds.length} items</div>
-
-								<button className="to-checkout" onClick={() => nav('/checkout', {state: cart})}>
-									<i className="bx bx-cart"></i>
-									<span>Checkout</span>
-								</button>
-
-							</div>
+							<BreadCrumbsHeader location={["Cart"]} />
 
 							<div className="cart-items">
 								{cart?.artIds.map((id, idx) => (

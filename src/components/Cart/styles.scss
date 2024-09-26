@@ -1,0 +1,45 @@
+.cart {
+
+    .cart-items {
+        margin-top: 80px;
+        height: calc(100vh - 80px);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        padding: 20px;
+       
+
+        .cart-item {
+            width: 400px;
+            position: relative;
+            background: var(--ui-black);
+            color: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+
+            .item-meta {
+                display: flex;
+                justify-content: space-around;
+
+                .item-img {
+                    width: 200px;
+                    background: white;
+                    margin: 10px;
+                }
+
+                .item-sub-meta {
+                    display: flex;
+                    flex-direction: column;
+
+                    .item-title {
+                        font-family: "Edu TAS Beginner", cursive;
+                        font-size: 16px;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+}

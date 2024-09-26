@@ -81,7 +81,17 @@ export const CartItem: React.FC<{id: string, cart: CartType, setCart: (cart: Car
 	};
 
 	return (
-		<div>
+		<div className="cart-item">
+			<div className="item-meta">
+				<div className="item-img">
+					<img src={data?.imageData[0]} alt="" />
+				</div>
+
+				<div className="item-sub-meta">
+					<div className="item-title">{data?.title}</div>
+					<div className="item-price">Ksh. {data?.price}</div>
+				</div>
+			</div>
 		</div>
 	);
 };

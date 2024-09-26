@@ -11,9 +11,9 @@ const BreadCrumbsHeader: React.FC<{location: string[]}> = ({location = []}) => {
         <div className="home-link" onClick={() => nav('/')}>Art Alchemy</div>
 
         {location.map((loc, index) => (
-            <div className="breadcrumbs">
+            <div className="breadcrumbs" key={index}>
                 <i className="bx bx-chevron-right"></i>
-                <div key={index} className="location">{loc}</div>
+                <div className="location">{loc}</div>
             </div>
         ))}
 
