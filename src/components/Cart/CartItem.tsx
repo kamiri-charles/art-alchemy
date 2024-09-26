@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArtType, CartType } from "../../assets/utils/custom_types";
-import { ImpulseSpinner, MetroSpinner } from "react-spinners-kit";
+import { ImpulseSpinner } from "react-spinners-kit";
 
 export const CartItem: React.FC<{
 	id: string;
@@ -35,8 +35,6 @@ export const CartItem: React.FC<{
 	}, [id]);
 
 	const remove_from_cart = async () => {
-		localStorage.removeItem(`artAlchemyCartItemQuantity${id}`);
-
 		// Optimistically update the cart state
 		const tempArtIds = cart.artIds.filter((item) => item !== id);
 		const updatedCart = {
@@ -75,7 +73,7 @@ export const CartItem: React.FC<{
 	};
 
 	return (
-		<div className="cart-item" onClick={() => nav(`/art/${id}`)}>
+		<div className="cart-item">
 			{!loading ? (
 				<>
 					{data ? (
@@ -87,6 +85,16 @@ export const CartItem: React.FC<{
 							<div className="item-sub-meta">
 								<div className="item-title">{data.title}</div>
 								<div className="item-price">Ksh. {data.price}</div>
+							</div>
+
+							<div className="cart-item-actions">
+								<div className="cart-item-action" onClick={() => nav(`/art/${id}`)}>
+									<i className="bx bx-show"></i>
+								</div>
+
+								<div className="cart-item-action" onClick={() => remove_from_cart()}>
+									<i className="bx bx-trash-alt"></i>
+								</div>
 							</div>
 						</div>
 					) : (

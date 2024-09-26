@@ -71,7 +71,7 @@ const Cart: React.FC = () => {
 								</div>
 								<div className="cart-header-right">
 									<div className="total"></div>
-									<button className="checkout" onClick={() => nav("/checkout")}>Checkout</button>
+									<button className="to-checkout" onClick={() => nav("/checkout")}>Checkout</button>
 								</div>
 							</div>
 

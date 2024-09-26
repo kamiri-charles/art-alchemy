@@ -20,7 +20,8 @@
         color: white;
 
         .cart-header-right {
-            button.checkout {
+            display: flex;
+            button.to-checkout {
                 padding: 10px 20px;
                 border-radius: 5px;
                 cursor: pointer;
@@ -79,6 +80,25 @@
                         font-family: "Edu TAS Beginner", cursive;
                         font-size: 16px;
                         font-weight: 600;
+                    }
+                }
+
+                .cart-item-actions {
+                    position: absolute;
+                    bottom: 10px;
+                    right: 10px;
+                    display: flex;
+
+                   .cart-item-action {
+                        display: grid;
+                        place-items: center;
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        background: var(--ui-primary);
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        margin-inline: 10px;
                     }
                 }
             }
