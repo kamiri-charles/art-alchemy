@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { CartType } from "../../assets/utils/custom_types";
 import { MetroSpinner } from "react-spinners-kit";
 import { CartItem } from "./CartItem";
-import "./styles.scss";
 import BreadCrumbsHeader from "../BreadCrumbsHeader";
+import "./styles.scss";
 
 const Cart: React.FC = () => {
 
@@ -53,8 +53,8 @@ const Cart: React.FC = () => {
 			}
 
 			{loading ? (
-				<div className="loader">
-					<MetroSpinner />
+				<div className="cart-loader">
+					<MetroSpinner color="black" />
 				</div>
 			) : (
 				<>

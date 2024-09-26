@@ -1,6 +1,13 @@
 .cart {
     flex-wrap: wrap;
 
+    .cart-loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
     .cart-header {
         width: 100%;
         height: 60px;
@@ -32,7 +39,9 @@
        
 
         .cart-item {
+            position: relative;
             width: 400px;
+            min-height: 150px;
             position: relative;
             background: var(--ui-black);
             color: white;
@@ -41,14 +50,25 @@
             border-radius: 10px;
             cursor: pointer;
 
+            .cart-item-loader {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
             .item-meta {
                 display: flex;
                 justify-content: space-around;
 
                 .item-img {
-                    width: 200px;
+                    height: 100px;
                     background: white;
                     margin: 10px;
+
+                    img {
+                        height: 100%;
+                    }
                 }
 
                 .item-sub-meta {
