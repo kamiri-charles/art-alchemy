@@ -42,6 +42,7 @@ const Cart: React.FC = () => {
 
 	return (
 		<div className="cart fl-c">
+			<BreadCrumbsHeader location={["Cart"]} />
 			{
 				localStorage.getItem("artAlchemyUserData") == null && (
 					<div className="cart-empty fl-c-c">
@@ -50,6 +51,7 @@ const Cart: React.FC = () => {
 					</div>
 				)
 			}
+
 			{loading ? (
 				<div className="loader">
 					<MetroSpinner />
@@ -63,7 +65,15 @@ const Cart: React.FC = () => {
 						</div>
 					) : (
 						<>
-							<BreadCrumbsHeader location={["Cart"]} />
+							<div className="cart-header">
+								<div className="cart-header-text">
+									My Cart - {cart?.artIds.length} items
+								</div>
+								<div className="cart-header-right">
+									<div className="total"></div>
+									<button className="checkout" onClick={() => nav("/checkout")}>Checkout</button>
+								</div>
+							</div>
 
 							<div className="cart-items">
 								{cart?.artIds.map((id, idx) => (

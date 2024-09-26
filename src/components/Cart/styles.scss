@@ -1,7 +1,29 @@
 .cart {
+    flex-wrap: wrap;
+
+    .cart-header {
+        width: 100%;
+        height: 60px;
+        margin-top: 80px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--ui-dark-grey);
+        color: white;
+
+        .cart-header-right {
+            button.checkout {
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                background: var(--ui-primary);
+                color: white;
+            }
+        }
+    }
 
     .cart-items {
-        margin-top: 80px;
         height: calc(100vh - 80px);
         display: flex;
         flex-wrap: wrap;
