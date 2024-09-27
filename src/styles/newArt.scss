@@ -71,7 +71,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		margin-top: 140px;
 		
 		.field {
 			width: 100%;
@@ -104,7 +104,6 @@
 				border: 2px solid var(--ui-black);
 				border-radius: 6px;
 				font-size: 16px;
-				font-weight: 600;
 				transition: all 0.3s ease;
 				
 				&::placeholder {
@@ -117,28 +116,9 @@
 				}
 			}
 
-			select {
-				width: 100%;
-				padding: 4px 10px;
-				border: 2px solid var(--ui-black);
-				border-radius: 6px;
-				font-size: 16px;
-				font-weight: 600;
-				transition: all 0.3s ease;
-				
-				&::placeholder {
-					font-size: 12px;
-					font-weight: 600;
-				}
-				
-				&:active, &:focus, &:not(:empty) {
-					border: 2px solid var(--ui-primary);
-				}
-			}
-
-			option {
+			/* option {
 				color: black;
-			}
+			} */
 			
 			&.image-input {
 				position: relative;

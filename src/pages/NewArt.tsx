@@ -17,7 +17,6 @@ const NewArt: React.FC = () => {
 		title: "",
 		description: "",
 		tags: "",
-		category: "",
 		price: "",
 	});
 	const [username, setUsername] = useState("");
@@ -79,7 +78,6 @@ const NewArt: React.FC = () => {
 						title: formValues.title,
 						description: formValues.description,
 						tags: formValues.tags.split(" "),
-						category: formValues.category,
 						price: formValues.price,
 						imageData: images,
 						stars: 0,
@@ -117,7 +115,6 @@ const NewArt: React.FC = () => {
 
 	return (
 		<div className="new-art">
-
 			<div className="form-wrapper">
 				<div className="back-btn fl-c-c" onClick={() => nav("/")}>
 					<i className="bx bx-x"></i>
@@ -125,6 +122,7 @@ const NewArt: React.FC = () => {
 				<Swiper
 					spaceBetween={10}
 					pagination={{ clickable: true }}
+					allowTouchMove={false}
 					onSwiper={(swiper) => setSwiper(swiper)}
 				>
 					{/* Slide 1 */}
@@ -207,18 +205,6 @@ const NewArt: React.FC = () => {
 									}
 								></textarea>
 							</div>
-
-							<div className="field">
-								<label>Tags</label>
-								<input
-									type="text"
-									placeholder="Separate with a space. (Max 8 tags)"
-									value={formValues.tags}
-									onChange={(e) =>
-										setFormValues({ ...formValues, tags: e.target.value })
-									}
-								/>
-							</div>
 						</div>
 					</SwiperSlide>
 
@@ -235,22 +221,6 @@ const NewArt: React.FC = () => {
 
 						<div className="slide-content">
 							<div className="field">
-								<label>Category</label>
-								<select
-									value={formValues.category}
-									onChange={(e) =>
-										setFormValues({ ...formValues, category: e.target.value })
-									}
-								>
-									<option value="painting">Painting</option>
-									<option value="sculpture">Sculpture</option>
-									<option value="photography">Photography</option>
-									<option value="digital">Digital</option>
-									<option value="other">Other</option>
-								</select>
-							</div>
-
-							<div className="field">
 								<label>Price</label>
 								<input
 									type="text"
@@ -258,6 +228,18 @@ const NewArt: React.FC = () => {
 									value={formValues.price}
 									onChange={(e) =>
 										setFormValues({ ...formValues, price: e.target.value })
+									}
+								/>
+							</div>
+
+							<div className="field">
+								<label>Tags</label>
+								<input
+									type="text"
+									placeholder="Separate with a space. (Max 8 tags)"
+									value={formValues.tags}
+									onChange={(e) =>
+										setFormValues({ ...formValues, tags: e.target.value })
 									}
 								/>
 							</div>
