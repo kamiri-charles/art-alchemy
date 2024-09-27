@@ -38,8 +38,8 @@ p, h1, h2, h3, h4, h5, h6 {
 
 /* Colors */
 :root {
-  --ui-primary: #DF2935;
-  --ui-secondary: #3772FF;
+  --ui-primary: #3772FF;
+  --ui-secondary: #DF2935;
   --ui-tertiary: #FDCA40;
   --ui-black: #080708;
   --ui-light-black: #1E1E1E;
@@ -90,9 +90,9 @@ p, h1, h2, h3, h4, h5, h6 {
 /* App */
 .App {
   position: fixed;
-  background: #DA22FF;
-  background: -webkit-linear-gradient(to right, #9733EE, #DA22FF);
-  background: linear-gradient(to right, #9733EE, #DA22FF);
+  background: #8E2DE2;
+  background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);
+  background: linear-gradient(to right, #4A00E0, #8E2DE2);
 
   width: 100vw;
   height: 100vh;
