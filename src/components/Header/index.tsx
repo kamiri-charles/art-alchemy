@@ -44,8 +44,12 @@ const Header:React.FC = () => {
 
 						<button className="new-art-btn" onClick={() => nav("/new-art")}>Create Art</button>
 
+						<div className="cart-icon" onClick={() => nav("/cart")}>
+							<i className="bx bx-cart"></i>
+						</div>
+
 						<div
-							className="menu-icon"
+							className="user-icon"
 							onClick={() => setMenuActive(!menuActive)}
 						>
 							<i className="bx bx-user"></i>
@@ -55,11 +59,6 @@ const Header:React.FC = () => {
 							<div className="option fl-c" onClick={() => nav('/profile')}>
 								<i className="bx bx-user"></i>
 								<span>Profile</span>
-							</div>
-
-							<div className="option fl-c" onClick={() => nav('/cart')}>
-								<i className="bx bx-cart"></i>
-								<span>Cart</span>
 							</div>
 
 							<div className="option fl-c sign-out" onClick={() => logout()}>

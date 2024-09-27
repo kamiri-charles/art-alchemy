@@ -123,11 +123,6 @@ const SignIn: React.FC = () => {
 								<i className={showPassword ? "bx bx-hide" : "bx bx-show"}></i>
 							</div>
 						</div>
-
-						<div className="field checkbox">
-							<input type="checkbox" aria-checked />
-							<label>Keep me logged in</label>
-						</div>
 					</div>
 
 					{error.length > 0 ? <div className="error-message">{error}</div> : ''}
