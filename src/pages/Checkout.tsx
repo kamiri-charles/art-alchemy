@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import { ArtType, OrderType } from "../assets/utils/custom_types";
+import { ArtType, OrderType } from "../utils/custom_types";
 import { fetch_art_by_ids } from "../api/art";
 import { ImpulseSpinner, MetroSpinner } from "react-spinners-kit";
 import "swiper/swiper-bundle.css";

@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { ArtType, CartType } from "../../assets/utils/custom_types";
+import { ArtType, CartType } from "../../utils/custom_types";
 import { fetch_art_image_data } from "../../api/art";
 import { ImpulseSpinner } from "react-spinners-kit";
 import SwiperCore from "swiper";

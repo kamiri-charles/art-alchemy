@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserType } from "../../assets/utils/custom_types";
+import { UserType } from "../../utils/custom_types";
 import BreadCrumbsHeader from "../BreadCrumbsHeader";
-import RandomBackground from "../../assets/utils/RandomBackground";
 import "./styles.scss";
 
 
@@ -35,9 +34,7 @@ const Profile: React.FC = () => {
 
 	return (
 		<div className="profile">
-			<RandomBackground />
 			<BreadCrumbsHeader location={['Profile']} />
-
 			
 			<div className="profile-meta">
 				<div className="profile-pic">

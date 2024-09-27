@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MetroSpinner } from "react-spinners-kit";
-import RandomBackground from "../../../assets/utils/RandomBackground";
 import "./styles.scss";
 
 const AdminSignIn: React.FC = () => {
@@ -82,7 +81,6 @@ const AdminSignIn: React.FC = () => {
 
 	return (
 		<div className="admin-sign-in">
-			<RandomBackground />
 			<div className="admin-sign-in-logo" onClick={() => nav("/")}>
 				ART ALCHEMY
 			</div>

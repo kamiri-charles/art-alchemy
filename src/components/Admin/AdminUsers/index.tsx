@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { MetroSpinner } from "react-spinners-kit";
-import { UserType } from "../../../assets/utils/custom_types";
+import { UserType } from "../../../utils/custom_types";
 import "./styles.scss";
 
 const AdminUsers: React.FC = () => {

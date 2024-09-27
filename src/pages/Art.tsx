@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import SwiperCore from "swiper";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { ArtType, CartType } from "../assets/utils/custom_types";
+import { ArtType, CartType } from "../utils/custom_types";
 import { fetch_art_by_id } from "../api/art";
 import { MetroSpinner } from "react-spinners-kit";
 import "../styles/art.scss";

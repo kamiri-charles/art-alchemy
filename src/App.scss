@@ -90,7 +90,10 @@ p, h1, h2, h3, h4, h5, h6 {
 /* App */
 .App {
   position: fixed;
-  background: var(--ui-white);
+  background: #DA22FF;
+  background: -webkit-linear-gradient(to right, #9733EE, #DA22FF);
+  background: linear-gradient(to right, #9733EE, #DA22FF);
+
   width: 100vw;
   height: 100vh;
   font-family: 'Roboto', sans-serif;

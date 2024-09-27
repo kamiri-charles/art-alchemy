@@ -1,4 +1,4 @@
-import { UserSignInType, UserSignUpType } from "../assets/utils/custom_types";
+import { UserSignInType, UserSignUpType } from "../utils/custom_types";
 
 export const sign_in_user = async (userData: UserSignInType) => {
     const res = await fetch("https://art-alchemy-7302d99f4202.herokuapp.com/api/users/sign-in", {

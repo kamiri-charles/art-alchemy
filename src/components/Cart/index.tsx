@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CartType } from "../../assets/utils/custom_types";
+import { CartType } from "../../utils/custom_types";
 import { MetroSpinner } from "react-spinners-kit";
 import { CartItem } from "./CartItem";
 import BreadCrumbsHeader from "../BreadCrumbsHeader";

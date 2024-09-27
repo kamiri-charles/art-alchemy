@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import RandomBackground from "../assets/utils/RandomBackground";
 import { MetroSpinner } from "react-spinners-kit";
 import { sign_in_user } from "../api/users";
-import { UserSignInType } from "../assets/utils/custom_types";
+import { UserSignInType } from "../utils/custom_types";
 import '../styles/signIn&signUp.scss';
 
 const SignIn: React.FC = () => {
@@ -64,8 +63,6 @@ const SignIn: React.FC = () => {
 
 	return (
 		<div className="sign-in">
-
-			<RandomBackground />
 			
 			<div className="form-wrapper">
 				<div className="left">

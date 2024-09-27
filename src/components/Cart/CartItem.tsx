@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArtType, CartType } from "../../assets/utils/custom_types";
+import { ArtType, CartType } from "../../utils/custom_types";
 import { ImpulseSpinner } from "react-spinners-kit";
 
 export const CartItem: React.FC<{

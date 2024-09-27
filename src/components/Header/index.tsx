@@ -64,7 +64,7 @@ const Header:React.FC = () => {
 
 							<div className="option fl-c sign-out" onClick={() => logout()}>
 								{signingOut ? (
-									<MetroSpinner color="black" size={20} />
+									<MetroSpinner size={20} />
 								) : (
 									<i className="bx bx-log-out"></i>
 								)}

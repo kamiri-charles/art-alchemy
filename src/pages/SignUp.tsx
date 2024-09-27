@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { MetroSpinner } from "react-spinners-kit";
-import RandomBackground from "../assets/utils/RandomBackground";
 import { sign_up_user } from "../api/users";
-import { UserSignUpType } from "../assets/utils/custom_types";
+import { UserSignUpType } from "../utils/custom_types";
 import '../styles/signIn&signUp.scss';
 
 const SignUp: React.FC = () => {
@@ -69,7 +68,6 @@ const SignUp: React.FC = () => {
 
 	return (
 		<div className="sign-up">
-			<RandomBackground />
 			<div className="form-wrapper">
 				<div className="left">
 					<div className="brand">ART ALCHEMY</div>

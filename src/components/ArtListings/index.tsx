@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ArtPiece from "../ArtPiece";
 import { MetroSpinner } from "react-spinners-kit";
-import { ArtType, CartType } from "../../assets/utils/custom_types";
+import { ArtType, CartType } from "../../utils/custom_types";
 import "./styles.scss";
 
 

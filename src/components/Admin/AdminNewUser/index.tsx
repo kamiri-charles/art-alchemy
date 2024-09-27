@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { MetroSpinner } from "react-spinners-kit";
-import RandomBackground from "../../../assets/utils/RandomBackground";
 import "./styles.scss";
 
 const AdminNewUser: React.FC = () => {
@@ -81,7 +80,6 @@ const AdminNewUser: React.FC = () => {
 
 	return (
 		<div className="admin-new-user">
-			<RandomBackground />
 			<div className="form-wrapper">
 				<div className="left">
 					<div className="brand">ART ALCHEMY</div>

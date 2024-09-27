@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import SwiperCore from "swiper";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import RandomBackground from "../assets/utils/RandomBackground";
 import { MetroSpinner } from "react-spinners-kit";
 import "swiper/swiper-bundle.css";
 import "../styles/newArt.scss";
@@ -118,7 +117,6 @@ const NewArt: React.FC = () => {
 
 	return (
 		<div className="new-art">
-			<RandomBackground />
 
 			<div className="form-wrapper">
 				<div className="back-btn fl-c-c" onClick={() => nav("/")}>
