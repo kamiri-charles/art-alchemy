@@ -1,6 +1,6 @@
 .profile {
     display: flex;
-    
+    color: white;
     
     .profile-meta {
         width: 40%;
@@ -10,7 +10,7 @@
         justify-content: space-around;
         align-items: center;
         
-        background: var(--ui-white);
+        background: var(--ui-dark-grey);
         border-radius: 10px;
         padding: 20px;
 
@@ -22,6 +22,7 @@
             background: var(--ui-white);
             font-size: 50px;
             border: 1px solid var(--ui-black);
+            color: black;
             display: grid;
             place-items: center;
         }
@@ -36,7 +37,7 @@
         justify-content: space-around;
         align-items: center;
         
-        background: var(--ui-white);
+        background: var(--ui-dark-grey);
         border-radius: 10px;
         padding: 20px;
 
@@ -44,7 +45,7 @@
             font-size: 24px;
             font-weight: 500;
             margin-bottom: 20px;
-            border-bottom: 2px solid black;
+            border-bottom: 2px solid white;
             padding-inline: 40px;
         }
 
@@ -54,9 +55,9 @@
             flex-wrap: wrap;
             justify-content: space-around;
             align-items: center;
+            color: black;
 
             .activity-item {
-                width: 200px;
                 height: 200px;
                 background: var(--ui-white);
                 border-radius: 10px;
@@ -66,7 +67,6 @@
                 flex-direction: column;
                 justify-content: space-around;
                 align-items: center;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
                 .activity-icon {
                     font-size: 50px;
