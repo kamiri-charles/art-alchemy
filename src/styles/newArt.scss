@@ -6,65 +6,41 @@
 	
 	.form-wrapper {
 		position: relative;
-		width: 600px;
-		height: 90vh;
-		background: var(--ui-black);
+		width: 60%;
+		background: var(--ui-dark-grey);
+		margin-top: 80px;
 		color: var(--ui-white);
 		border-radius: 10px;
-
-		.back-btn {
-			position: absolute;
-			top: 40px;
-			right: 40px;
-			width: 30px;
-			height: 30px;
-			font-size: 20px;
-			border-radius: 50%;
-			transition: all 0.3s ease;
-			cursor: pointer;
-			z-index: 99;
-
-			&:hover {
-				background: var(--ui-white);
-				color: var(--ui-black);
-			}
-		}
 	}
 
 
 .form-slide {
 	position: relative;
 	width: 100%;
-	height: 90vh;
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	padding: 80px 20px;
 	
-	.slide-logo {
-		position: absolute;
-		top: 20px;
-		left: 20px;
-		
-		.brand {
-			font-family: "Permanent Marker", cursive;
+	.slide-title {
+		width: 100%;
+		display: grid;
+		place-items: center;
+		.slide-catchphrase {
+			color: var(--ui-primary);
+			font-family: "Permanent Marker", sans-serif;
 			font-size: 24px;
 		}
-	
-		
-		span {
-			color: var(--ui-primary);
-			font-weight: 600;
-		}
-	}
 
-	.slide-title {
-		position: absolute;
-		top: 100px;
-		color: black;
-		font-family: 'Edu TAS Beginner', cursive;
-		font-size: 18px;
-		font-weight: 600;
-		width: 400px;
-		text-align: center;
+		.slide-catch-desc {
+			font-family: 'Edu TAS Beginner', cursive;
+			font-size: 18px;
+			font-weight: 600;
+			width: 400px;
+			text-align: center;
+		}
+
 	}
 	
 	.slide-content {
@@ -72,7 +48,6 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-top: 140px;
 		
 		.field {
 			width: 100%;
@@ -181,23 +156,20 @@
 		}
 
 		button.submit-btn {
-			position: absolute;
-			left: 50%;
-			bottom: 80px;
-			transform: translateX(-50%);
 			width: 200px;
 			padding: 10px;
+			margin-top: 40px;
 			border-radius: 6px;
-			background: var(--ui-black);
+			background: var(--ui-primary);
 			color: white;
 			font-family: 'Edu TAS Beginner', sans-serif;
 			font-size: 16px;
-			font-weight: 600;
 			cursor: pointer;
 			transition: all 0.3s ease;
 			
 			&:hover {
-				background: var(--ui-primary);
+				background: var(--ui-white);
+				color: black;
 			}
 
 			&.disabled {
@@ -206,23 +178,17 @@
 
 				&:hover {
 					background: gray;
+					color: white;
 				}
 			}
 		}
 	}
 }
 
-.slides-nav-btns {
-	position: absolute;
-	bottom: 20px;
-	color: black;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 20px;
-	width: 100%;
-
+.slides-nav-btns {	
 	.prev-slide-btn, .next-slide-btn {
+		position: absolute;
+		top: 50%;
 		width: 30px;
 		height: 30px;
 		border-radius: 50%;
@@ -241,24 +207,18 @@
 			border: 1px solid black;
 		}
 	}
+
+	.prev-slide-btn {
+		left: 20px;
+	}
+
+	.next-slide-btn {
+		right: 20px;
+	}
 }
 
 .loader {
-	margin-top: 100px;
+	margin-top: 40px;
 }
 
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-	.new-art .form-wrapper {
-		border-radius: 0;
-		height: 100vh;
-		width: 100%;
-
-		.back-btn {
-			background: var(--ui-black);
-			color: var(--ui-white);
-		}
-	}
 }

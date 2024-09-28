@@ -4,6 +4,7 @@ import SwiperCore from "swiper";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { MetroSpinner } from "react-spinners-kit";
+import BreadCrumbsHeader from "../components/BreadCrumbsHeader";
 import "swiper/swiper-bundle.css";
 import "../styles/newArt.scss";
 
@@ -115,10 +116,8 @@ const NewArt: React.FC = () => {
 
 	return (
 		<div className="new-art">
+			<BreadCrumbsHeader location={["New Art"]} />
 			<div className="form-wrapper">
-				<div className="back-btn fl-c-c" onClick={() => nav("/")}>
-					<i className="bx bx-x"></i>
-				</div>
 				<Swiper
 					spaceBetween={10}
 					pagination={{ clickable: true }}
@@ -127,14 +126,13 @@ const NewArt: React.FC = () => {
 				>
 					{/* Slide 1 */}
 					<SwiperSlide className="form-slide">
-						<div className="slide-logo">
-							<div className="brand">Art Alchemy</div>
-							<span>Name That Masterpiece</span>
-						</div>
-
 						<div className="slide-title">
-							Where creativity begins - give your art a title and show off those
-							stunning visuals!
+							<div className="slide-catchphrase">Name That Masterpiece</div>
+
+							<div className="slide-catch-desc">
+								Where creativity begins - give your art a title and show off
+								those stunning visuals!
+							</div>
 						</div>
 
 						<div className="slide-content">
@@ -182,13 +180,12 @@ const NewArt: React.FC = () => {
 
 					{/* Slide 2 */}
 					<SwiperSlide className="form-slide">
-						<div className="slide-logo">
-							<div className="brand">Art Alchemy</div>
-							<span>What's The Story?</span>
-						</div>
-
 						<div className="slide-title">
-							Every piece has a tale - describe yours and tag it right!
+							<div className="slide-catchphrase">What's The Story?</div>
+
+							<div className="slide-catch-desc">
+								Every piece has a tale - describe yours and tag it right!
+							</div>
 						</div>
 
 						<div className="slide-content">
@@ -210,13 +207,12 @@ const NewArt: React.FC = () => {
 
 					{/* Slide 3 */}
 					<SwiperSlide className="form-slide">
-						<div className="slide-logo">
-							<div className="brand">Art Alchemy</div>
-							<span>Show Me The Money</span>
-						</div>
-
 						<div className="slide-title">
-							Time to seal the deal - set your price and finalize the details!
+							<div className="slide-catchphrase">Show Me The Money</div>
+
+							<div className="slide-catch-desc">
+								Time to seal the deal - set your price and finalize the details!
+							</div>
 						</div>
 
 						<div className="slide-content">
@@ -246,7 +242,7 @@ const NewArt: React.FC = () => {
 
 							{loading ? (
 								<div className="loader">
-									<MetroSpinner color="black" size={30} />
+									<MetroSpinner size={30} />
 								</div>
 							) : (
 								<button
