@@ -60,14 +60,15 @@
             .new-art-btn {
                 border-radius: 8px;
                 padding-inline: 20px;
-                background: var(--ui-secondary);
+                background: var(--ui-primary);
                 transition: all 0.3s ease;
                 font-family: 'Edu TAS Beginner', cursive;
                 color: white;
                 cursor: pointer;
 
                 &:hover {
-                    background: var(--ui-primary);
+                    background: var(--ui-white);
+                    color: var(--ui-black);
                 }
             }
 

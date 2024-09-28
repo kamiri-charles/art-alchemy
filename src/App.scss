@@ -43,7 +43,7 @@ p, h1, h2, h3, h4, h5, h6 {
   --ui-tertiary: #FDCA40;
   --ui-black: #080708;
   --ui-light-black: #1E1E1E;
-  --ui-light-grey: #F0F0F0;
+  --ui-light-grey: #c7c7c7;
   --ui-dark-grey: #2E2E2E;
   --ui-white: #FFF;
 }
@@ -90,9 +90,7 @@ p, h1, h2, h3, h4, h5, h6 {
 /* App */
 .App {
   position: fixed;
-  background: #8E2DE2;
-  background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);
-  background: linear-gradient(to right, #4A00E0, #8E2DE2);
+  background: var(--ui-light-grey);
 
   width: 100vw;
   height: 100vh;

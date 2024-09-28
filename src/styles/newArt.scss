@@ -8,7 +8,8 @@
 		position: relative;
 		width: 600px;
 		height: 90vh;
-		background: white;
+		background: var(--ui-black);
+		color: var(--ui-white);
 		border-radius: 10px;
 
 		.back-btn {
@@ -24,8 +25,8 @@
 			z-index: 99;
 
 			&:hover {
-				background: var(--ui-black);
-				color: var(--ui-white);
+				background: var(--ui-white);
+				color: var(--ui-black);
 			}
 		}
 	}
@@ -82,7 +83,7 @@
 			input {
 				width: 100%;
 				padding: 4px 10px;
-				border: 2px solid var(--ui-black);
+				border: 2px solid var(--ui-white);
 				border-radius: 6px;
 				transition: all 0.3s ease;
 				
@@ -115,15 +116,13 @@
 					border: 2px solid var(--ui-primary);
 				}
 			}
-
-			/* option {
-				color: black;
-			} */
 			
 			&.image-input {
 				position: relative;
 				height: 200px;
-				border: 1px dashed var(--ui-black);
+				border: 1px dashed var(--ui-white);
+				color: white;
+				
 				padding: 20px;
 				cursor: pointer;
 				
@@ -163,7 +162,6 @@
 					transform: translate(-50%, -50%);
 					font-size: 20px;
 					font-weight: 600;
-					color: var(--ui-black);
 
 					ul {
 						position: absolute;
