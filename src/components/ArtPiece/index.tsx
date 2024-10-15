@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { ArtType, CartType } from "../../utils/custom_types";
 import { fetch_art_image_data } from "../../api/art";
 import { ImpulseSpinner } from "react-spinners-kit";
+import TooltipIcon from "../widgets/TooltipIcon";
 import SwiperCore from "swiper";
 import "swiper/swiper-bundle.css";
 import "./styles.scss";
@@ -91,7 +92,10 @@ const ArtPiece: React.FC<{ data: ArtType, cart: CartType | undefined, setCart: (
 						{imageError ? (
 							<div className="image-load-error">
 								<i className="bx bx-error"></i>
-								<span>There was an error getting image data for this piece. <br /> Try refreshing.</span>
+								<span>
+									There was an error getting image data for this piece. <br />{" "}
+									Try refreshing.
+								</span>
 							</div>
 						) : (
 							<ImpulseSpinner backColor="#3772FF" frontColor="#DF2935" />
@@ -120,12 +124,9 @@ const ArtPiece: React.FC<{ data: ArtType, cart: CartType | undefined, setCart: (
 					<div className="price">Ksh. {data.price}</div>
 
 					{inCart ? (
-						<i className="bx bx-check fl-c-c"></i>
+						<TooltipIcon name="check" tooltip="Item already in cart" />
 					) : (
-						<i
-							className="bx bx-cart fl-c-c"
-							onClick={(evt) => addToCart(evt, data.id)}
-						></i>
+						<TooltipIcon name="cart" tooltip="Add to cart" onClick={(evt) => addToCart(evt, data.id)} />
 					)}
 				</div>
 			</div>

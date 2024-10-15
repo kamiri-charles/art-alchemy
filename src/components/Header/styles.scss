@@ -165,15 +165,17 @@
                 margin-inline: 4px;
                 border: none;
                 border-radius: 5px;
-                background: var(--ui-secondary);
+                background: var(--ui-primary);
                 color: var(--ui-white);
+                font-family: 'Edu TAS Beginner', cursive;
                 font-size: 16px;
                 font-weight: 600;
                 cursor: pointer;
                 transition: all 0.3s ease;
 
                 &:hover {
-                    background: var(--ui-primary);
+                    background: var(--ui-white);
+                    color: black;
                 }
             }
 
