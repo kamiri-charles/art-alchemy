@@ -5,20 +5,6 @@ export const fetch_art_by_id = async (id: string) => {
 };
 
 
-export const fetch_art_by_ids = async (ids: string[]) => {
-    const res = await fetch("https://art-alchemy-7302d99f4202.herokuapp.com/api/art/ids", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(ids),
-		});
-
-    const data = await res.json();
-
-    return data;
-}
-
 export const fetch_art_image_data = async (id: string) => {
     const res = await fetch(`https://art-alchemy-7302d99f4202.herokuapp.com/api/art/${id}/images`);
 		const data = await res.json();

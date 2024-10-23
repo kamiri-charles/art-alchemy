@@ -4,6 +4,7 @@ import { CartType } from "../../utils/custom_types";
 import { MetroSpinner } from "react-spinners-kit";
 import { CartItem } from "./CartItem";
 import BreadCrumbsHeader from "../BreadCrumbsHeader";
+import { fetch_user_cart, fetch_user_cart_total } from "../../api/cart";
 import "./styles.scss";
 
 const Cart: React.FC = () => {
@@ -20,20 +21,20 @@ const Cart: React.FC = () => {
 			if (rawUserData != null) {
 				const userId = JSON.parse(rawUserData).id;
 
-				try {
-					const response = await fetch(
-						`https://art-alchemy-7302d99f4202.herokuapp.com/api/cart/${userId}`
-					);
-					const data = await response.json();
-					setCart(data);
-					setLoading(false);
-				} catch (error) {
-					console.error(
-						"There was an error getting the cart associated with this user.",
-						error
-					);
-					setLoading(false);
-				}
+				//fetch_user_cart_total(userId).then(data => console.log(data));
+
+				fetch_user_cart(userId)
+					.then(data => {
+						setCart(data);
+						setLoading(false);
+					})
+					.catch(err => {
+						console.error(
+							"There was an error getting the cart associated with this user.",
+							err
+						);
+						setLoading(false);
+					})
 			}
 		};
 

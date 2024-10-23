@@ -4,8 +4,6 @@ import { UserType } from "../../utils/custom_types";
 import BreadCrumbsHeader from "../BreadCrumbsHeader";
 import "./styles.scss";
 
-
-
 const Profile: React.FC = () => {
 	const nav = useNavigate();
 	const [userData, setUserData] = useState<UserType>({
