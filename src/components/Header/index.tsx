@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MetroSpinner } from 'react-spinners-kit'
+import { fetch_user_cart_total } from '../../api/cart'
+import { UserType } from '../../utils/custom_types'
 import './styles.scss'
 
 const Header:React.FC = () => {
-	const [userData, setUserData] = useState();
+	const [userData, setUserData] = useState<UserType>();
 	const [menuActive, setMenuActive] = useState(false);
 	const [signingOut, setSigningOut] = useState(false);
+	const [cartItemCount, setCartItemCount] = useState(0);
 	const nav = useNavigate();
 
 	useEffect(() => {
@@ -14,7 +17,11 @@ const Header:React.FC = () => {
 		const data = localStorage.getItem("artAlchemyUserData");
 		if (data) {
 			setUserData(JSON.parse(data));
-		}
+
+			fetch_user_cart_total(JSON.parse(data).id)
+				.then(data => setCartItemCount(data))
+				.catch(err => console.error(err));
+		};
 	}, []);
 
 	// Log out user
@@ -46,6 +53,8 @@ const Header:React.FC = () => {
 
 						<div className="cart-icon" onClick={() => nav("/cart")}>
 							<i className="bx bx-cart"></i>
+							{cartItemCount > 0 ? <span className="item-count"></span> : ""}
+							
 						</div>
 
 						<div

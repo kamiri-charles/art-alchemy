@@ -73,6 +73,7 @@
             }
 
             .cart-icon {
+                position: relative;
                 width: 40px;
                 height: 40px;
                 margin-inline: 10px;
@@ -83,6 +84,16 @@
                 transition: all 0.3s ease;
                 cursor: pointer;
                 color: white;
+
+                .item-count {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    background: red;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                }
             }
 
             .user-icon{

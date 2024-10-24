@@ -4,7 +4,7 @@ import { CartType } from "../../utils/custom_types";
 import { MetroSpinner } from "react-spinners-kit";
 import { CartItem } from "./CartItem";
 import BreadCrumbsHeader from "../BreadCrumbsHeader";
-import { fetch_user_cart, fetch_user_cart_total } from "../../api/cart";
+import { fetch_user_cart } from "../../api/cart";
 import "./styles.scss";
 
 const Cart: React.FC = () => {
@@ -20,8 +20,6 @@ const Cart: React.FC = () => {
 
 			if (rawUserData != null) {
 				const userId = JSON.parse(rawUserData).id;
-
-				//fetch_user_cart_total(userId).then(data => console.log(data));
 
 				fetch_user_cart(userId)
 					.then(data => {
