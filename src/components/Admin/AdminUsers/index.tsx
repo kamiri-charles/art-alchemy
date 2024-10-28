@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { MetroSpinner } from "react-spinners-kit";
 import { UserType } from "../../../utils/custom_types";
+import TooltipIcon from "../../widgets/TooltipIcon";
 import "./styles.scss";
 
 const AdminUsers: React.FC = () => {
@@ -76,8 +77,9 @@ const AdminUsers: React.FC = () => {
 							</div>
 
 							<div className="admin-user-btns">
-								<i className="bx bx-edit-alt"></i>
-								<i className="bx bx-trash-alt"></i>
+								<TooltipIcon name="edit-alt" tooltip="Edit" />
+								<TooltipIcon name="trash-alt" tooltip="Delete" />
+								
 							</div>
 						</div>
 					))}
