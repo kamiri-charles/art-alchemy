@@ -10,9 +10,17 @@ import SwiperCore from "swiper";
 import "swiper/swiper-bundle.css";
 import "./styles.scss";
 
+interface ArtPieceProps {
+	data: ArtType;
+	cart: CartType | undefined;
+	setCart: (cart: CartType) => void;
+	notify: (x: string) => void;
+}
+
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
-const ArtPiece: React.FC<{ data: ArtType, cart: CartType | undefined, setCart: (cart: CartType) => void }> = ({ data, cart, setCart }) => {
+
+const ArtPiece: React.FC<ArtPieceProps> = ({ data, cart, setCart, notify }) => {
 	
 	const [inCart, setInCart] = useState(cart?.artIds.includes(data.id));
 	const [imageData, setImageData] = useState<string[]>([]);
@@ -64,6 +72,7 @@ const ArtPiece: React.FC<{ data: ArtType, cart: CartType | undefined, setCart: (
 			setInCart(true);
 
 			updateCart();
+			notify("Product added to cart!");
 		}
 
 	};

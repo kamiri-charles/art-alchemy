@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import ArtListings from "../components/ArtListings";
 
-const Home: React.FC = () => {
+interface HomeProps {
+	notify: (x: string) => void;
+}
+
+const Home: React.FC<HomeProps> = ({notify}) => {
 	const [currentTab, setCurrentTab] = useState(
 		localStorage.getItem("artAlchemyCurrentTab") || "home"
 	);
@@ -14,7 +18,7 @@ const Home: React.FC = () => {
 	return (
 		<div>
 			<Header />
-			<ArtListings />
+			<ArtListings notify={notify} />
 		</div>
 	);
 };

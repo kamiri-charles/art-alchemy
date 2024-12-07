@@ -4,7 +4,11 @@ import { MetroSpinner } from "react-spinners-kit";
 import { ArtType, CartType } from "../../utils/custom_types";
 import "./styles.scss";
 
-const ArtListings: React.FC = () => {
+interface ArtListingsProps {
+	notify: (x: string) => void;
+}
+
+const ArtListings: React.FC<ArtListingsProps> = ({notify}) => {
 	const [art, setArt] = useState<ArtType[]>([]);
 	const [error, setError] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
@@ -94,6 +98,7 @@ const ArtListings: React.FC = () => {
 									cart={cart}
 									setCart={setCart}
 									key={piece.id}
+									notify={notify}
 								/>
 							))}
 						</>
