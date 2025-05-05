@@ -17,7 +17,7 @@ export const CartItem: React.FC<{
 			setLoading(true);
 			try {
 				const response = await fetch(
-					`https://art-alchemy-7302d99f4202.herokuapp.com/api/art/${id}`
+					`https://art-alchemy-backend.onrender.com/api/art/${id}`
 				);
 				const data = await response.json();
 				setData(data);
@@ -47,7 +47,7 @@ export const CartItem: React.FC<{
 		try {
 			// Attempt to remove the item from the cart on the server
 			const response = await fetch(
-				"https://art-alchemy-7302d99f4202.herokuapp.com/api/cart/update",
+				"https://art-alchemy-backend.onrender.com/api/cart/update",
 				{
 					method: "POST",
 					headers: {

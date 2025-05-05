@@ -44,7 +44,7 @@ const Art: React.FC = () => {
 
 				try {
 					const response = await fetch(
-						`https://art-alchemy-7302d99f4202.herokuapp.com/api/cart/${userId}`
+						`https://art-alchemy-backend.onrender.com/api/cart/${userId}`
 					);
 					const data = await response.json();
 					setCart(data);
@@ -69,7 +69,7 @@ const Art: React.FC = () => {
 
 	const updateCart = async () => {
 		try {
-			await fetch("https://art-alchemy-7302d99f4202.herokuapp.com/api/cart/update", {
+			await fetch("https://art-alchemy-backend.onrender.com/api/cart/update", {
 				method: "POST",
 				body: JSON.stringify(cart),
 				headers: {

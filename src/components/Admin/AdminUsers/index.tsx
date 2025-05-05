@@ -17,7 +17,7 @@ const AdminUsers: React.FC = () => {
 			setLoading(true);
 			try {
 				const response = await fetch(
-					`https://art-alchemy-7302d99f4202.herokuapp.com/api/users?page=${currentPage - 1}&size=8`
+					`https://art-alchemy-backend.onrender.com/api/users?page=${currentPage - 1}&size=8`
 				);
 				const data = await response.json();
 				setUsers(data.content);

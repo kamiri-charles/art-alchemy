@@ -14,7 +14,7 @@ const AdminArt: React.FC = () => {
 			setLoading(true);
 			try {
 				const response = await fetch(
-					`https://art-alchemy-7302d99f4202.herokuapp.com/api/art?page=${currentPage - 1}&size=8`
+					`https://art-alchemy-backend.onrender.com/api/art?page=${currentPage - 1}&size=8`
 				);
 				const data = await response.json();
 				setArt(data.content);

@@ -21,7 +21,7 @@ const ArtListings: React.FC<ArtListingsProps> = ({notify}) => {
 			setLoading(true);
 			try {
 				const response = await fetch(
-					`https://art-alchemy-7302d99f4202.herokuapp.com/api/art?page=${
+					`https://art-alchemy-backend.onrender.com/api/art?page=${
 						currentPage - 1
 					}&size=8`
 				);
@@ -47,7 +47,7 @@ const ArtListings: React.FC<ArtListingsProps> = ({notify}) => {
 
 				try {
 					const response = await fetch(
-						`https://art-alchemy-7302d99f4202.herokuapp.com/api/cart/${userId}`
+						`https://art-alchemy-backend.onrender.com/api/cart/${userId}`
 					);
 					const data = await response.json();
 					setCart(data);

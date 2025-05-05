@@ -33,7 +33,7 @@ const AdminSignIn: React.FC = () => {
 
 		if (usernameValid && passwordValid) {
 			fetch(
-				"https://art-alchemy-7302d99f4202.herokuapp.com/api/users/admin/sign-in",
+				"https://art-alchemy-backend.onrender.com/api/users/admin/sign-in",
 				{
 					method: "POST",
 					body: JSON.stringify(userData),
