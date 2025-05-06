@@ -69,7 +69,7 @@ const Header:React.FC = () => {
 					</div>
 				) : (
 					<div className="user-not-signed-in-buttons">
-						<button onClick={() => nav("/sign-in")} className='log-in-btn'>Log In</button>
+						<div onClick={() => nav("/sign-in")} className='log-in-btn'>Log In</div>
 						<button onClick={() => nav("/sign-in")} className='sign-up-btn'>Sign Up</button>
 					</div>
 				)}

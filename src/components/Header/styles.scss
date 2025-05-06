@@ -8,7 +8,7 @@
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    padding-left: 80px;
+    padding-left: 20px;
     transition: all 0.2s ease;
     z-index: 999;
 
@@ -128,21 +128,21 @@
         }
         .user-not-signed-in-buttons {
             display: flex;
+            align-items: center;
+            font-weight: 600;
+
+            .log-in-btn {
+                cursor: pointer;
+            }
 
             button {
-                padding: 10px 20px;
-                margin-inline: 4px;
+                background: var(--ui-black);
+                color: var(--ui-white);
+                padding: 6px 12px;
+                margin-left: 18px;
                 border: none;
                 border-radius: 5px;
-                font-size: 16px;
-                font-weight: 600;
                 cursor: pointer;
-                transition: all 0.3s ease;
-
-                &:hover {
-                    background: var(--ui-white);
-                    color: black;
-                }
             }
 
             @media (max-width: 768px) {
