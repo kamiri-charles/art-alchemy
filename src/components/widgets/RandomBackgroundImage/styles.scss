@@ -1,0 +1,14 @@
+.random-background-image {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+
+    img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        display: block;
+        margin: 0 auto
+    }
+}

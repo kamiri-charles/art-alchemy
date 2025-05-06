@@ -14,9 +14,7 @@
 
     .left {
       width: 50%;
-      background: #232526;
-      background: -webkit-linear-gradient(to right, #414345, #232526);
-      background: linear-gradient(to right, #414345, #232526);
+      background: var(--ui-black);
       color: white;
       padding: 20px;
 

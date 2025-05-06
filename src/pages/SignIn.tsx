@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { MetroSpinner } from "react-spinners-kit";
 import { sign_in_user } from "../api/users";
 import { UserSignInType } from "../utils/custom_types";
+import RandomBackgroundImage from "../components/widgets/RandomBackgroundImage";
 import '../styles/signIn&signUp.scss';
 
 const SignIn: React.FC = () => {
@@ -63,6 +64,7 @@ const SignIn: React.FC = () => {
 
 	return (
 		<div className="sign-in">
+			<RandomBackgroundImage />
 			
 			<div className="form-wrapper">
 				<div className="left">

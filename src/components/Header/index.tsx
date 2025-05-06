@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MetroSpinner } from 'react-spinners-kit'
-import { fetch_user_cart_total } from '../../api/cart'
 import { UserType } from '../../utils/custom_types'
 import './styles.scss'
 
@@ -9,7 +8,6 @@ const Header:React.FC = () => {
 	const [userData, setUserData] = useState<UserType>();
 	const [menuActive, setMenuActive] = useState(false);
 	const [signingOut, setSigningOut] = useState(false);
-	const [cartItemCount, setCartItemCount] = useState(0);
 	const nav = useNavigate();
 
 	useEffect(() => {
@@ -17,10 +15,6 @@ const Header:React.FC = () => {
 		const data = localStorage.getItem("artAlchemyUserData");
 		if (data) {
 			setUserData(JSON.parse(data));
-
-			fetch_user_cart_total(JSON.parse(data).id)
-				.then(data => setCartItemCount(data))
-				.catch(err => console.error(err));
 		};
 	}, []);
 
@@ -49,14 +43,6 @@ const Header:React.FC = () => {
 				{userData ? (
 					<div className="user-logged-in">
 
-						<button className="new-art-btn" onClick={() => nav("/new-art")}>Create Art</button>
-
-						<div className="cart-icon" onClick={() => nav("/cart")}>
-							<i className="bx bx-cart"></i>
-							{cartItemCount > 0 ? <span className="item-count"></span> : ""}
-							
-						</div>
-
 						<div
 							className="user-icon"
 							onClick={() => setMenuActive(!menuActive)}
@@ -84,6 +70,7 @@ const Header:React.FC = () => {
 				) : (
 					<div className="user-not-signed-in-buttons">
 						<button onClick={() => nav("/sign-in")} className='log-in-btn'>Log In</button>
+						<button onClick={() => nav("/sign-in")} className='sign-up-btn'>Sign Up</button>
 					</div>
 				)}
 			</div>

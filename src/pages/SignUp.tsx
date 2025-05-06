@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { MetroSpinner } from "react-spinners-kit";
 import { sign_up_user } from "../api/users";
 import { UserSignUpType } from "../utils/custom_types";
+import RandomBackgroundImage from "../components/widgets/RandomBackgroundImage";
 import '../styles/signIn&signUp.scss';
 
 const SignUp: React.FC = () => {
@@ -68,6 +69,7 @@ const SignUp: React.FC = () => {
 
 	return (
 		<div className="sign-up">
+			<RandomBackgroundImage />
 			<div className="form-wrapper">
 				<div className="left">
 					<div className="brand">ART ALCHEMY</div>

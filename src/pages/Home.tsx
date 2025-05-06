@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
-import ArtListings from "../components/ArtListings";
 
 interface HomeProps {
 	notify: (x: string) => void;
@@ -18,7 +17,6 @@ const Home: React.FC<HomeProps> = ({notify}) => {
 	return (
 		<div>
 			<Header />
-			<ArtListings notify={notify} />
 		</div>
 	);
 };
