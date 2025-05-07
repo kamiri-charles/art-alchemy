@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import ArtListings from "../components/ArtListings";
 
-interface MarketProps {
+interface ShopProps {
 	notify: (x: string) => void;
 }
 
-const Market: React.FC<MarketProps> = ({ notify }) => {
+const Shop: React.FC<ShopProps> = ({ notify }) => {
 	const [currentTab, setCurrentTab] = useState(
 		localStorage.getItem("artAlchemyCurrentTab") || "market"
 	);
@@ -23,4 +23,4 @@ const Market: React.FC<MarketProps> = ({ notify }) => {
 	);
 };
 
-export default Market;
+export default Shop;

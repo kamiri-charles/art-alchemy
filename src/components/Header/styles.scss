@@ -18,37 +18,57 @@
         cursor: pointer;
     }
 
+    .mid {
+        width: 65%;
+        display: flex;
+        align-items: flex-end;
+        gap: 28px;
+        font-family: "Edu TAS Beginner", cursive;
+        font-size: 18px;
+        font-weight: 600;
+
+        .link {
+            position: relative;
+            cursor: pointer;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -10%;
+                width: 0;
+                height: 95%;
+                border-bottom: 2px solid black;
+                opacity: 0.5;
+                transition: all 0.3s ease;
+            }
+
+            &:hover:after {
+                width: 120%;
+            }
+
+        }
+    }
+
     .right {
         display: flex;
+        align-items: center;
+        justify-content: center;
 
-
-        .searchbar {
+        .search {
             display: flex;
             align-items: center;
-            background: var(--ui-white);
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin-inline: 20px;
-            width: 300px;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            font-size: 20px;
+            font-weight: 600;
+            border-radius: 50%;;
+            background: black;
+            color: white;
             transition: all 0.3s ease;
-
-            input {
-                border: none;
-                background: transparent;
-                margin-inline: 10px;
-                width: 100%;
-                font-size: 16px;
-                font-weight: 500;
-            }
-
-            i {
-                font-size: 20px;
-                cursor: pointer;
-            }
-
-            @media (max-width: 768px) {
-                display: none;
-            }
+            margin-inline: 10px;
+            cursor: pointer;
         }
 
         .user-logged-in {
@@ -136,7 +156,7 @@
             }
 
             button {
-                background: var(--ui-black);
+                background: var(--ui-secondary);
                 color: var(--ui-white);
                 padding: 6px 12px;
                 margin-left: 18px;

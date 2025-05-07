@@ -35,9 +35,16 @@ const Header:React.FC = () => {
 				Art Alchemy
 			</div>
 
+			<div className="mid">
+				<div className="link" onClick={() => nav("/shop")}>Shop</div>
+				<div className="link">Events</div>
+				<div className="link">Blog</div>
+				<div className="link">Become an Artist</div>
+				<div className="link">Contact</div>
+			</div>
+
 			<div className="right">
-				<div className="searchbar">
-					<input type="text" placeholder="Search" />
+				<div className="search">
 					<i className="bx bx-search"></i>
 				</div>
 				{userData ? (
@@ -70,7 +77,7 @@ const Header:React.FC = () => {
 				) : (
 					<div className="user-not-signed-in-buttons">
 						<div onClick={() => nav("/sign-in")} className='log-in-btn'>Log In</div>
-						<button onClick={() => nav("/sign-in")} className='sign-up-btn'>Sign Up</button>
+						<button onClick={() => nav("/sign-in")} className='sign-up-btn'>Create an Account</button>
 					</div>
 				)}
 			</div>
