@@ -1,0 +1,64 @@
+.blog-overview {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 350px;
+    background: white;
+    padding-bottom: 8px;
+    margin: 20px;
+    overflow: hidden;
+    border-bottom: 2px solid var(--ui-dark-grey);
+
+    .blog-image {
+        height: 50%;
+        background: black;
+    }
+
+    .blog-meta {
+        display: flex;
+        align-items: center;
+        height: 10%;
+        font-size: 16px;
+        gap: 8px;
+        padding: 8px;
+        font-family: "Edu TAS Beginner", cursive;
+
+        .point-separator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: gray;
+        }
+    }
+
+    .blog-title {
+        padding: 2px;
+        font-size: 20px;
+        font-weight: 600;
+        height: 10%;
+    }
+
+    .blog-desc {
+        padding: 8px;
+        height: 20%;
+    }
+
+    .blog-author {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        padding: 8px;
+        height: 10%;
+        gap: 8px;
+
+        .author-image {
+            display: grid;
+            place-items: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: black;
+            color: white;
+        }
+    }
+}

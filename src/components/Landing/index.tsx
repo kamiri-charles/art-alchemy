@@ -3,6 +3,7 @@ import Typed from "typed.js";
 import "./styles.scss";
 import NotifSlider from "./NotifSlider";
 import AdsSection from "./AdsSection";
+import BlogOverview from "../widgets/BlogOverview";
 
 const art_related_quotes = [
 	{
@@ -45,6 +46,14 @@ const art_related_quotes = [
 		author: "James Whistler",
 	},
 	{ quote: "The earth without art is just 'eh'.", author: "Unknown" },
+];
+
+const placeholder_blogs = [
+	{ image_src: "https://images.unsplash.com/photo-1549880338-65ddcdfd017b" },
+	{ image_src: "https://images.unsplash.com/photo-1549880338-65ddcdfd017b" },
+	{ image_src: "https://images.unsplash.com/photo-1549880338-65ddcdfd017b" },
+	{ image_src: "https://images.unsplash.com/photo-1549880338-65ddcdfd017b" },
+	{ image_src: "https://images.unsplash.com/photo-1549880338-65ddcdfd017b" },
 ];
 
 const getRandomQuote = () =>
@@ -96,7 +105,16 @@ const Landing: FC = () => {
 				</div>
 			</div>
 
-			<div className="scroll-placeholder"></div>
+			<div className="lp-blog-section-title">
+				<h1>From the Blog</h1>
+				<div>Curated just for you</div>
+			</div>
+
+			<div className="lp-from-the-blog">
+				{placeholder_blogs.map((blog, idx) => (<BlogOverview key={idx} image_src={blog.image_src} />))}
+			</div>
+
+			<div className="footer"></div>
 		</div>
 	);
 };
