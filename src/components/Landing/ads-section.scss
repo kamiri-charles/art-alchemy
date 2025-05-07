@@ -1,0 +1,71 @@
+.ads-section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    .ad-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+
+        .ad-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            border-radius: 20px;
+            padding: 0 8px;
+            color: white;
+
+            .point {
+                width: 8px;
+                height: 8px;
+                background: white;
+                border-radius: 50%;
+                margin-right: 16px;
+            }
+        }
+
+        .ad-btn {
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            border-radius: 50%;
+            background: white;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .ad-content {
+        color: white;
+        padding: 20px;
+
+        .ad-text-1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .ad-text-2 {
+            font-family: "Edu TAS Beginner", cursive;
+            text-align: right;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    }
+
+    .ad-footer {
+        position: absolute;
+        bottom: 10px;
+        width: 90%;
+        text-align: right;
+        color: white;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
