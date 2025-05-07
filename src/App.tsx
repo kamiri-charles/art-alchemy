@@ -27,7 +27,7 @@ function App() {
 			<ToastContainer />
 			<Router>
 				<Routes>
-					<Route path="" element={<Home notify={notify} />} />
+					<Route path="" element={<Home />} />
 					<Route path="/shop" element={<Shop notify={notify} />} />
 					<Route path="/sign-in" element={<SignIn />} />
 					<Route path="/sign-up" element={<SignUp />} />
