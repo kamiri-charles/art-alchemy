@@ -1,7 +1,7 @@
 .landing {
     width: 100%;
     height: 100vh;
-    margin-top: 60px;
+    margin-top: 50px;
     overflow: scroll;
     
     .content-grid {
@@ -85,6 +85,8 @@
     }
 
     .lp-blog-section-title {
+        position: sticky;
+        top: 0;
         margin-top: 20px;
         padding: 10px 20px;
         background: white;

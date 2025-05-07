@@ -1,9 +1,11 @@
-import { FC, useEffect, useRef } from "react";
+import { Dispatch, FC, SetStateAction, useEffect, useRef } from "react";
 import Typed from "typed.js";
 import "./styles.scss";
 import NotifSlider from "./NotifSlider";
 import AdsSection from "./AdsSection";
 import BlogOverview from "../widgets/BlogOverview";
+import throttle from "lodash/throttle";
+
 
 const art_related_quotes = [
 	{
@@ -56,10 +58,14 @@ const placeholder_blogs = [
 	{ image_src: "https://images.unsplash.com/photo-1549880338-65ddcdfd017b" },
 ];
 
-const getRandomQuote = () =>
-	art_related_quotes[Math.floor(Math.random() * art_related_quotes.length)];
+const getRandomQuote = () => art_related_quotes[Math.floor(Math.random() * art_related_quotes.length)];
 
-const Landing: FC = () => {
+interface LandingProps {
+	setHeaderLightBgActive: Dispatch<SetStateAction<boolean>>;
+}
+
+const Landing: FC<LandingProps> = ({setHeaderLightBgActive}) => {
+	const landingRef = useRef<HTMLDivElement | null>(null);
 	const quoteRef = useRef(null);
 	const authorRef = useRef(null);
 
@@ -85,8 +91,33 @@ const Landing: FC = () => {
 		};
 	}, []);
 
+	// For handling header light state switching
+	useEffect(() => {
+		if (!landingRef.current) return;
+
+		const scrollThreshold = 200;
+
+		const handleScroll = throttle(() => {
+			if (landingRef.current!.scrollTop > scrollThreshold) {
+				setHeaderLightBgActive(true);
+			} else {
+				setHeaderLightBgActive(false);
+			}
+		}, 100);
+
+		const landingEl = landingRef.current;
+		landingEl.addEventListener("scroll", handleScroll);
+
+		return () => {
+			landingEl.removeEventListener("scroll", handleScroll);
+			handleScroll.cancel();
+		};
+	}, [setHeaderLightBgActive]);
+
+
+
 	return (
-		<div className="landing">
+		<div className="landing" ref={landingRef}>
 			<div className="content-grid">
 				<div className="partition p-1">
 					<div className="typed-quote" ref={quoteRef}></div>

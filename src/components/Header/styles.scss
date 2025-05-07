@@ -4,14 +4,17 @@
     left: 0;
     width: 100vw;
     color: var(--ui-black);
-    background: white;
 
     display: flex;
     justify-content: space-between;
     padding: 10px;
     padding-left: 20px;
     transition: all 0.2s ease;
-    z-index: 999;
+    z-index: 99;
+
+    &.light-bg-active {
+        background: var(--ui-white);
+    }
 
     .left {
         font-family: "Permanent Marker", cursive;

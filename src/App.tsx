@@ -9,6 +9,7 @@ import Art from "./pages/Art";
 import Checkout from "./pages/Checkout";
 import Cart from "./components/Cart";
 
+import { useState } from "react";
 import Admin from "./pages/Admin";
 import AdminSignIn from "./components/Admin/AdminSignIn";
 import AdminNewUser from "./components/Admin/AdminNewUser";
@@ -22,12 +23,14 @@ function App() {
 		toast(message);
 	};
 
+	const [headerLightBgActive, setHeaderLightBgActive] = useState(false);
+
 	return (
 		<div className="App">
 			<ToastContainer />
 			<Router>
 				<Routes>
-					<Route path="" element={<Home />} />
+					<Route path="" element={<Home headerLightBgActive={headerLightBgActive} setHeaderLightBgActive={setHeaderLightBgActive} />} />
 					<Route path="/shop" element={<Shop notify={notify} />} />
 					<Route path="/sign-in" element={<SignIn />} />
 					<Route path="/sign-up" element={<SignUp />} />

@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect, FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MetroSpinner } from 'react-spinners-kit'
 import { UserType } from '../../utils/custom_types'
 import './styles.scss'
 
-const Header:React.FC = () => {
+interface HeaderProps {
+	lightBgActive: boolean;
+}
+
+const Header: FC<HeaderProps> = ({lightBgActive}) => {
 	const [userData, setUserData] = useState<UserType>();
 	const [menuActive, setMenuActive] = useState(false);
 	const [signingOut, setSigningOut] = useState(false);
@@ -30,7 +34,7 @@ const Header:React.FC = () => {
 	};
 
 	return (
-		<div className="header">
+		<div className={`header${lightBgActive ? " light-bg-active" : ""}`}>
 			<div className="left" onClick={() => nav("/")}>
 				Art Alchemy
 			</div>
