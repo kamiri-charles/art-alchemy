@@ -5,10 +5,12 @@ import Landing from "../components/Landing";
 interface HomeProps {
 	headerLightBgActive: boolean;
 	setHeaderLightBgActive: Dispatch<SetStateAction<boolean>>;
+	currentPage: string;
+	setCurrentPage: Dispatch<SetStateAction<string>>;
 }
 
 
-const Home: FC<HomeProps> = ({headerLightBgActive, setHeaderLightBgActive}) => {
+const Home: FC<HomeProps> = ({headerLightBgActive, setHeaderLightBgActive, currentPage, setCurrentPage}) => {
 	const [currentTab, setCurrentTab] = useState(
 		localStorage.getItem("artAlchemyCurrentTab") || "home"
 	);
@@ -19,8 +21,8 @@ const Home: FC<HomeProps> = ({headerLightBgActive, setHeaderLightBgActive}) => {
 
 	return (
 		<div>
-			<Header lightBgActive={headerLightBgActive} />
-			<Landing setHeaderLightBgActive={setHeaderLightBgActive} />
+			<Header lightBgActive={headerLightBgActive} currentPage={currentPage} />
+			<Landing setHeaderLightBgActive={setHeaderLightBgActive} setCurrentPage={setCurrentPage} />
 		</div>
 	);
 };

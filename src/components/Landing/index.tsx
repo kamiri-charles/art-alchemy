@@ -62,14 +62,16 @@ const getRandomQuote = () => art_related_quotes[Math.floor(Math.random() * art_r
 
 interface LandingProps {
 	setHeaderLightBgActive: Dispatch<SetStateAction<boolean>>;
+	setCurrentPage: Dispatch<SetStateAction<string>>;
 }
 
-const Landing: FC<LandingProps> = ({setHeaderLightBgActive}) => {
+const Landing: FC<LandingProps> = ({setHeaderLightBgActive, setCurrentPage}) => {
 	const landingRef = useRef<HTMLDivElement | null>(null);
 	const quoteRef = useRef(null);
 	const authorRef = useRef(null);
 
 	useEffect(() => {
+		setCurrentPage("dashboard");
 		const { quote, author } = getRandomQuote();
 
 		const typedQuote = new Typed(quoteRef.current, {

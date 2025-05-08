@@ -24,13 +24,14 @@ function App() {
 	};
 
 	const [headerLightBgActive, setHeaderLightBgActive] = useState(false);
+	const [currentPage, setCurrentPage] = useState("");
 
 	return (
 		<div className="App">
 			<ToastContainer />
 			<Router>
 				<Routes>
-					<Route path="" element={<Home headerLightBgActive={headerLightBgActive} setHeaderLightBgActive={setHeaderLightBgActive} />} />
+					<Route path="" element={<Home currentPage={currentPage} setCurrentPage={setCurrentPage} headerLightBgActive={headerLightBgActive} setHeaderLightBgActive={setHeaderLightBgActive} />} />
 					<Route path="/shop" element={<Shop notify={notify} />} />
 					<Route path="/sign-in" element={<SignIn />} />
 					<Route path="/sign-up" element={<SignUp />} />
