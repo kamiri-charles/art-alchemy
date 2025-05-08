@@ -4,9 +4,11 @@ import ArtListings from "../components/ArtListings";
 
 interface ShopProps {
 	notify: (x: string) => void;
+	headerLightBgActive: boolean;
+	currentPage: string;
 }
 
-const Shop: React.FC<ShopProps> = ({ notify }) => {
+const Shop: React.FC<ShopProps> = ({ notify, headerLightBgActive, currentPage }) => {
 	const [currentTab, setCurrentTab] = useState(
 		localStorage.getItem("artAlchemyCurrentTab") || "market"
 	);
@@ -17,7 +19,7 @@ const Shop: React.FC<ShopProps> = ({ notify }) => {
 
 	return (
 		<div>
-			<Header />
+			<Header lightBgActive={headerLightBgActive} currentPage={currentPage} />
 			<ArtListings notify={notify} />
 		</div>
 	);

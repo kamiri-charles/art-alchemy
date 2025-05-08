@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, FC } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import SwiperCore from "swiper";
@@ -11,7 +11,12 @@ import "../styles/art.scss";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
-const Art: React.FC = () => {
+interface ArtProps {
+	headerLightBgActive: boolean;
+	currentPage: string;
+}
+
+const Art: FC<ArtProps> = ({headerLightBgActive, currentPage}) => {
 	const loc = useLocation();
 	const [art, setArt] = useState<ArtType>();
 	const [cart, setCart] = useState<CartType>();
@@ -100,7 +105,7 @@ const Art: React.FC = () => {
 
 	return (
 		<div className="art">
-			<Header />
+			<Header lightBgActive={headerLightBgActive} currentPage={currentPage} />
 
 			{!loading ? (
 				<>
