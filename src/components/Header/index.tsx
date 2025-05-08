@@ -11,7 +11,7 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ lightBgActive, currentPage }) => {
 	const [userData, setUserData] = useState<UserType>();
-	const [mvHamMenuActive, setMvHamMenuActive] = useState(true);
+	const [mvHamMenuActive, setMvHamMenuActive] = useState(false);
 	const [signingOut, setSigningOut] = useState(false);
 	const mvHamMenuRef = useRef<HTMLDivElement | null>(null);
 	const mvHamMenuBtnRef = useRef<HTMLDivElement | null>(null);

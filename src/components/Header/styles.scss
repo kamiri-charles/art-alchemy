@@ -136,7 +136,7 @@
         @media (max-width: 768px) {
             display: flex;
             flex-direction: column;
-            background: white;
+            background: var(--ui-light-grey);
             padding: 10px;
             gap: 8px;
             border-radius: 8px;
@@ -219,7 +219,7 @@
                     height: 20px;
                     display: grid;
                     place-items: center;
-                    background: crimson;
+                    background: red;
                     border-radius: 50%;
                     color: white;
                 }

@@ -135,7 +135,7 @@ const Landing: FC<LandingProps> = ({setHeaderLightBgActive, setCurrentPage}) => 
 				<div className="partition p-4">
 					<div className="shop-text">Shop</div>
 					<div className="shop-link">
-						See all picks <i className="bx bx-right-arrow-alt"></i>
+						<span>See all picks</span> <i className="bx bx-right-arrow-alt"></i>
 					</div>
 				</div>
 			</div>

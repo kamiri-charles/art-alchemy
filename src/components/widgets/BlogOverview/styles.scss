@@ -11,8 +11,9 @@
     cursor: pointer;
 
     .blog-image {
-        height: 50%;
         background: black;
+        border-radius: 16px;
+        overflow: hidden;
     }
 
     .blog-meta {
@@ -60,6 +61,24 @@
             border-radius: 50%;
             background: black;
             color: white;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-overview {
+        height: auto;
+
+        .blog-image {
+            height: 200px !important;
+        }
+
+        .blog-title {
+            height: auto;
+        }
+
+        .blog-desc {
+            height: auto;
         }
     }
 }
