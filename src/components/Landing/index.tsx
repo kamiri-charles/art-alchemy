@@ -132,7 +132,9 @@ const Landing: FC<LandingProps> = ({setHeaderLightBgActive}) => {
 				</div>
 				<div className="partition p-4">
 					<div className="shop-text">Shop</div>
-					<div className="shop-link">See all picks <i className="bx bx-right-arrow-alt"></i></div>
+					<div className="shop-link">
+						See all picks <i className="bx bx-right-arrow-alt"></i>
+					</div>
 				</div>
 			</div>
 
@@ -142,10 +144,51 @@ const Landing: FC<LandingProps> = ({setHeaderLightBgActive}) => {
 			</div>
 
 			<div className="lp-from-the-blog">
-				{placeholder_blogs.map((blog, idx) => (<BlogOverview key={idx} image_src={blog.image_src} />))}
+				{placeholder_blogs.map((blog, idx) => (
+					<BlogOverview key={idx} image_src={blog.image_src} />
+				))}
 			</div>
 
-			<div className="footer"></div>
+			<div className="footer">
+				<div className="about-section">
+					<div className="about-title">Art Alchemy</div>
+					<div className="about-content">
+						A space to explore, share, and celebrate art in all its forms — from
+						sketches to masterpieces
+					</div>
+				</div>
+				<div className="newsletter-sub">
+					<span>Get Updates</span>
+					<div className="nr-sub-field">
+						<input type="email" placeholder="Enter your email" required />
+						<button className="nr-sub-button">Subscribe</button>
+					</div>
+
+					<div className="socials">
+						<div className="social">
+							<i className="bx bxl-instagram"></i>
+						</div>
+						<div className="social">
+							<i className="bx bxl-tiktok"></i>
+						</div>
+						<div className="social">
+							<i className="bx bxl-facebook"></i>
+						</div>
+						<div className="social">
+							<i className="bx bxl-discord-alt"></i>
+						</div>
+						<div className="social">
+							<i className="bx bxl-youtube"></i>
+						</div>
+					</div>
+				</div>
+
+				<div className="trademark">©2025 Art Alchemy. All Rights Reserved</div>
+				<div className="co-links">
+					<div className="co-link">Privacy Policy</div>
+					<div className="co-link">Terms of Service</div>
+				</div>
+			</div>
 		</div>
 	);
 };

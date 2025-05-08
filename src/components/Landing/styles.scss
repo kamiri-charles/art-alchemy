@@ -100,7 +100,113 @@
     }
 
     .footer {
-        height: 200px;
+        position: relative;
         background: black;
+        display: flex;
+        justify-content: space-between;
+        color: white;
+        padding: 10px 20px;
+        padding-bottom: 80px;
+
+        .about-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 8px;
+
+            .about-title {
+                font-family: "Permanent Marker", "Roboto", sans-serif;
+                font-size: 24px;
+            }
+
+            .about-content {
+                width: 400px;
+                color: var(--ui-light-grey);
+            }
+        }
+
+        .newsletter-sub {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            span {
+                font-family: "Edu TAS Beginner", cursive;
+                font-size: 18px;
+                font-weight: 600;
+            }
+
+            .nr-sub-field {
+                position: relative;
+                border-radius: 8px;
+                background: var(--ui-dark-grey);
+                width: 350px;
+                
+                input {
+                    width: 100%;
+                    border-radius: inherit;
+                    padding: 12px;
+                    background: transparent;
+                    color: white;
+                }
+
+                .nr-sub-button {
+                    position: absolute;
+                    background: white;
+                    top: 50%;
+                    right: 10px;
+                    transform: translateY(-50%);
+                    padding: 6px 8px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                }
+            }
+
+            .socials {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 16px;
+
+                .social {
+                    display: grid;
+                    place-items: center;
+                    width: 40px;
+                    height: 40px;
+                    font-size: 20px;
+                    border-radius: 50%;
+                    background: var(--ui-dark-grey);
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        background: white;
+                        color: black;
+                    }
+                }
+            }
+        }
+
+        .trademark {
+            position: absolute;
+            bottom: 40px;
+            left: 20px;
+            color: var(--ui-light-grey);
+        }
+    
+        .co-links {
+            position: absolute;
+            bottom: 40px;
+            right: 60px;
+
+            display: flex;
+            gap: 16px;
+            color: var(--ui-light-grey);
+            
+            .co-link {
+                cursor: pointer;
+            }
+        }
     }
+
 }
