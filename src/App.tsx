@@ -17,6 +17,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "boxicons/css/boxicons.min.css";
 import "./App.scss";
+import Events from "./pages/Events";
 
 function App() {
 	const notify = (message: string) => {
@@ -47,6 +48,18 @@ function App() {
 						element={
 							<Shop
 								notify={notify}
+								headerLightBgActive={headerLightBgActive}
+								currentPage={currentPage}
+								setCurrentPage={setCurrentPage}
+								setHeaderLightBgActive={setHeaderLightBgActive}
+							/>
+						}
+					/>
+
+					<Route
+						path="/events"
+						element={
+							<Events
 								headerLightBgActive={headerLightBgActive}
 								currentPage={currentPage}
 								setCurrentPage={setCurrentPage}

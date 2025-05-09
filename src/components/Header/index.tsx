@@ -70,6 +70,7 @@ const Header: FC<HeaderProps> = ({ lightBgActive, currentPage }) => {
 				</div>
 				<div
 					className={`link${currentPage == "events" ? " current-page" : ""}`}
+					onClick={() => nav("/events")}
 				>
 					Events
 				</div>
@@ -83,7 +84,9 @@ const Header: FC<HeaderProps> = ({ lightBgActive, currentPage }) => {
 				>
 					Become an Artist
 				</div>
-				<div className={`link${currentPage == "contact" ? " current-page" : ""}`}>
+				<div
+					className={`link${currentPage == "contact" ? " current-page" : ""}`}
+				>
 					Contact
 				</div>
 			</div>
@@ -136,13 +139,17 @@ const Header: FC<HeaderProps> = ({ lightBgActive, currentPage }) => {
 						<span>Dashboard</span>
 					</div>
 
-					<div onClick={() => nav("/shop")} className={`hl${currentPage == "shop" ? " current-page" : ""}`}>
+					<div
+						onClick={() => nav("/shop")}
+						className={`hl${currentPage == "shop" ? " current-page" : ""}`}
+					>
 						<i className="bx bx-cart"></i>
 						<span>Shop</span>
 					</div>
 
 					<div
 						className={`hl${currentPage == "events" ? " current-page" : ""}`}
+						onClick={() => nav("/events")}
 					>
 						<i className="bx bx-calendar-event"></i>
 						<span>Events</span>
@@ -161,7 +168,7 @@ const Header: FC<HeaderProps> = ({ lightBgActive, currentPage }) => {
 						<i className="bx bx-pen"></i>
 						<span>Become an Artist</span>
 					</div>
-					
+
 					<div
 						className={`hl${currentPage == "contact" ? " current-page" : ""}`}
 					>
