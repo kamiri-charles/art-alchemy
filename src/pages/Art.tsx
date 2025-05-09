@@ -150,7 +150,14 @@ const Art: FC<ArtProps> = ({headerLightBgActive, currentPage, setHeaderLightBgAc
 										>
 											{art.imageData.map((image, index) => (
 												<SwiperSlide key={index}>
-													<img src={image} alt={`Art image ${index + 1}`} />
+													<div
+														className="slide-content"
+														style={{
+															backgroundImage: `url(${image})`,
+															backgroundSize: "contain",
+															backgroundPosition: "center",
+														}}
+													></div>
 												</SwiperSlide>
 											))}
 										</Swiper>
@@ -194,29 +201,27 @@ const Art: FC<ArtProps> = ({headerLightBgActive, currentPage, setHeaderLightBgAc
 									</div>
 									<div className="text-sec">
 										<div className="title">
-											{art?.title}{" "} <span>|</span>
+											{art?.title} <span>|</span>
 											<div className="stats">
 												<div className="stat">
 													<i className="bx bx-show"></i>
-												<span>{art?.views}</span>
+													<span>{art?.views}</span>
 												</div>
-												
+
 												<div className="stat">
 													<i className="bx bx-star"></i>
-												<span>{art?.views}</span>
+													<span>{art?.views}</span>
 												</div>
-												
+
 												<div className="stat">
 													<i className="bx bx-message"></i>
 													<span>{art?.comments.length}</span>
 												</div>
-												
 											</div>
 										</div>
 										<div className="owner">{art?.owner}</div>
 									</div>
 								</div>
-
 
 								<div className="tags">
 									{art?.tags.map((tag, idx) => (
