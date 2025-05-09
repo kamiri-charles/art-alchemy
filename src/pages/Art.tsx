@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, FC } from "react";
+import { useEffect, useState, useRef, FC, Dispatch, SetStateAction } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import SwiperCore from "swiper";
@@ -8,15 +8,17 @@ import { ArtType, CartType } from "../utils/custom_types";
 import { fetch_art_by_id } from "../api/art";
 import { MetroSpinner } from "react-spinners-kit";
 import "../styles/art.scss";
+import { throttle } from "lodash";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 interface ArtProps {
 	headerLightBgActive: boolean;
 	currentPage: string;
+	setHeaderLightBgActive: Dispatch<SetStateAction<boolean>>;
 }
 
-const Art: FC<ArtProps> = ({headerLightBgActive, currentPage}) => {
+const Art: FC<ArtProps> = ({headerLightBgActive, currentPage, setHeaderLightBgActive}) => {
 	const loc = useLocation();
 	const [art, setArt] = useState<ArtType>();
 	const [cart, setCart] = useState<CartType>();
@@ -24,6 +26,7 @@ const Art: FC<ArtProps> = ({headerLightBgActive, currentPage}) => {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
 	const swiperRef = useRef<SwiperCore | null>(null);
+	const artRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
 		setLoading(true);
@@ -40,7 +43,6 @@ const Art: FC<ArtProps> = ({headerLightBgActive, currentPage}) => {
 				setLoading(false);
 			});
 
-		
 		const fetchCart = async () => {
 			const rawUserData = localStorage.getItem("artAlchemyUserData");
 
@@ -55,7 +57,6 @@ const Art: FC<ArtProps> = ({headerLightBgActive, currentPage}) => {
 					setCart(data);
 
 					if (cart?.artIds.includes(loc.state.art_id)) setInCart(true);
-
 				} catch (error) {
 					console.error(
 						"There was an error getting the cart associated with this user.",
@@ -71,6 +72,29 @@ const Art: FC<ArtProps> = ({headerLightBgActive, currentPage}) => {
 			swiperRef.current.update();
 		}
 	}, [loc.state.art_id]);
+
+	// For handling header light state switching
+	useEffect(() => {
+		if (!artRef.current) return;
+
+		const scrollThreshold = 50;
+
+		const handleScroll = throttle(() => {
+			if (artRef.current!.scrollTop > scrollThreshold) {
+				setHeaderLightBgActive(true);
+			} else {
+				setHeaderLightBgActive(false);
+			}
+		}, 100);
+
+		const landingEl = artRef.current;
+		landingEl.addEventListener("scroll", handleScroll);
+
+		return () => {
+			landingEl.removeEventListener("scroll", handleScroll);
+			handleScroll.cancel();
+		};
+	}, [setHeaderLightBgActive]);
 
 	const updateCart = async () => {
 		try {
@@ -104,7 +128,7 @@ const Art: FC<ArtProps> = ({headerLightBgActive, currentPage}) => {
 	};
 
 	return (
-		<div className="art">
+		<div ref={artRef} className="art">
 			<Header lightBgActive={headerLightBgActive} currentPage={currentPage} />
 
 			{!loading ? (
@@ -152,7 +176,10 @@ const Art: FC<ArtProps> = ({headerLightBgActive, currentPage}) => {
 											<span>Item already in cart</span>
 										</div>
 									) : (
-										<div className="action fl-c-c" onClick={evt => addToCart(evt, loc.state.art_id)}>
+										<div
+											className="action fl-c-c"
+											onClick={(evt) => addToCart(evt, loc.state.art_id)}
+										>
 											<i className="bx bx-cart"></i>
 											<span>Add to Cart</span>
 										</div>
@@ -166,34 +193,30 @@ const Art: FC<ArtProps> = ({headerLightBgActive, currentPage}) => {
 										<i className="bx bx-user"></i>
 									</div>
 									<div className="text-sec">
-										<div className="title">{art?.title}</div>
+										<div className="title">
+											{art?.title}{" "} <span>|</span>
+											<div className="stats">
+												<div className="stat">
+													<i className="bx bx-show"></i>
+												<span>{art?.views}</span>
+												</div>
+												
+												<div className="stat">
+													<i className="bx bx-star"></i>
+												<span>{art?.views}</span>
+												</div>
+												
+												<div className="stat">
+													<i className="bx bx-message"></i>
+													<span>{art?.comments.length}</span>
+												</div>
+												
+											</div>
+										</div>
 										<div className="owner">{art?.owner}</div>
 									</div>
 								</div>
 
-								<div className="stats">
-									<div className="stat fl-c-c">
-										<i className="bx bx-star"></i>
-										<span>
-											{art?.stars} <span className="stat-text">Stars</span>
-										</span>
-									</div>
-
-									<div className="stat fl-c-c">
-										<i className="bx bx-message"></i>
-										<span>
-											{art?.comments.length}{" "}
-											<span className="stat-text">Comments</span>
-										</span>
-									</div>
-
-									<div className="stat fl-c-c">
-										<i className="bx bx-show"></i>
-										<span>
-											0 <span className="stat-text">Views</span>
-										</span>
-									</div>
-								</div>
 
 								<div className="tags">
 									{art?.tags.map((tag, idx) => (
@@ -203,11 +226,12 @@ const Art: FC<ArtProps> = ({headerLightBgActive, currentPage}) => {
 									))}
 								</div>
 
+								<div className="description-label">Description</div>
 								<div className="description">{art?.description}</div>
 
 								<div className="comments">
 									<div className="comments-title">Comments</div>
-									<div className="comments-empty">No Comments.</div>
+									<div className="comments-empty">No comments</div>
 								</div>
 							</div>
 
@@ -232,11 +256,6 @@ const Art: FC<ArtProps> = ({headerLightBgActive, currentPage}) => {
 								<div className="sub-sec-title">Recommended</div>
 
 								<div className="products">
-									<div className="sub-product"></div>
-									<div className="sub-product"></div>
-									<div className="sub-product"></div>
-									<div className="sub-product"></div>
-									<div className="sub-product"></div>
 									<div className="sub-product"></div>
 									<div className="sub-product"></div>
 									<div className="sub-product"></div>

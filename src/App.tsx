@@ -64,6 +64,7 @@ function App() {
 							<Art
 								headerLightBgActive={headerLightBgActive}
 								currentPage={currentPage}
+								setHeaderLightBgActive={setHeaderLightBgActive}
 							/>
 						}
 					/>
