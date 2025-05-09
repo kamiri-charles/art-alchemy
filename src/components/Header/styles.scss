@@ -47,7 +47,7 @@
                 transition: all 0.3s ease;
             }
 
-            &:hover:after {
+            &.current-page:after, &:hover:after {
                 width: 120%;
             }
 
@@ -93,6 +93,8 @@
                 font-family: "Edu TAS Beginner", cursive;
                 font-weight: 600;
                 cursor: pointer;
+
+                &:hover {text-decoration: underline;}
             }
         }
         .user-not-signed-in-buttons {
@@ -136,7 +138,8 @@
         @media (max-width: 768px) {
             display: flex;
             flex-direction: column;
-            background: var(--ui-light-grey);
+            background: var(--ui-white);
+            border: 1px solid black;
             padding: 10px;
             gap: 8px;
             border-radius: 8px;

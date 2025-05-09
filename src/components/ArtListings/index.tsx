@@ -1,20 +1,23 @@
-import React, { useEffect, useState } from "react";
+import { Dispatch, FC, SetStateAction, useEffect, useRef, useState } from "react";
 import ArtPiece from "../ArtPiece";
 import { MetroSpinner } from "react-spinners-kit";
 import { ArtType, CartType } from "../../utils/custom_types";
 import "./styles.scss";
+import { throttle } from "lodash";
 
 interface ArtListingsProps {
 	notify: (x: string) => void;
+	setHeaderLightBgActive: Dispatch<SetStateAction<boolean>>;
 }
 
-const ArtListings: React.FC<ArtListingsProps> = ({notify}) => {
+const ArtListings: FC<ArtListingsProps> = ({notify, setHeaderLightBgActive}) => {
 	const [art, setArt] = useState<ArtType[]>([]);
 	const [error, setError] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
 	const [totalPages, setTotalPages] = useState(1);
 	const [loading, setLoading] = useState(false);
 	const [cart, setCart] = useState<CartType>();
+	const artListingsRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
 		const fetchArt = async () => {
@@ -63,6 +66,29 @@ const ArtListings: React.FC<ArtListingsProps> = ({notify}) => {
 		fetchCart();
 	}, [currentPage]);
 
+	// For handling header light state switching
+	useEffect(() => {
+		if (!artListingsRef.current) return;
+
+		const scrollThreshold = 100;
+
+		const handleScroll = throttle(() => {
+			if (artListingsRef.current!.scrollTop > scrollThreshold) {
+				setHeaderLightBgActive(true);
+			} else {
+				setHeaderLightBgActive(false);
+			}
+		}, 100);
+
+		const landingEl = artListingsRef.current;
+		landingEl.addEventListener("scroll", handleScroll);
+
+		return () => {
+			landingEl.removeEventListener("scroll", handleScroll);
+			handleScroll.cancel();
+		};
+	}, [setHeaderLightBgActive]);
+
 	// Implement next and previous page handlers
 	const nextPage = () => {
 		if (currentPage < totalPages) {
@@ -77,7 +103,7 @@ const ArtListings: React.FC<ArtListingsProps> = ({notify}) => {
 	};
 
 	return (
-		<div className="art-listings fl-c">
+		<div ref={artListingsRef} className="art-listings fl-c">
 			{loading ? (
 				<div className="loader">
 					<MetroSpinner color="black" />

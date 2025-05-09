@@ -1,14 +1,11 @@
 .art-listings {
     margin-top: 60px;
     height: 100vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow-y: auto;
     
     flex-wrap: wrap;
     align-items: flex-start;
-    scroll-behavior: smooth;
     padding-bottom: 40px;
-
 
     .loader {
         position: fixed;
@@ -65,5 +62,9 @@
         left: 0;
         width: 100vw;
         flex-direction: column;
+
+        .pieces {
+            padding: 0;
+        }
     }
 }

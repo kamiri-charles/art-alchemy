@@ -31,13 +31,42 @@ function App() {
 			<ToastContainer />
 			<Router>
 				<Routes>
-					<Route path="" element={<Home currentPage={currentPage} setCurrentPage={setCurrentPage} headerLightBgActive={headerLightBgActive} setHeaderLightBgActive={setHeaderLightBgActive} />} />
-					<Route path="/shop" element={<Shop notify={notify} headerLightBgActive={headerLightBgActive} currentPage={currentPage} />} />
+					<Route
+						path=""
+						element={
+							<Home
+								currentPage={currentPage}
+								setCurrentPage={setCurrentPage}
+								headerLightBgActive={headerLightBgActive}
+								setHeaderLightBgActive={setHeaderLightBgActive}
+							/>
+						}
+					/>
+					<Route
+						path="/shop"
+						element={
+							<Shop
+								notify={notify}
+								headerLightBgActive={headerLightBgActive}
+								currentPage={currentPage}
+								setCurrentPage={setCurrentPage}
+								setHeaderLightBgActive={setHeaderLightBgActive}
+							/>
+						}
+					/>
 					<Route path="/sign-in" element={<SignIn />} />
 					<Route path="/sign-up" element={<SignUp />} />
 					<Route path="/profile" element={<Profile />} />
 					<Route path="/new-art" element={<NewArt />} />
-					<Route path="/art/:art-id" element={<Art headerLightBgActive={headerLightBgActive} currentPage={currentPage} />} />
+					<Route
+						path="/art/:art-id"
+						element={
+							<Art
+								headerLightBgActive={headerLightBgActive}
+								currentPage={currentPage}
+							/>
+						}
+					/>
 					<Route path="/checkout" element={<Checkout />} />
 					<Route path="/cart" element={<Cart />} />
 

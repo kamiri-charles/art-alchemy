@@ -62,13 +62,30 @@ const Header: FC<HeaderProps> = ({ lightBgActive, currentPage }) => {
 			</div>
 
 			<div className="mid">
-				<div className="link" onClick={() => nav("/shop")}>
+				<div
+					className={`link${currentPage == "shop" ? " current-page" : ""}`}
+					onClick={() => nav("/shop")}
+				>
 					Shop
 				</div>
-				<div className="link">Events</div>
-				<div className="link">Blog</div>
-				<div className="link">Become an Artist</div>
-				<div className="link">Contact</div>
+				<div
+					className={`link${currentPage == "events" ? " current-page" : ""}`}
+				>
+					Events
+				</div>
+				<div className={`link${currentPage == "blog" ? " current-page" : ""}`}>
+					Blog
+				</div>
+				<div
+					className={`link${
+						currentPage == "become-an-artist" ? " current-page" : ""
+					}`}
+				>
+					Become an Artist
+				</div>
+				<div className={`link${currentPage == "contact" ? " current-page" : ""}`}>
+					Contact
+				</div>
 			</div>
 
 			<div className="right">
@@ -83,7 +100,9 @@ const Header: FC<HeaderProps> = ({ lightBgActive, currentPage }) => {
 						{signingOut ? (
 							<MetroSpinner color="black" size={24} />
 						) : (
-							<div onClick={() => logout()} className="dv-sign-out-option">Sign Out</div>
+							<div onClick={() => logout()} className="dv-sign-out-option">
+								Sign Out
+							</div>
 						)}
 					</div>
 				) : (
@@ -116,32 +135,33 @@ const Header: FC<HeaderProps> = ({ lightBgActive, currentPage }) => {
 						<i className="bx bxs-dashboard"></i>
 						<span>Dashboard</span>
 					</div>
-					<div className={`hl${currentPage == "shop" ? " current-page" : ""}`}>
-						<i className="bx bx-cart"></i>
 
+					<div onClick={() => nav("/shop")} className={`hl${currentPage == "shop" ? " current-page" : ""}`}>
+						<i className="bx bx-cart"></i>
 						<span>Shop</span>
 					</div>
+
 					<div
 						className={`hl${currentPage == "events" ? " current-page" : ""}`}
 					>
 						<i className="bx bx-calendar-event"></i>
-
 						<span>Events</span>
 					</div>
+
 					<div className={`hl${currentPage == "blog" ? " current-page" : ""}`}>
 						<i className="bx bx-notification"></i>
-
 						<span>Blog</span>
 					</div>
+
 					<div
 						className={`hl${
 							currentPage == "become-an-artist" ? " current-page" : ""
 						}`}
 					>
 						<i className="bx bx-pen"></i>
-
 						<span>Become an Artist</span>
 					</div>
+					
 					<div
 						className={`hl${currentPage == "contact" ? " current-page" : ""}`}
 					>
