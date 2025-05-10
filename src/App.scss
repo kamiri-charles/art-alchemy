@@ -63,29 +63,6 @@ p, h1, h2, h3, h4, h5, h6 {
   border-radius: 10px;
 }
 
-
-/* Custom classes */
-.primary {
-  color: var(--ui-primary);
-}
-
-.fl-c {
-	display: flex;
-	align-items: center;
-}
-
-.fl-c-c { // Display flex, align center, justify center
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.fl-c-ar { // Display flex, align center, justify space-around
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-}
-
 /* App */
 .App {
   position: fixed;

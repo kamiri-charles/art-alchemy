@@ -111,7 +111,7 @@
             margin-block: 10px;
         }
         
-        button.submit, button.admin-request {
+        button.submit {
             width: 80%;
             padding: 10px 20px;
             border-radius: 10px;
@@ -129,10 +129,6 @@
                 background: var(--ui-primary);
             }
         }
-
-       /*  button.admin-request {
-            background
-        } */
         
         .spinner {
             width: 80%;

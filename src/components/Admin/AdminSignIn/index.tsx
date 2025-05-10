@@ -74,11 +74,6 @@ const AdminSignIn: React.FC = () => {
 		else setPasswordValid(false);
 	}, [userData.password.length, userData.username.length]);
 
-	const request_for_admin = () => {
-		alert("Your request has been sent succesfully!");
-		nav("/");
-	};
-
 	return (
 		<div className="admin-sign-in">
 			<div className="admin-sign-in-logo" onClick={() => nav("/")}>
@@ -143,10 +138,6 @@ const AdminSignIn: React.FC = () => {
 						Log In
 					</button>
 				)}
-
-				<button className="admin-request" onClick={() => request_for_admin()}>
-					Request for admin priviledges
-				</button>
 			</form>
 		</div>
 	);
