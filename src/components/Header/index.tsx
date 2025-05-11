@@ -74,7 +74,10 @@ const Header: FC<HeaderProps> = ({ lightBgActive, currentPage }) => {
 				>
 					Events
 				</div>
-				<div className={`link${currentPage == "blog" ? " current-page" : ""}`}>
+				<div
+					className={`link${currentPage == "blog" ? " current-page" : ""}`}
+					onClick={() => nav("/blog")}
+				>
 					Blog
 				</div>
 				<div
@@ -134,6 +137,7 @@ const Header: FC<HeaderProps> = ({ lightBgActive, currentPage }) => {
 				<div className="header-links">
 					<div
 						className={`hl${currentPage == "dashboard" ? " current-page" : ""}`}
+						onClick={() => nav("/")}
 					>
 						<i className="bx bxs-dashboard"></i>
 						<span>Dashboard</span>
@@ -155,7 +159,10 @@ const Header: FC<HeaderProps> = ({ lightBgActive, currentPage }) => {
 						<span>Events</span>
 					</div>
 
-					<div className={`hl${currentPage == "blog" ? " current-page" : ""}`}>
+					<div
+						className={`hl${currentPage == "blog" ? " current-page" : ""}`}
+						onClick={() => nav("/blog")}
+					>
 						<i className="bx bx-notification"></i>
 						<span>Blog</span>
 					</div>
