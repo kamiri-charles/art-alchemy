@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AdminNavbar from "../components/Admin/AdminNavbar";
-import AdminDashboard from "../components/Admin/AdminDashboard";
-import AdminUsers from "../components/Admin/AdminUsers";
-import AdminArt from "../components/Admin/AdminArt";
+import AdminArt from "../admin-lib/AdminArt";
+import AdminDashboard from "../admin-lib/AdminDashboard";
+import AdminNavbar from "../admin-lib/AdminNavbar";
+import AdminUsers from "../admin-lib/AdminUsers";
 
 const Admin: React.FC = () => {
 	const [currentTab, setCurrentTab] = useState("");

@@ -178,13 +178,13 @@ const Art: FC<ArtProps> = ({headerLightBgActive, currentPage, setHeaderLightBgAc
 									</div>
 
 									{inCart ? (
-										<div className="action fl-c-c">
+										<div className="action">
 											<i className="bx bx-check"></i>
 											<span>Item already in cart</span>
 										</div>
 									) : (
 										<div
-											className="action fl-c-c"
+											className="action"
 											onClick={(evt) => addToCart(evt, loc.state.art_id)}
 										>
 											<i className="bx bx-cart"></i>

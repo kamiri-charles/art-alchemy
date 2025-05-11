@@ -1,23 +1,23 @@
+import { useState } from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Profile from "./components/Profile";
+import Events from "./pages/Events";
 import NewArt from "./pages/NewArt";
 import Art from "./pages/Art";
 import Checkout from "./pages/Checkout";
 import Cart from "./components/Cart";
 
-import { useState } from "react";
 import Admin from "./pages/Admin";
-import AdminSignIn from "./components/Admin/AdminSignIn";
-import AdminNewUser from "./components/Admin/AdminNewUser";
+import AdminSignIn from "./admin-lib/AdminSignIn";
+import AdminNewUser from "./admin-lib/AdminNewUser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "boxicons/css/boxicons.min.css";
 import "./App.scss";
-import Events from "./pages/Events";
 
 function App() {
 	const notify = (message: string) => {

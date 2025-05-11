@@ -44,7 +44,7 @@ const Cart: React.FC = () => {
 			<BreadCrumbsHeader location={["Cart"]} />
 			{
 				localStorage.getItem("artAlchemyUserData") == null && (
-					<div className="cart-empty fl-c-c">
+					<div className="cart-empty">
 						<i className="bx bx-cart"></i>
 						<span>Please log in to view your cart.</span>
 					</div>
@@ -58,7 +58,7 @@ const Cart: React.FC = () => {
 			) : (
 				<>
 					{cart?.artIds.length == 0 ? (
-						<div className="cart-empty fl-c-c">
+						<div className="cart-empty">
 							<i className="bx bx-cart"></i>
 							<span>The cart is currently empty.</span>
 						</div>

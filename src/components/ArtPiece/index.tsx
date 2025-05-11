@@ -83,7 +83,7 @@ const ArtPiece: React.FC<ArtPieceProps> = ({ data, cart, setCart, notify }) => {
 			className="art-piece"
 			onClick={() => nav(`/art/${data.id}`, { state: { art_id: data.id } })}
 		>
-			<div className="image-overlay fl-c-c">
+			<div className="image-overlay">
 				{imagesLoaded ? (
 					<Swiper
 						autoplay={{ delay: Math.floor(Math.random() * 6000 + 3000) }}
@@ -118,18 +118,18 @@ const ArtPiece: React.FC<ArtPieceProps> = ({ data, cart, setCart, notify }) => {
 				<div className="owner">{data.owner}</div>
 
 				<div className="stats">
-					<div className="stat fl-c-c">
+					<div className="stat">
 						<i className="bx bx-star"></i>
 						<span className="count">{data.stars}</span>
 					</div>
 
-					<div className="stat fl-c-c">
+					<div className="stat">
 						<i className="bx bx-message"></i>
 						<span className="count">{data.comments.length}</span>
 					</div>
 				</div>
 
-				<div className="actions fl-c-c">
+				<div className="actions">
 					<div className="price">Ksh. {data.price}</div>
 
 					{inCart ? (
