@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MetroSpinner } from "react-spinners-kit";
-import { ArtType } from "../../../utils/custom_types";
 import "./styles.scss";
+import { ArtType } from "../../utils/custom_types";
 
 const AdminArt: React.FC = () => {
 	const [art, setArt] = useState<ArtType[]>([]);
@@ -43,9 +43,7 @@ const AdminArt: React.FC = () => {
 
 	return (
 		<div className="admin-art admin-component">
-
 			<div className="admin-tab-title">Art</div>
-
 			{loading ? (
 				<div className="art-loader">
 					<MetroSpinner color="black" />
